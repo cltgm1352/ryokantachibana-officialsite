@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>旅館 橘公式HP</title>
+
+  <!-- ファビコン -->
+  <link rel="icon" href="ryokantatibanalogoimg.png" type="image/png" />
+
+  <!-- 筆文字風フォント -->
+  <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin&display=swap" rel="stylesheet">
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #F3F0EC;
+      font-family: 'Kaisei Tokumin', serif;
+      color: #333;
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    #loading {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #F3F0EC;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+
+    #loading.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #loading img {
+      width: 150px;
+      height: auto;
+      user-select: none;
+    }
+
+    header {
+      height: 60px;
+      background-color: #F3F0EC;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 20;
+    }
+
+    header img {
+      height: 40px;
+      object-fit: contain;
+      user-select: none;
+    }
+
+    main {
+      padding-top: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 95vw;
+      max-width: 1400px;
+      aspect-ratio: 16 / 9;
+      background-color: #000;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      display: none;
+      object-fit: cover;
+    }
+
+    video.active {
+      display: block;
+    }
+
+    .circle-container {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 50px;
+      z-index: 10;
+    }
+
+    .circle {
+      position: relative;
+      width: 70px;
+      height: 70px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      background: conic-gradient(#555 0deg, #555 360deg);
+    }
+
+    .inner-circle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #444;
+      position: relative;
+      z-index: 2;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    .inner-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+
+    .reserve-button {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px 24px;
+      background-color: #b7282e;
+      color: #fff;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 6px;
+      font-family: 'Kaisei Tokumin', serif;
+      cursor: pointer;
+      text-decoration: none;
+      z-index: 15;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+
+    .reserve-button:hover {
+      background-color: #a30000;
+    }
+
+    @media (max-width: 768px) {
+      .circle {
+        width: 60px;
+        height: 60px;
+      }
+
+      .inner-circle {
+        width: 50px;
+        height: 50px;
+      }
+
+      .reserve-button {
+        font-size: 1rem;
+        padding: 8px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ローディング画面 -->
+  <div id="loading">
+    <img src="ryokantatibanalogoimg.png" alt="旅館 橘ロゴ ローディング" />
+  </div>
+
+  <!-- ヘッダー -->
+  <header>
+    <img src="ryokantatibanalogoimg.png" alt="旅館 橘ロゴ" />
+  </header>
+
+  <!-- メイン -->
+  <main>
+    <div class="video-wrapper">
+      <div class="circle-container">
+        <div class="circle" data-index="0" id="circle0">
+          <div class="inner-circle">
+            <img src="video1logo.png" alt="映像1ロゴ" />
+          </div>
+        </div>
+        <div class="circle" data-index="1" id="circle1">
+          <div class="inner-circle">
+            <img src="video2logo.png" alt="映像2ロゴ" />
+          </div>
+        </div>
+        <div class="circle" data-index="2" id="circle2">
+          <div class="inner-circle">
+            <img src="video3logo.png" alt="映像3ロゴ" />
+          </div>
+        </div>
+      </div>
+
+      <video id="video0" src="23011-332483109_small.mp4" playsinline></video>
+      <video id="video1" src="366-136082094_small.mp4" playsinline></video>
+      <video id="video2" src="52847-473336264_small.mp4" playsinline></video>
+
+      <a href="reserve.html" class="reserve-button">予約する</a>
+    </div>
+  </main>
+
+  <script>
+    // ローディング画面制御
+    window.addEventListener('load', () => {
+      const loading = document.getElementById('loading');
+      setTimeout(() => {
+        loading.classList.add('hidden');
+        setTimeout(() => {
+          loading.style.display = 'none';
+        }, 500);
+      }, 3000);
+    });
+
+    // 映像＋丸進捗バーの制御
+    const videos = [
+      document.getElementById('video0'),
+      document.getElementById('video1'),
+      document.getElementById('video2')
+    ];
+    const circles = [
+      document.getElementById('circle0'),
+      document.getElementById('circle1'),
+      document.getElementById('circle2')
+    ];
+    let currentIndex = 0;
+    let animationFrameId = null;
+
+    function updateProgressBar(index) {
+      const video = videos[index];
+      const circle = circles[index];
+      if (!video.duration) {
+        animationFrameId = requestAnimationFrame(() => updateProgressBar(index));
+        return;
+      }
+      const progress = (video.currentTime / video.duration) || 0;
+      const degrees = progress * 360;
+      circle.style.background = `conic-gradient(red ${degrees}deg, #555 ${degrees}deg 360deg)`;
+      if (!video.paused && !video.ended) {
+        animationFrameId = requestAnimationFrame(() => updateProgressBar(index));
+      }
+    }
+
+    function playVideo(index) {
+      videos.forEach((v, i) => {
+        v.pause();
+        v.currentTime = 0;
+        v.classList.remove('active');
+        circles[i].classList.remove('active');
+        circles[i].style.background = `conic-gradient(#555 0deg, #555 360deg)`;
+      });
+      currentIndex = index;
+      const video = videos[index];
+      const circle = circles[index];
+      video.classList.add('active');
+      circle.classList.add('active');
+      video.play();
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+      updateProgressBar(index);
+      video.onended = () => {
+        let nextIndex = (index + 1) % videos.length;
+        playVideo(nextIndex);
+      };
+    }
+
+    circles.forEach(circle => {
+      circle.addEventListener('click', () => {
+        const idx = parseInt(circle.dataset.index);
+        if (idx !== currentIndex) {
+          playVideo(idx);
+        }
+      });
+    });
+
+    playVideo(currentIndex);
+  </script>
+</body>
+</html>
