@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - ページが見つかりません</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'MS PGothic', Arial, sans-serif;
+            text-align: center;
+            background-color: #f5e8c7; /* 旅館らしい和風の淡い背景色 */
+        }
+        img {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 100px;
+            margin: 0;
+            color: #4a2c2a; /* 落ち着いた和風の焦げ茶 */
+            font-family: 'MS Mincho', serif;
+        }
+        p {
+            font-size: 20px;
+            color: #5b3f3b;
+            margin-bottom: 30px;
+            font-family: 'MS PGothic', sans-serif;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #8b0000; /* 旅館らしい深紅 */
+            color: #fff8e1;
+            border: 2px solid #5b3f3b;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: 'MS Mincho', serif;
+            background-image: linear-gradient(to bottom, #8b0000, #a52a2a); /* 和風のグラデーション */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: scale(1.05); /* ホバー時に少し大きく */
+            background-image: linear-gradient(to bottom, #a52a2a, #8b0000);
+        }
+    </style>
+</head>
+<body>
+    <img src="ryokantatibanalogoimg.png" alt="旅館たつばなロゴ">
+    <h1>404</h1>
+    <p>お探しのページは見つかりませんでした</p>
+    <button onclick="window.location.href='index.html'">ホームに戻る</button>
+</body>
+</html>
