@@ -47,7 +47,7 @@
     }
 
     header {
-      height: 60px;
+      height: 80px; /* Increased from 70px to accommodate larger image */
       background-color: #F3F0EC;
       display: flex;
       justify-content: center;
@@ -58,13 +58,13 @@
     }
 
     header img {
-      height: 40px;
+      height: 60px; /* Increased from 50px */
       object-fit: contain;
       user-select: none;
     }
 
     main {
-      padding-top: 80px;
+      padding-top: 100px; /* Increased from 90px to account for taller header */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -313,7 +313,7 @@
         setTimeout(() => {
           loading.style.display = 'none';
         }, 500);
-      }, 1500); // Reduced from 3000ms to 1500ms
+      }, 1500);
     });
 
     // 映像＋丸進捗バーの制御
