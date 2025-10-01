@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Q&A - 旅館 橘</title>
+  <title>旅館 橘 | Q&A</title>
+
+  <!-- ファビコン設定 -->
+  <link rel="icon" href="ryokantatibanavideo3.png" type="image/png" />
 
   <!-- フォント -->
   <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin&display=swap" rel="stylesheet">
@@ -26,18 +29,26 @@
       background-color: #F3F0EC;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 0 20px;
+      justify-content: center;
       z-index: 1000;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     }
 
-    header img {
+    .logo-container {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1001;
+    }
+
+    .logo-container a img {
       height: 60px;
       user-select: none;
     }
 
     .hamburger-menu {
+      position: absolute;
+      right: 20px;
       cursor: pointer;
       z-index: 1100;
     }
@@ -102,7 +113,7 @@
       background-color: #f0f0f0;
     }
 
-    /* Q&Aセクション */
+    /* メインコンテンツ */
     main {
       max-width: 800px;
       margin: 120px auto 40px;
@@ -162,7 +173,11 @@
 
   <!-- ヘッダー -->
   <header>
-    <img src="ryokantatibanalogoimg.png" alt="旅館 橘 ロゴ">
+    <div class="logo-container">
+      <a href="index.html">
+        <img src="ryokantatibanalogoimg.png" alt="旅館 橘 ロゴ">
+      </a>
+    </div>
     <div class="hamburger-menu" id="hamburger">
       <img src="ryokantatibanahanbagamenyu.png" alt="メニュー">
     </div>
@@ -185,34 +200,34 @@
     <h1>よくあるご質問（Q&A）</h1>
 
     <div class="qa-item">
-      <div class="question">このサイトの対応ブラウザは？</div>
-      <div class="answer">SafariやChromeなど各種ブラウザが対応しています</div>
+      <div class="question">チェックイン・チェックアウトの時間は？</div>
+      <div class="answer">チェックインは15:00から、チェックアウトは10:00までとなっております。</div>
     </div>
 
     <div class="qa-item">
-      <div class="question">Q&A1</div>
-      <div class="answer">Q&A1</div>
+      <div class="question">ペットと一緒に宿泊できますか？</div>
+      <div class="answer">申し訳ございませんが、ペット同伴でのご宿泊はご遠慮いただいております。</div>
     </div>
 
     <div class="qa-item">
-      <div class="question">Q&A2</div>
-      <div class="answer">Q&A2</div>
+      <div class="question">キャンセルポリシーはどうなっていますか？</div>
+      <div class="answer">ご予約のキャンセルは3日前まで無料、それ以降はキャンセル料が発生します。</div>
     </div>
 
     <div class="qa-item">
-      <div class="question">Q&A3</div>
-      <div class="answer">Q&A3</div>
+      <div class="question">駐車場はありますか？</div>
+      <div class="answer">無料駐車場をご利用いただけます。事前にご連絡いただけますと確実です。</div>
     </div>
 
     <div class="qa-item">
-      <div class="question">Q&A4</div>
-      <div class="answer">Q&A4</div>
+      <div class="question">食事の内容は？</div>
+      <div class="answer">地元食材を使った和会席料理をご提供しております。アレルギー対応も可能です。</div>
     </div>
   </main>
 
   <!-- JavaScript -->
   <script>
-    // ハンバーガーメニュー制御
+    // ハンバーガーメニュー開閉
     const hamburger = document.getElementById('hamburger');
     const sideMenu = document.getElementById('sideMenu');
     const closeMenu = document.getElementById('closeMenu');
@@ -225,11 +240,10 @@
       sideMenu.classList.remove('open');
     });
 
-    // Q&A アコーディオン動作
+    // Q&Aアコーディオン動作
     document.querySelectorAll('.question').forEach(q => {
       q.addEventListener('click', () => {
-        const parent = q.parentElement;
-        parent.classList.toggle('open');
+        q.parentElement.classList.toggle('open');
       });
     });
   </script>
