@@ -123,7 +123,23 @@
       margin-bottom: 30px;
     }
 
-    .greeting {
+    .greeting-container {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .profile-image {
+      width: 150px;
+      height: auto;
+      border-radius: 8px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .greeting-text {
+      flex: 1;
       font-size: 1.1rem;
       line-height: 1.8;
       text-align: justify;
@@ -135,9 +151,24 @@
       font-size: 1rem;
     }
 
+    /* スマホ対応 */
     @media (max-width: 600px) {
       h1 {
         font-size: 1.5rem;
+      }
+
+      .greeting-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: left;
+      }
+
+      .profile-image {
+        width: 120px;
+      }
+
+      .greeting-text {
+        text-align: left;
       }
     }
   </style>
@@ -148,22 +179,22 @@
 <header>
   <div class="logo-container">
     <a href="index.html">
-      <img src="ryokantatibanalogoimg.png" alt="旅館 橘 ロゴ">
+      <img src="ryokantatibanalogoimg.png" alt="旅館 橘 ロゴ" />
     </a>
   </div>
   <div class="hamburger-menu" id="hamburger">
-    <img src="ryokantatibanahanbagamenyu.png" alt="メニュー">
+    <img src="ryokantatibanahanbagamenyu.png" alt="メニュー" />
   </div>
 </header>
 
 <!-- サイドメニュー -->
 <nav class="side-menu" id="sideMenu">
   <div class="close-button" id="closeMenu">
-    <img src="ryokantatibanahanbagamenyubatu.png" alt="閉じる">
+    <img src="ryokantatibanahanbagamenyubatu.png" alt="閉じる" />
   </div>
   <ul>
     <li><a href="index.html">ホーム</a></li>
-    <li><a href="https://www.airbnb.jp" target="_blank">予約する</a></li>
+    <li><a href="https://www.airbnb.jp" target="_blank" rel="noopener noreferrer">予約する</a></li>
     <li><a href="q&a.html">Q&A</a></li>
   </ul>
 </nav>
@@ -171,21 +202,24 @@
 <!-- メインコンテンツ -->
 <main>
   <h1>代表挨拶</h1>
-  <div class="greeting">
-    <p>
-      数ある宿泊施設の中から、旅館 橘をご覧いただき誠にありがとうございます。
-    </p>
-    <p>
-      私たち旅館 橘は、「心からのおもてなし」を信条に、温かみのある和の空間と、四季折々の美しさを感じられる癒しの時間を提供しております。
-    </p>
-    <p>
-      初めて訪れるお客様も、何度も足を運んでくださる常連の皆様も、「ただいま」と言いたくなるような、そんな旅館であり続けたいと考えております。
-    </p>
-    <p>
-      皆様のお越しを心よりお待ちしております。
-    </p>
-    <div class="signature">
-      旅館 橘 代表　橘 太郎
+  <div class="greeting-container">
+    <img src="profile.jpg" alt="代表写真" class="profile-image" />
+    <div class="greeting-text">
+      <p>
+        数ある宿泊施設の中から、旅館 橘をご覧いただき誠にありがとうございます。
+      </p>
+      <p>
+        私たち旅館 橘は、「心からのおもてなし」を信条に、温かみのある和の空間と、四季折々の美しさを感じられる癒しの時間を提供しております。
+      </p>
+      <p>
+        初めて訪れるお客様も、何度も足を運んでくださる常連の皆様も、「ただいま」と言いたくなるような、そんな旅館であり続けたいと考えております。
+      </p>
+      <p>
+        皆様のお越しを心よりお待ちしております。
+      </p>
+      <div class="signature">
+        旅館 橘 代表　橘 太郎
+      </div>
     </div>
   </div>
 </main>
