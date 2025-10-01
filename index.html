@@ -12,7 +12,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin&display=swap" rel="stylesheet">
 
   <style>
-    /* 全体 */
     html, body {
       margin: 0;
       padding: 0;
@@ -23,7 +22,6 @@
       overflow-x: hidden;
     }
 
-    /* ローディング画面 */
     #loading {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -46,7 +44,6 @@
       user-select: none;
     }
 
-    /* ヘッダー */
     header {
       height: 60px;
       background-color: #F3F0EC;
@@ -134,7 +131,6 @@
       pointer-events: none;
     }
 
-    /* 予約ボタン */
     .reserve-button {
       position: absolute;
       bottom: 20px;
@@ -158,27 +154,6 @@
       background-color: #a30000;
     }
 
-    /* 紹介文セクション */
-    .intro-text {
-      max-width: 800px;
-      margin: 60px auto 80px;
-      padding: 0 20px;
-      line-height: 1.8;
-      font-size: 1.1rem;
-      color: #333;
-      text-align: center;
-    }
-
-    .intro-text p {
-      margin-bottom: 2.5em;
-    }
-
-    .intro-text .en {
-      font-size: 1rem;
-      color: #555;
-      font-style: italic;
-    }
-
     @media (max-width: 768px) {
       .circle {
         width: 60px;
@@ -193,14 +168,6 @@
       .reserve-button {
         font-size: 1rem;
         padding: 8px 20px;
-      }
-
-      .intro-text {
-        font-size: 1rem;
-      }
-
-      .intro-text .en {
-        font-size: 0.9rem;
       }
     }
   </style>
@@ -244,31 +211,12 @@
 
       <a href="reserve.html" class="reserve-button">予約する</a>
     </div>
-
-    <!-- 紹介文 -->
-    <section class="intro-text">
-      <p>
-        山あいの静かな集落に佇む、古民家を改装した小さな宿。<br><br>
-        旅館 橘は、一日一組限定でお迎えする“心を休める隠れ宿”です。<br><br>
-        四季折々の自然に囲まれ、囲炉裏の温もりや地元の旬の恵みを味わいながら、<br>
-        時の流れを忘れるひとときをお過ごしください。<br><br>
-        ご家族や大切な人とともに、ここにしかない時間をどうぞ。
-      </p>
-      <p class="en">
-        Nestled in a quiet mountain village, Ryokan Tachibana is a lovingly restored traditional house.<br><br>
-        We welcome only one group per day, offering a private retreat where you can truly rest your heart.<br><br>
-        Surrounded by the changing seasons, warmed by the hearth, and nourished by local seasonal delicacies,<br>
-        you will experience moments where time seems to stand still.<br><br>
-        With your family or someone special, please enjoy a unique stay found nowhere else.
-      </p>
-    </section>
   </main>
 
   <script>
     // ローディング画面制御
     window.addEventListener('load', () => {
       const loading = document.getElementById('loading');
-      // 3秒間ローディング表示ののちフェードアウト開始
       setTimeout(() => {
         loading.classList.add('hidden');
         setTimeout(() => {
