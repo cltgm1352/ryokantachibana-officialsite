@@ -10,6 +10,8 @@
 
   <!-- 筆文字風フォント -->
   <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin&display=swap" rel="stylesheet">
+  <!-- 和風フォント（画像セクション用） -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap" rel="stylesheet">
 
   <style>
     html, body {
@@ -154,6 +156,59 @@
       background-color: #a30000;
     }
 
+    /* 画像表示セクションのスタイル */
+    .image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 95vw;
+      max-width: 1400px;
+      margin: 20px 0;
+      position: relative;
+      background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)); /* 柔らかい影 */
+    }
+
+    .language-switcher {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 10;
+    }
+
+    .language-switcher select {
+      padding: 8px 12px;
+      font-size: 16px;
+      font-family: 'Noto Serif JP', serif;
+      background-color: #3b2f2f; /* 濃い木目調 */
+      color: #fff;
+      border: 1px solid #8b6f47; /* 落ち着いた金色 */
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .language-switcher select:hover {
+      background-color: #4a3c3c;
+    }
+
+    .language-switcher select:focus {
+      outline: none;
+      border-color: #d4a373;
+    }
+
+    .language-switcher option {
+      background-color: #f5f3e7;
+      color: #3b2f2f;
+    }
+
+    img#concept-image {
+      max-width: 90%;
+      height: auto;
+      border: 5px solid #8b6f47;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
     @media (max-width: 768px) {
       .circle {
         width: 60px;
@@ -169,11 +224,23 @@
         font-size: 1rem;
         padding: 8px 20px;
       }
+
+      .image-container {
+        width: 90vw;
+      }
+
+      img#concept-image {
+        max-width: 85%;
+      }
+
+      .language-switcher select {
+        font-size: 14px;
+        padding: 6px 10px;
+      }
     }
   </style>
 </head>
 <body>
-
   <!-- ローディング画面 -->
   <div id="loading">
     <img src="ryokantatibanalogoimg.png" alt="旅館 橘ロゴ ローディング" />
@@ -204,18 +271,24 @@
           </div>
         </div>
       </div>
-    
-       <video id="video0" src="ryokanvideo1-2.mp4" playsinline></video>
+      <video id="video0" src="ryokanvideo1-2.mp4" playsinline></video>
       <video id="video1" src="ryokanvideo2-2.mp4" playsinline></video>
       <video id="video2" src="ryokanvideo4.mp4" playsinline></video>
-    
       <a href="reserve.html" class="reserve-button">予約する</a>
+    </div>
+
+    <!-- 画像表示セクション -->
+    <div class="image-container">
+      <img id="concept-image" src="ryokantatibanakonsept.png" alt="Ryokan Tatibana Konsept" style="max-width: 90%; height: auto;">
+      <div class="language-switcher">
+        <select id="language-select" onchange="changeLanguage()">
+          <option value="ja">日本語</option>
+          <option value="en">English</option>
+        </select>
+      </div>
     </div>
   </main>
 
-  
-  
-</div>
   <script>
     // ローディング画面制御
     window.addEventListener('load', () => {
@@ -289,6 +362,19 @@
     });
 
     playVideo(currentIndex);
+
+    // 言語切り替え
+    function changeLanguage() {
+      const select = document.getElementById('language-select');
+      const image = document.getElementById('concept-image');
+      if (select.value === 'en') {
+        image.src = 'ryokantatibanakonsept English.png';
+        image.alt = 'Ryokan Tatibana Konsept (English)';
+      } else {
+        image.src = 'ryokantatibanakonsept.png';
+        image.alt = 'Ryokan Tatibana Konsept';
+      }
+    }
   </script>
 </body>
 </html>
