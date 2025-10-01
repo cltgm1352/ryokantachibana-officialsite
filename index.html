@@ -8,9 +8,8 @@
   <!-- ファビコン -->
   <link rel="icon" href="ryokantatibanavideo3.png" type="image/png" />
 
-  <!-- 筆文字風フォント -->
+  <!-- フォント -->
   <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin&display=swap" rel="stylesheet">
-  <!-- 和風フォント（画像セクション用） -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap" rel="stylesheet">
 
   <style>
@@ -61,6 +60,80 @@
       height: 60px;
       object-fit: contain;
       user-select: none;
+    }
+
+    /* ハンバーガーメニュー */
+    .hamburger-menu {
+      position: absolute;
+      right: 20px;
+      top: 10px;
+      height: 60px;
+      width: 60px;
+      cursor: pointer;
+      z-index: 25;
+    }
+
+    .hamburger-menu img {
+      width: 100%;
+      height: auto;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* サイドメニュー */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 300px;
+      height: 100%;
+      background-color: #fff;
+      box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+      z-index: 30;
+      transition: right 0.3s ease;
+      font-family: 'Kaisei Tokumin', serif;
+      padding-top: 60px;
+    }
+
+    .side-menu.open {
+      right: 0;
+    }
+
+    .side-menu .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+    }
+
+    .side-menu .close-button img {
+      width: 100%;
+      height: auto;
+      pointer-events: none;
+    }
+
+    .side-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 40px 0 0 0;
+      text-align: center;
+    }
+
+    .side-menu ul li {
+      margin: 20px 0;
+    }
+
+    .side-menu ul li a {
+      text-decoration: none;
+      font-size: 1.2rem;
+      color: #3b2f2f;
+      transition: color 0.3s ease;
+    }
+
+    .side-menu ul li a:hover {
+      color: #b7282e;
     }
 
     main {
@@ -119,10 +192,8 @@
       height: 60px;
       border-radius: 50%;
       background-color: #444;
-      position: relative;
-      z-index: 2;
       overflow: hidden;
-      user-select: none;
+      z-index: 2;
     }
 
     .inner-circle img {
@@ -162,7 +233,6 @@
     .reserve-button img {
       width: 24px;
       height: auto;
-      user-select: none;
       pointer-events: none;
     }
 
@@ -187,7 +257,6 @@
       display: block;
     }
 
-    /* 画像表示セクションのスタイル */
     .image-container {
       display: flex;
       justify-content: center;
@@ -196,7 +265,12 @@
       max-width: 1400px;
       margin: 20px 0;
       position: relative;
-      background: #F3F0EC; /* ページ背景と同じ色 */
+      background: #F3F0EC;
+    }
+
+    img#concept-image {
+      max-width: 90%;
+      height: auto;
     }
 
     .language-switcher {
@@ -210,32 +284,11 @@
       padding: 8px 12px;
       font-size: 16px;
       font-family: 'Noto Serif JP', serif;
-      background-color: #3b2f2f; /* 濃い木目調 */
+      background-color: #3b2f2f;
       color: #fff;
-      border: 1px solid #8b6f47; /* 落ち着いた金色 */
+      border: 1px solid #8b6f47;
       border-radius: 5px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .language-switcher select:hover {
-      background-color: #4a3c3c;
-    }
-
-    .language-switcher select:focus {
-      outline: none;
-      border-color: #d4a373;
-    }
-
-    .language-switcher option {
-      background-color: #f5f3e7;
-      color: #3b2f2f;
-    }
-
-    img#concept-image {
-      max-width: 90%;
-      height: auto;
-      /* 枠と影を削除 */
     }
 
     @media (max-width: 768px) {
@@ -275,6 +328,11 @@
         font-size: 14px;
         padding: 6px 10px;
       }
+
+      .hamburger-menu {
+        width: 50px;
+        height: 50px;
+      }
     }
   </style>
 </head>
@@ -287,7 +345,22 @@
   <!-- ヘッダー -->
   <header>
     <img src="ryokantatibanalogoimg.png" alt="旅館 橘ロゴ" />
+    <div class="hamburger-menu" id="hamburger">
+      <img src="ryokantatibanahanbagamenyu.png" alt="メニュー" />
+    </div>
   </header>
+
+  <!-- サイドメニュー -->
+  <nav class="side-menu" id="sideMenu">
+    <div class="close-button" id="closeMenu">
+      <img src="ryokantatibanahanbagamenyubatu.png" alt="閉じる" />
+    </div>
+    <ul>
+      <li><a href="index.html">ホーム</a></li>
+      <li><a href="https://www.airbnb.jp" target="_blank">予約する</a></li>
+      <li><a href="q&a.html">Q&A</a></li>
+    </ul>
+  </nav>
 
   <!-- メイン -->
   <main>
@@ -300,12 +373,12 @@
         </div>
         <div class="circle" data-index="1" id="circle1">
           <div class="inner-circle">
-            <img src="ryokanvideologomannaka.png" alt="映像2ロゴ" />
+            <img src="ryokanvideologomannaka.png" alt="映像2" />
           </div>
         </div>
         <div class="circle" data-index="2" id="circle2">
           <div class="inner-circle">
-            <img src="ryokantatibanavideo3.png" alt="映像3ロゴ" />
+            <img src="ryokantatibanavideo3.png" alt="映像3" />
           </div>
         </div>
       </div>
@@ -319,9 +392,8 @@
       </a>
     </div>
 
-    <!-- 画像表示セクション -->
     <div class="image-container">
-      <img id="concept-image" src="ryokantatibanakonsept.png" alt="Ryokan Tatibana Konsept" style="max-width: 90%; height: auto;">
+      <img id="concept-image" src="ryokantatibanakonsept.png" alt="Ryokan Tatibana Konsept">
       <div class="language-switcher">
         <select id="language-select" onchange="changeLanguage()">
           <option value="ja">Japanese</option>
@@ -331,8 +403,8 @@
     </div>
   </main>
 
+  <!-- スクリプト -->
   <script>
-    // 映像＋丸進捗バーの制御
     const videos = [
       document.getElementById('video0'),
       document.getElementById('video1'),
@@ -375,16 +447,10 @@
       const circle = circles[index];
       video.classList.add('active');
       circle.classList.add('active');
-      video.play().catch(error => {
-        console.error('Autoplay failed:', error);
-        playButton.classList.add('visible');
-      });
+      video.play().catch(() => playButton.classList.add('visible'));
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
       updateProgressBar(index);
-      video.onended = () => {
-        let nextIndex = (index + 1) % videos.length;
-        playVideo(nextIndex);
-      };
+      video.onended = () => playVideo((index + 1) % videos.length);
     }
 
     circles.forEach(circle => {
@@ -402,19 +468,17 @@
       playVideo(currentIndex);
     });
 
-    // ローディング画面制御と映像再生開始
     window.addEventListener('load', () => {
       const loading = document.getElementById('loading');
       setTimeout(() => {
         loading.classList.add('hidden');
         setTimeout(() => {
           loading.style.display = 'none';
-          playVideo(currentIndex); // Start video playback after loading screen
+          playVideo(currentIndex);
         }, 500);
       }, 1500);
     });
 
-    // 言語切り替え
     function changeLanguage() {
       const select = document.getElementById('language-select');
       const image = document.getElementById('concept-image');
@@ -426,6 +490,19 @@
         image.alt = 'Ryokan Tatibana Konsept';
       }
     }
+
+    // ハンバーガーメニュー
+    const hamburger = document.getElementById('hamburger');
+    const sideMenu = document.getElementById('sideMenu');
+    const closeMenu = document.getElementById('closeMenu');
+
+    hamburger.addEventListener('click', () => {
+      sideMenu.classList.add('open');
+    });
+
+    closeMenu.addEventListener('click', () => {
+      sideMenu.classList.remove('open');
+    });
   </script>
 </body>
 </html>
