@@ -150,10 +150,20 @@
       z-index: 15;
       transition: background-color 0.3s ease;
       user-select: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .reserve-button:hover {
       background-color: #a30000;
+    }
+
+    .reserve-button img {
+      width: 24px;
+      height: auto;
+      user-select: none;
+      pointer-events: none;
     }
 
     /* 画像表示セクションのスタイル */
@@ -223,6 +233,10 @@
         padding: 8px 20px;
       }
 
+      .reserve-button img {
+        width: 20px;
+      }
+
       .image-container {
         width: 90vw;
       }
@@ -272,7 +286,10 @@
       <video id="video0" src="ryokanvideo1-2.mp4" playsinline></video>
       <video id="video1" src="ryokanvideo2-2.mp4" playsinline></video>
       <video id="video2" src="ryokanvideo3teisei.mp4" playsinline></video>
-      <a href="reserve.html" class="reserve-button">予約する</a>
+      <a href="https://www.airbnb.jp" target="_blank" class="reserve-button">
+        <img src="eablogo.png" alt="Airbnb Logo" />
+        予約する
+      </a>
     </div>
 
     <!-- 画像表示セクション -->
@@ -296,7 +313,7 @@
         setTimeout(() => {
           loading.style.display = 'none';
         }, 500);
-      }, 3000);
+      }, 1500); // Reduced from 3000ms to 1500ms
     });
 
     // 映像＋丸進捗バーの制御
