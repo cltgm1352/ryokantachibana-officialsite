@@ -47,7 +47,7 @@
     }
 
     header {
-      height: 80px; /* Increased from 70px to accommodate larger image */
+      height: 80px;
       background-color: #F3F0EC;
       display: flex;
       justify-content: center;
@@ -58,13 +58,13 @@
     }
 
     header img {
-      height: 60px; /* Increased from 50px */
+      height: 60px;
       object-fit: contain;
       user-select: none;
     }
 
     main {
-      padding-top: 100px; /* Increased from 90px to account for taller header */
+      padding-top: 100px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -166,6 +166,27 @@
       pointer-events: none;
     }
 
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 12px 24px;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 6px;
+      font-family: 'Kaisei Tokumin', serif;
+      cursor: pointer;
+      z-index: 15;
+      display: none;
+    }
+
+    .play-button.visible {
+      display: block;
+    }
+
     /* 画像表示セクションのスタイル */
     .image-container {
       display: flex;
@@ -237,6 +258,11 @@
         width: 20px;
       }
 
+      .play-button {
+        font-size: 1rem;
+        padding: 8px 16px;
+      }
+
       .image-container {
         width: 90vw;
       }
@@ -283,9 +309,10 @@
           </div>
         </div>
       </div>
-      <video id="video0" src="ryokanvideo1-2.mp4" playsinline></video>
-      <video id="video1" src="ryokanvideo2-2.mp4" playsinline></video>
-      <video id="video2" src="ryokanvideo3teisei.mp4" playsinline></video>
+      <video id="video0" src="ryokanvideo1-2.mp4" playsinline muted></video>
+      <video id="video1" src="ryokanvideo2-2.mp4" playsinline muted></video>
+      <video id="video2" src="ryokanvideo3teisei.mp4" playsinline muted></video>
+      <button class="play-button" id="play-button">再生</button>
       <a href="https://www.airbnb.jp" target="_blank" class="reserve-button">
         <img src="eablogo.png" alt="Airbnb Logo" />
         予約する
@@ -305,17 +332,6 @@
   </main>
 
   <script>
-    // ローディング画面制御
-    window.addEventListener('load', () => {
-      const loading = document.getElementById('loading');
-      setTimeout(() => {
-        loading.classList.add('hidden');
-        setTimeout(() => {
-          loading.style.display = 'none';
-        }, 500);
-      }, 1500);
-    });
-
     // 映像＋丸進捗バーの制御
     const videos = [
       document.getElementById('video0'),
@@ -327,6 +343,7 @@
       document.getElementById('circle1'),
       document.getElementById('circle2')
     ];
+    const playButton = document.getElementById('play-button');
     let currentIndex = 0;
     let animationFrameId = null;
 
@@ -358,7 +375,10 @@
       const circle = circles[index];
       video.classList.add('active');
       circle.classList.add('active');
-      video.play();
+      video.play().catch(error => {
+        console.error('Autoplay failed:', error);
+        playButton.classList.add('visible');
+      });
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
       updateProgressBar(index);
       video.onended = () => {
@@ -371,12 +391,28 @@
       circle.addEventListener('click', () => {
         const idx = parseInt(circle.dataset.index);
         if (idx !== currentIndex) {
+          playButton.classList.remove('visible');
           playVideo(idx);
         }
       });
     });
 
-    playVideo(currentIndex);
+    playButton.addEventListener('click', () => {
+      playButton.classList.remove('visible');
+      playVideo(currentIndex);
+    });
+
+    // ローディング画面制御と映像再生開始
+    window.addEventListener('load', () => {
+      const loading = document.getElementById('loading');
+      setTimeout(() => {
+        loading.classList.add('hidden');
+        setTimeout(() => {
+          loading.style.display = 'none';
+          playVideo(currentIndex); // Start video playback after loading screen
+        }, 500);
+      }, 1500);
+    });
 
     // 言語切り替え
     function changeLanguage() {
