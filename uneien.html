@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Management list - Ryokan Tachibana Official Website</title>
+  <meta name="description" content="This is a list of the management members of Ryokan Tachibana.">
+  <link rel="icon" href="ryokantatibanavideo3.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Kaisei Tokumin', serif;
+      background-color: #F3F0EC;
+      color: #333;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background-color: #F3F0EC;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .logo-container {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1001;
+    }
+
+    .logo-container a img {
+      height: 60px;
+      user-select: none;
+    }
+
+    .hamburger-menu {
+      position: absolute;
+      right: 20px;
+      cursor: pointer;
+      z-index: 1100;
+    }
+
+    .hamburger-menu img {
+      width: 40px;
+      height: 40px;
+      user-select: none;
+    }
+
+    .side-menu {
+      position: fixed;
+      top: 0;
+      right: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #fff;
+      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 1050;
+      padding-top: 60px;
+      transition: right 0.3s ease;
+    }
+
+    .side-menu.open {
+      right: 0;
+    }
+
+    .side-menu .close-button {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      cursor: pointer;
+    }
+
+    .side-menu .close-button img {
+      width: 30px;
+      height: 30px;
+      user-select: none;
+    }
+
+    .side-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .side-menu ul li {
+      border-bottom: 1px solid #eee;
+    }
+
+    .side-menu ul li a {
+      display: block;
+      padding: 15px 20px;
+      text-decoration: none;
+      color: #333;
+      font-size: 1.1rem;
+      transition: background-color 0.2s;
+    }
+
+    .side-menu ul li a:hover {
+      background-color: #f0f0f0;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 120px auto 40px;
+      padding: 0 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 40px;
+    }
+
+    .staff-section {
+      display: flex;
+      gap: 40px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .member {
+      flex: 1;
+      min-width: 280px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .member h2 {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      color: #222;
+    }
+
+    .member img {
+      width: 100%;
+      max-width: 150px;
+      height: auto;
+      border-radius: 8px;
+      object-fit: cover;
+      display: block;
+      margin-bottom: 15px;
+    }
+
+    .member-info {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .member-text h3 {
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+    }
+
+    .member-text p {
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 700px) {
+      .staff-section {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .member {
+        width: 100%;
+        max-width: 500px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-container">
+    <a href="index.html">
+      <img src="ryokantatibanalogoimg.png" alt="旅館 橘 ロゴ" />
+    </a>
+  </div>
+  <div class="hamburger-menu" id="hamburger">
+    <img src="ryokantatibanahanbagamenyu.png" alt="メニュー" />
+  </div>
+</header>
+
+<nav class="side-menu" id="sideMenu">
+  <div class="close-button" id="closeMenu">
+    <img src="ryokantatibanahanbagamenyubatu.png" alt="閉じる" />
+  </div>
+  <ul>
+    <li><a href="en.html">Home</a></li>
+    <li><a href="https://www.airbnb.jp" target="_blank" rel="noopener noreferrer">make a reservation</a></li>
+    <li><a href="q&aen.html">Q&A</a></li>
+    <li><a href="daihyoaisatu.html">Message from the President</a></li>
+    <li><a href="uneien.html">Management list</a></li>
+  </ul>
+</nav>
+
+<main>
+  <h1>運営一覧</h1>
+
+  <div class="staff-section">
+    <!-- 左：代表 -->
+    <div class="member">
+      <h2>representative</h2>
+      <div class="member-info">
+        <img src="yutanaitoryokantatibana.png" alt="内藤 佑太" />
+        <div class="member-text">
+          <h3>Yuta Naito</h3>
+          <p>Ryokan Tachibana representative</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 右：サイト制作 -->
+    <div class="member">
+      <h2>Site Creation</h2>
+      <div class="member-info">
+        <img src="haruominaitoryokantatibana.png" alt="内藤 春臣" />
+        <div class="member-text">
+          <h3>Haruomi Naito</h3>
+          <p>Representative of HARUOMILABO</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+  // ハンバーガーメニュー制御
+  const hamburger = document.getElementById('hamburger');
+  const sideMenu = document.getElementById('sideMenu');
+  const closeMenu = document.getElementById('closeMenu');
+
+  hamburger.addEventListener('click', () => {
+    sideMenu.classList.add('open');
+  });
+
+  closeMenu.addEventListener('click', () => {
+    sideMenu.classList.remove('open');
+  });
+</script>
+
+</body>
+</html>
