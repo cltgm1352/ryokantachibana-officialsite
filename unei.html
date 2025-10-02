@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>運営一覧 - 旅館 橘 公式HP</title>
-  <meta name="description" content="旅館 橘の運営メンバー一覧ページです。">
   <link rel="icon" href="ryokantatibanavideo3.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin&display=swap" rel="stylesheet" />
   <style>
@@ -52,59 +51,6 @@
       width: 40px;
       height: 40px;
       user-select: none;
-    }
-
-    .side-menu {
-      position: fixed;
-      top: 0;
-      right: -250px;
-      width: 250px;
-      height: 100%;
-      background-color: #fff;
-      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-      z-index: 1050;
-      padding-top: 60px;
-      transition: right 0.3s ease;
-    }
-
-    .side-menu.open {
-      right: 0;
-    }
-
-    .side-menu .close-button {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      cursor: pointer;
-    }
-
-    .side-menu .close-button img {
-      width: 30px;
-      height: 30px;
-      user-select: none;
-    }
-
-    .side-menu ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .side-menu ul li {
-      border-bottom: 1px solid #eee;
-    }
-
-    .side-menu ul li a {
-      display: block;
-      padding: 15px 20px;
-      text-decoration: none;
-      color: #333;
-      font-size: 1.1rem;
-      transition: background-color 0.2s;
-    }
-
-    .side-menu ul li a:hover {
-      background-color: #f0f0f0;
     }
 
     main {
@@ -166,26 +112,26 @@
       line-height: 1.6;
     }
 
-    /* SNSアイコン（共通） */
+    /* SNSアイコン（極小） */
     .icon {
-      width: 24px;
-      height: 24px;
-      margin-top: 8px;
+      width: 12px;
+      height: 12px;
+      margin-top: 6px;
     }
 
     .circle-icon {
-      width: 24px;
-      height: 24px;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
-      margin-top: 8px;
-      margin-right: 8px;
+      margin-top: 6px;
+      margin-right: 6px;
       object-fit: cover;
     }
 
     .icon-group {
       display: flex;
       align-items: center;
-      margin-top: 5px;
+      margin-top: 6px;
     }
 
     @media (max-width: 700px) {
@@ -203,6 +149,7 @@
 </head>
 <body>
 
+<!-- ヘッダー -->
 <header>
   <div class="logo-container">
     <a href="index.html">
@@ -214,23 +161,12 @@
   </div>
 </header>
 
-<nav class="side-menu" id="sideMenu">
-  <div class="close-button" id="closeMenu">
-    <img src="ryokantatibanahanbagamenyubatu.png" alt="閉じる" />
-  </div>
-  <ul>
-    <li><a href="index.html">ホーム</a></li>
-    <li><a href="https://www.airbnb.jp" target="_blank" rel="noopener noreferrer">予約する</a></li>
-    <li><a href="q&a.html">Q&A</a></li>
-    <li><a href="daihyoaisatu.html">代表挨拶</a></li>
-    <li><a href="unei.html">運営一覧</a></li>
-  </ul>
-</nav>
-
+<!-- メイン -->
 <main>
   <h1>運営一覧</h1>
 
   <div class="staff-section">
+
     <!-- 内藤 佑太 -->
     <div class="member">
       <h2>代表</h2>
@@ -265,21 +201,25 @@
         </div>
       </div>
     </div>
+
   </div>
 </main>
 
+<!-- メニュー用スクリプト（必要なら） -->
 <script>
   const hamburger = document.getElementById('hamburger');
   const sideMenu = document.getElementById('sideMenu');
   const closeMenu = document.getElementById('closeMenu');
 
-  hamburger.addEventListener('click', () => {
-    sideMenu.classList.add('open');
-  });
+  if (hamburger && sideMenu && closeMenu) {
+    hamburger.addEventListener('click', () => {
+      sideMenu.classList.add('open');
+    });
 
-  closeMenu.addEventListener('click', () => {
-    sideMenu.classList.remove('open');
-  });
+    closeMenu.addEventListener('click', () => {
+      sideMenu.classList.remove('open');
+    });
+  }
 </script>
 
 </body>
