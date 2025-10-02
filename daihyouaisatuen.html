@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>代表挨拶 - 旅館 橘</title>
+  <meta name="description" content="旅館 橘の代表内藤佑太の代表挨拶ページです">
+  <!-- ファビコン設定 -->
+  <link rel="icon" href="ryokantachibananewsitelogo.png" type="image/png" />
+  <!-- フォント -->
+  <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Kaisei Tokumin', serif;
+      background-color: #F3F0EC;
+      color: #333;
+    }
+
+    /* ヘッダー */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background-color: #F3F0EC;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .logo-container {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1001;
+    }
+
+    .logo-container a img {
+      height: 60px;
+      user-select: none;
+    }
+
+    .hamburger-menu {
+      position: absolute;
+      right: 20px;
+      cursor: pointer;
+      z-index: 1100;
+    }
+
+    .hamburger-menu img {
+      width: 40px;
+      height: 40px;
+      user-select: none;
+    }
+
+    /* サイドメニュー */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      right: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #fff;
+      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 1050;
+      padding-top: 60px;
+      transition: right 0.3s ease;
+    }
+
+    .side-menu.open {
+      right: 0;
+    }
+
+    .side-menu .close-button {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      cursor: pointer;
+    }
+
+    .side-menu .close-button img {
+      width: 30px;
+      height: 30px;
+      user-select: none;
+    }
+
+    .side-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .side-menu ul li {
+      border-bottom: 1px solid #eee;
+    }
+
+    .side-menu ul li a {
+      display: block;
+      padding: 15px 20px;
+      text-decoration: none;
+      color: #333;
+      font-size: 1.1rem;
+      transition: background-color 0.2s;
+    }
+
+    .side-menu ul li a:hover {
+      background-color: #f0f0f0;
+    }
+
+    /* メインコンテンツ */
+    main {
+      max-width: 800px;
+      margin: 120px auto 40px;
+      padding: 0 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+
+    .language-switcher {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .language-switcher button {
+      font-size: 1rem;
+      padding: 8px 16px;
+      margin: 0 5px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    .language-switcher button.active,
+    .language-switcher button:hover {
+      background-color: #ddd;
+    }
+
+    .greeting-container {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .profile-image {
+      width: 150px;
+      height: auto;
+      border-radius: 8px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .greeting-text {
+      flex: 1;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      text-align: justify;
+    }
+
+    .signature {
+      margin-top: 30px;
+      text-align: right;
+      font-size: 1rem;
+    }
+
+    /* スマホ対応 */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .greeting-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: left;
+      }
+
+      .profile-image {
+        width: 120px;
+      }
+
+      .greeting-text {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header>
+  <div class="logo-container">
+    <a href="index.html">
+      <img src="ryokantachibananewlogo.png" alt="旅館 橘 ロゴ" />
+    </a>
+  </div>
+  <div class="hamburger-menu" id="hamburger">
+    <img src="ryokantatibanahanbagamenyu.png" alt="メニュー" />
+  </div>
+</header>
+
+<!-- サイドメニュー -->
+<nav class="side-menu" id="sideMenu">
+  <div class="close-button" id="closeMenu">
+    <img src="ryokantatibanahanbagamenyubatu.png" alt="閉じる" />
+  </div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="https://www.airbnb.jp" target="_blank" rel="noopener noreferrer">make a reservation</a></li>
+    <li><a href="q&a.html">Q&A</a></li>
+    <li><a href="daihyoaisatu.html">Message from the President</a></li>
+    <li><a href="unei.html">Management list</a></li>
+  </ul>
+</nav>
+
+<!-- メインコンテンツ -->
+<main>
+  <!-- 言語切替ボタン -->
+  <div class="language-switcher">
+    <button id="btn-en">English</button>
+    <button id="btn-ja" class="active">Japanese</button>
+  </div>
+
+  <h1 id="heading">代表挨拶</h1>
+  <div class="greeting-container">
+    <img src="yutanaitoryokantatibana.png" alt="代表写真" class="profile-image" />
+    <div class="greeting-text" id="greeting-text">
+      <p>In the mountain village of Urakawa, Hamamatsu, I run a small inn where guests can feel the beauty of nature and the warmth of the local community.</p>
+      <p>With the wish to offer “a moment of peace and a truly local experience to each guest,” I started this inn by revitalizing a vacant house.</p>
+      <p>As our region faces challenges such as depopulation and vacant homes, I hope that welcoming travelers will help preserve local culture and connect it to the future.</p>
+      <p>Please relax and enjoy your time here.</p>
+      <div class="signature" id="signature">Ryokan Tachibana Representative Yuta Naito</div>
+    </div>
+  </div>
+</main>
+
+<!-- JavaScript -->
+<script>
+  // ハンバーガーメニュー開閉
+  const hamburger = document.getElementById('hamburger');
+  const sideMenu = document.getElementById('sideMenu');
+  const closeMenu = document.getElementById('closeMenu');
+  hamburger.addEventListener('click', () => {
+    sideMenu.classList.add('open');
+  });
+  closeMenu.addEventListener('click', () => {
+    sideMenu.classList.remove('open');
+  });
+
+  // 言語切替処理
+  const btnJa = document.getElementById('btn-ja');
+  const btnEn = document.getElementById('btn-en');
+  const heading = document.getElementById('heading');
+  const greetingText = document.getElementById('greeting-text');
+  const signature = document.getElementById('signature');
+
+  const content = {
+    ja: {
+      heading: '代表挨拶',
+      paragraphs: [
+        '浜松市の山里・浦川の地で、自然と人の温もりを感じられる宿を営んでおります。',
+        '「一人ひとりのお客様に、静かな安らぎと地域ならではの体験を。」その思いで、空き家を活かした小さな宿を始めました。',
+        '過疎化や空き家の増加といった地域課題に直面する中、宿泊を通じて地域の文化や人との出会いを楽しんでいただき、同時にこの土地の未来につなげていきたいと考えております。',
+        'どうぞ、心安らぐひとときをお過ごしください。'
+      ],
+      signature: '旅館 橘 代表　内藤 佑太'
+    },
+    en: {
+      heading: 'Greeting from the representative',
+      paragraphs: [
+        'In the mountain village of Urakawa, Hamamatsu, I run a small inn where guests can feel the beauty of nature and the warmth of the local community.',
+        'With the wish to offer “a moment of peace and a truly local experience to each guest,” I started this inn by revitalizing a vacant house.',
+        'As our region faces challenges such as depopulation and vacant homes, I hope that welcoming travelers will help preserve local culture and connect it to the future.',
+        'Please relax and enjoy your time here.'
+      ],
+      signature: 'Ryokan Tachibana Representative Yuta Naito'
+    }
+  };
+
+  function setLanguage(lang) {
+    // ボタンのアクティブ切り替え
+    if (lang === 'ja') {
+      btnJa.classList.add('active');
+      btnEn.classList.remove('active');
+    } else {
+      btnEn.classList.add('active');
+      btnJa.classList.remove('active');
+    }
+
+    // 見出し変更
+    heading.textContent = content[lang].heading;
+
+    // 本文変更
+    greetingText.innerHTML = '';
+    content[lang].paragraphs.forEach(p => {
+      const para = document.createElement('p');
+      para.textContent = p;
+      greetingText.appendChild(para);
+    });
+
+    // 署名変更
+    const signDiv = document.createElement('div');
+    signDiv.className = 'signature';
+    signDiv.id = 'signature';
+    signDiv.textContent = content[lang].signature;
+    greetingText.appendChild(signDiv);
+  }
+
+  // 初期は日本語表示
+  setLanguage('ja');
+
+  // ボタンイベント登録
+  btnJa.addEventListener('click', () => setLanguage('ja'));
+  btnEn.addEventListener('click', () => setLanguage('en'));
+</script>
+
+</body>
+</html>
