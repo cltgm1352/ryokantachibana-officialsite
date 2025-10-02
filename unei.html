@@ -141,20 +141,18 @@
       color: #222;
     }
 
-    .member img {
-      width: 100%;
-      max-width: 150px;
-      height: auto;
-      border-radius: 8px;
-      object-fit: cover;
-      display: block;
-      margin-bottom: 15px;
-    }
-
     .member-info {
       display: flex;
       align-items: flex-start;
-      gap: 20px;
+      gap: 15px;
+    }
+
+    .member-info img {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      object-fit: cover;
+      flex-shrink: 0;
     }
 
     .member-text h3 {
@@ -168,25 +166,26 @@
       line-height: 1.6;
     }
 
-    /* アイコン共通 */
+    /* SNSアイコン（共通） */
     .icon {
-      width: 32px;
-      height: 32px;
-      margin-top: 10px;
+      width: 24px;
+      height: 24px;
+      margin-top: 8px;
     }
 
     .circle-icon {
-      width: 32px;
-      height: 32px;
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
-      margin-top: 10px;
-      margin-right: 10px;
+      margin-top: 8px;
+      margin-right: 8px;
       object-fit: cover;
     }
 
     .icon-group {
       display: flex;
       align-items: center;
+      margin-top: 5px;
     }
 
     @media (max-width: 700px) {
@@ -232,7 +231,7 @@
   <h1>運営一覧</h1>
 
   <div class="staff-section">
-    <!-- 左：代表 -->
+    <!-- 内藤 佑太 -->
     <div class="member">
       <h2>代表</h2>
       <div class="member-info">
@@ -247,7 +246,7 @@
       </div>
     </div>
 
-    <!-- 右：サイト制作 -->
+    <!-- 内藤 春臣 -->
     <div class="member">
       <h2>サイト制作</h2>
       <div class="member-info">
