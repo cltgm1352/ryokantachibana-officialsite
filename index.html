@@ -62,7 +62,6 @@
       user-select: none;
     }
 
-    /* ハンバーガーメニュー */
     .hamburger-menu {
       position: absolute;
       right: 20px;
@@ -80,7 +79,6 @@
       pointer-events: none;
     }
 
-    /* サイドメニュー */
     .side-menu {
       position: fixed;
       top: 0;
@@ -259,7 +257,7 @@
 
     .image-container {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
       width: 95vw;
       max-width: 1400px;
@@ -324,20 +322,23 @@
         max-width: 85%;
       }
 
-      .language-switcher select {
-        font-size: 14px;
-        padding: 6px 10px;
-      }
-
       .hamburger-menu {
         width: 50px;
         height: 50px;
+      }
+
+      /* 修正: スマホでは言語切り替えを画像の下に移動 */
+      .language-switcher {
+        position: static;
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
       }
     }
   </style>
 </head>
 <body>
-  <!-- ローディング画面 -->
+  <!-- ローディング -->
   <div id="loading">
     <img src="ryokantatibanalogoimg.png" alt="旅館 橘ロゴ ローディング" />
   </div>
@@ -367,19 +368,13 @@
     <div class="video-wrapper">
       <div class="circle-container">
         <div class="circle" data-index="0" id="circle0">
-          <div class="inner-circle">
-            <img src="ryokanvideohidarigawa.png" alt="映像1" />
-          </div>
+          <div class="inner-circle"><img src="ryokanvideohidarigawa.png" alt="映像1" /></div>
         </div>
         <div class="circle" data-index="1" id="circle1">
-          <div class="inner-circle">
-            <img src="ryokanvideologomannaka.png" alt="映像2" />
-          </div>
+          <div class="inner-circle"><img src="ryokanvideologomannaka.png" alt="映像2" /></div>
         </div>
         <div class="circle" data-index="2" id="circle2">
-          <div class="inner-circle">
-            <img src="ryokantatibanavideo3.png" alt="映像3" />
-          </div>
+          <div class="inner-circle"><img src="ryokantatibanavideo3.png" alt="映像3" /></div>
         </div>
       </div>
       <video id="video0" src="ryokanvideo1-2.mp4" playsinline muted></video>
@@ -403,7 +398,6 @@
     </div>
   </main>
 
-  <!-- スクリプト -->
   <script>
     const videos = [
       document.getElementById('video0'),
@@ -491,7 +485,6 @@
       }
     }
 
-    // ハンバーガーメニュー
     const hamburger = document.getElementById('hamburger');
     const sideMenu = document.getElementById('sideMenu');
     const closeMenu = document.getElementById('closeMenu');
