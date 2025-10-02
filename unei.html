@@ -168,6 +168,27 @@
       line-height: 1.6;
     }
 
+    /* アイコン共通 */
+    .icon {
+      width: 32px;
+      height: 32px;
+      margin-top: 10px;
+    }
+
+    .circle-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      margin-top: 10px;
+      margin-right: 10px;
+      object-fit: cover;
+    }
+
+    .icon-group {
+      display: flex;
+      align-items: center;
+    }
+
     @media (max-width: 700px) {
       .staff-section {
         flex-direction: column;
@@ -219,6 +240,9 @@
         <div class="member-text">
           <h3>内藤 佑太</h3>
           <p>旅館 橘 代表</p>
+          <a href="https://jp.linkedin.com/in/佑太-内藤-333176235" target="_blank" rel="noopener noreferrer">
+            <img src="inlogo.png" alt="LinkedIn" class="icon" />
+          </a>
         </div>
       </div>
     </div>
@@ -231,6 +255,14 @@
         <div class="member-text">
           <h3>内藤 春臣</h3>
           <p>HARUOMILABO代表</p>
+          <div class="icon-group">
+            <a href="https://www.haruomilabo.com" target="_blank" rel="noopener noreferrer">
+              <img src="haruomilabologo.png" alt="HARUOMILABO" class="circle-icon" />
+            </a>
+            <a href="https://ameblo.jp/haruomi-naito/" target="_blank" rel="noopener noreferrer">
+              <img src="amebrologo.png.webp" alt="Ameblo" class="circle-icon" />
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -238,7 +270,6 @@
 </main>
 
 <script>
-  // ハンバーガーメニュー制御
   const hamburger = document.getElementById('hamburger');
   const sideMenu = document.getElementById('sideMenu');
   const closeMenu = document.getElementById('closeMenu');
