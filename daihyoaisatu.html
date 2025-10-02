@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>代表挨拶 - 旅館 橘</title>
-    <meta name="description" content="旅館 橘の代表内藤佑太の代表挨拶ページです">
+  <meta name="description" content="旅館 橘の代表内藤佑太の代表挨拶ページです">
   <!-- ファビコン設定 -->
   <link rel="icon" href="ryokantatibanavideo3.png" type="image/png" />
   <!-- フォント -->
-  <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
@@ -124,6 +124,27 @@
       margin-bottom: 30px;
     }
 
+    .language-switcher {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .language-switcher button {
+      font-size: 1rem;
+      padding: 8px 16px;
+      margin: 0 5px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    .language-switcher button.active,
+    .language-switcher button:hover {
+      background-color: #ddd;
+    }
+
     .greeting-container {
       display: flex;
       align-items: flex-start;
@@ -197,35 +218,30 @@
     <li><a href="index.html">ホーム</a></li>
     <li><a href="https://www.airbnb.jp" target="_blank" rel="noopener noreferrer">予約する</a></li>
     <li><a href="q&a.html">Q&A</a></li>
-     <li><a href="daihyoaisatu.html">代表挨拶</a></li>
+    <li><a href="daihyoaisatu.html">代表挨拶</a></li>
   </ul>
 </nav>
 
 <!-- メインコンテンツ -->
 <main>
-  <h1>代表挨拶</h1>
+  <!-- 言語切替ボタン -->
+  <div class="language-switcher">
+    <button id="btn-ja" class="active">Japanese</button>
+    <button id="btn-en">English</button>
+  </div>
+
+  <h1 id="heading">代表挨拶</h1>
   <div class="greeting-container">
     <img src="yutanaitoryokantatibana.png" alt="代表写真" class="profile-image" />
-    <div class="greeting-text">
-      <p>
-        浜松市の山里・浦川の地で、自然と人の温もりを感じられる宿を営んでおります。
-      </p>
-      <p>
-        「一人ひとりのお客様に、静かな安らぎと地域ならではの体験を。」その思いで、空き家を活かした小さな宿を始めました。
-      </p>
-      <p>
-        過疎化や空き家の増加といった地域課題に直面する中、宿泊を通じて地域の文化や人との出会いを楽しんでいただき、同時にこの土地の未来につなげていきたいと考えております。
-      </p>
-      <p>
-       どうぞ、心安らぐひとときをお過ごしください。
-      </p>
-      <div class="signature">
-        旅館 橘 代表　内藤 佑太
-      </div>
+    <div class="greeting-text" id="greeting-text">
+      <p>浜松市の山里・浦川の地で、自然と人の温もりを感じられる宿を営んでおります。</p>
+      <p>「一人ひとりのお客様に、静かな安らぎと地域ならではの体験を。」その思いで、空き家を活かした小さな宿を始めました。</p>
+      <p>過疎化や空き家の増加といった地域課題に直面する中、宿泊を通じて地域の文化や人との出会いを楽しんでいただき、同時にこの土地の未来につなげていきたいと考えております。</p>
+      <p>どうぞ、心安らぐひとときをお過ごしください。</p>
+      <div class="signature" id="signature">旅館 橘 代表　内藤 佑太</div>
     </div>
   </div>
 </main>
-  <!-- 英語バージョンの代表挨拶 -->
 
 <!-- JavaScript -->
 <script>
@@ -239,6 +255,72 @@
   closeMenu.addEventListener('click', () => {
     sideMenu.classList.remove('open');
   });
+
+  // 言語切替処理
+  const btnJa = document.getElementById('btn-ja');
+  const btnEn = document.getElementById('btn-en');
+  const heading = document.getElementById('heading');
+  const greetingText = document.getElementById('greeting-text');
+  const signature = document.getElementById('signature');
+
+  const content = {
+    ja: {
+      heading: '代表挨拶',
+      paragraphs: [
+        '浜松市の山里・浦川の地で、自然と人の温もりを感じられる宿を営んでおります。',
+        '「一人ひとりのお客様に、静かな安らぎと地域ならではの体験を。」その思いで、空き家を活かした小さな宿を始めました。',
+        '過疎化や空き家の増加といった地域課題に直面する中、宿泊を通じて地域の文化や人との出会いを楽しんでいただき、同時にこの土地の未来につなげていきたいと考えております。',
+        'どうぞ、心安らぐひとときをお過ごしください。'
+      ],
+      signature: '旅館 橘 代表　内藤 佑太'
+    },
+    en: {
+      heading: 'Greeting from the representative',
+      paragraphs: [
+        'In the mountain village of Urakawa, Hamamatsu, I run a small inn where guests can feel the beauty of nature and the warmth of the local community.',
+        'With the wish to offer “a moment of peace and a truly local experience to each guest,” I started this inn by revitalizing a vacant house.',
+        'As our region faces challenges such as depopulation and vacant homes, I hope that welcoming travelers will help preserve local culture and connect it to the future.',
+        'Please relax and enjoy your time here.'
+      ],
+      signature: 'Ryokan Tachibana Representative Yuta Naito'
+    }
+  };
+
+  function setLanguage(lang) {
+    // ボタンのアクティブ切り替え
+    if (lang === 'ja') {
+      btnJa.classList.add('active');
+      btnEn.classList.remove('active');
+    } else {
+      btnEn.classList.add('active');
+      btnJa.classList.remove('active');
+    }
+
+    // 見出し変更
+    heading.textContent = content[lang].heading;
+
+    // 本文変更
+    greetingText.innerHTML = '';
+    content[lang].paragraphs.forEach(p => {
+      const para = document.createElement('p');
+      para.textContent = p;
+      greetingText.appendChild(para);
+    });
+
+    // 署名変更
+    const signDiv = document.createElement('div');
+    signDiv.className = 'signature';
+    signDiv.id = 'signature';
+    signDiv.textContent = content[lang].signature;
+    greetingText.appendChild(signDiv);
+  }
+
+  // 初期は日本語表示
+  setLanguage('ja');
+
+  // ボタンイベント登録
+  btnJa.addEventListener('click', () => setLanguage('ja'));
+  btnEn.addEventListener('click', () => setLanguage('en'));
 </script>
 
 </body>
