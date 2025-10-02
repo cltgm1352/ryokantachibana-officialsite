@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>運営一覧 - 旅館 橘 公式HP</title>
+  <meta name="description" content="旅館 橘の運営メンバー一覧ページです。">
   <link rel="icon" href="ryokantatibanavideo3.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin&display=swap" rel="stylesheet" />
   <style>
@@ -53,6 +54,59 @@
       user-select: none;
     }
 
+    .side-menu {
+      position: fixed;
+      top: 0;
+      right: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #fff;
+      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 1050;
+      padding-top: 60px;
+      transition: right 0.3s ease;
+    }
+
+    .side-menu.open {
+      right: 0;
+    }
+
+    .side-menu .close-button {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      cursor: pointer;
+    }
+
+    .side-menu .close-button img {
+      width: 30px;
+      height: 30px;
+      user-select: none;
+    }
+
+    .side-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .side-menu ul li {
+      border-bottom: 1px solid #eee;
+    }
+
+    .side-menu ul li a {
+      display: block;
+      padding: 15px 20px;
+      text-decoration: none;
+      color: #333;
+      font-size: 1.1rem;
+      transition: background-color 0.2s;
+    }
+
+    .side-menu ul li a:hover {
+      background-color: #f0f0f0;
+    }
+
     main {
       max-width: 1000px;
       margin: 120px auto 40px;
@@ -87,18 +141,20 @@
       color: #222;
     }
 
+    .member img {
+      width: 100%;
+      max-width: 150px;
+      height: auto;
+      border-radius: 8px;
+      object-fit: cover;
+      display: block;
+      margin-bottom: 15px;
+    }
+
     .member-info {
       display: flex;
       align-items: flex-start;
-      gap: 15px;
-    }
-
-    .member-info img {
-      width: 80px;
-      height: 80px;
-      border-radius: 8px;
-      object-fit: cover;
-      flex-shrink: 0;
+      gap: 20px;
     }
 
     .member-text h3 {
@@ -110,28 +166,6 @@
       margin: 0;
       font-size: 0.95rem;
       line-height: 1.6;
-    }
-
-    /* SNSアイコン（極小） */
-    .icon {
-      width: 12px;
-      height: 12px;
-      margin-top: 6px;
-    }
-
-    .circle-icon {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      margin-top: 6px;
-      margin-right: 6px;
-      object-fit: cover;
-    }
-
-    .icon-group {
-      display: flex;
-      align-items: center;
-      margin-top: 6px;
     }
 
     @media (max-width: 700px) {
@@ -149,7 +183,6 @@
 </head>
 <body>
 
-<!-- ヘッダー -->
 <header>
   <div class="logo-container">
     <a href="index.html">
@@ -161,13 +194,24 @@
   </div>
 </header>
 
-<!-- メイン -->
+<nav class="side-menu" id="sideMenu">
+  <div class="close-button" id="closeMenu">
+    <img src="ryokantatibanahanbagamenyubatu.png" alt="閉じる" />
+  </div>
+  <ul>
+    <li><a href="index.html">ホーム</a></li>
+    <li><a href="https://www.airbnb.jp" target="_blank" rel="noopener noreferrer">予約する</a></li>
+    <li><a href="q&a.html">Q&A</a></li>
+    <li><a href="daihyoaisatu.html">代表挨拶</a></li>
+    <li><a href="unei.html">運営一覧</a></li>
+  </ul>
+</nav>
+
 <main>
   <h1>運営一覧</h1>
 
   <div class="staff-section">
-
-    <!-- 内藤 佑太 -->
+    <!-- 左：代表 -->
     <div class="member">
       <h2>代表</h2>
       <div class="member-info">
@@ -175,51 +219,37 @@
         <div class="member-text">
           <h3>内藤 佑太</h3>
           <p>旅館 橘 代表</p>
-          <a href="https://jp.linkedin.com/in/佑太-内藤-333176235" target="_blank" rel="noopener noreferrer">
-            <img src="inlogo.png" alt="LinkedIn" class="icon" />
-          </a>
         </div>
       </div>
     </div>
 
-    <!-- 内藤 春臣 -->
+    <!-- 右：サイト制作 -->
     <div class="member">
       <h2>サイト制作</h2>
       <div class="member-info">
-        <img src="haruominaitoryokantatibana.png" alt="内藤 春臣" />
+        <img src="yutanaitoryokantatibana.png" alt="内藤 春臣" />
         <div class="member-text">
           <h3>内藤 春臣</h3>
-          <p>HARUOMILABO代表</p>
-          <div class="icon-group">
-            <a href="https://www.haruomilabo.com" target="_blank" rel="noopener noreferrer">
-              <img src="haruomilabologo.png" alt="HARUOMILABO" class="circle-icon" />
-            </a>
-            <a href="https://ameblo.jp/haruomi-naito/" target="_blank" rel="noopener noreferrer">
-              <img src="amebrologo.png.webp" alt="Ameblo" class="circle-icon" />
-            </a>
-          </div>
+          <p>HARUOMILABO代表 内藤 春臣</p>
         </div>
       </div>
     </div>
-
   </div>
 </main>
 
-<!-- メニュー用スクリプト（必要なら） -->
 <script>
+  // ハンバーガーメニュー制御
   const hamburger = document.getElementById('hamburger');
   const sideMenu = document.getElementById('sideMenu');
   const closeMenu = document.getElementById('closeMenu');
 
-  if (hamburger && sideMenu && closeMenu) {
-    hamburger.addEventListener('click', () => {
-      sideMenu.classList.add('open');
-    });
+  hamburger.addEventListener('click', () => {
+    sideMenu.classList.add('open');
+  });
 
-    closeMenu.addEventListener('click', () => {
-      sideMenu.classList.remove('open');
-    });
-  }
+  closeMenu.addEventListener('click', () => {
+    sideMenu.classList.remove('open');
+  });
 </script>
 
 </body>
