@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Q&A - Ryokan Tachibana Official Website</title>
+    <meta name="description" content="Ryokan Tachibana Frequently Asked Questions">
+
+  <!-- ファビコン設定 -->
+  <link rel="icon" href="ryokantatibanavideo3.png" type="image/png" />
+
+  <!-- フォント -->
+  <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin&display=swap" rel="stylesheet">
+
+  <style>
+    body {w
+      margin: 0;
+      font-family: 'Kaisei Tokumin', serif;
+      background-color: #F3F0EC;
+      color: #333;
+    }
+
+    /* ヘッダー */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background-color: #F3F0EC;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .logo-container {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1001;
+    }
+
+    .logo-container a img {
+      height: 60px;
+      user-select: none;
+    }
+
+    .hamburger-menu {
+      position: absolute;
+      right: 20px;
+      cursor: pointer;
+      z-index: 1100;
+    }
+
+    .hamburger-menu img {
+      width: 40px;
+      height: 40px;
+      user-select: none;
+    }
+
+    /* サイドメニュー */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      right: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #fff;
+      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 1050;
+      padding-top: 60px;
+      transition: right 0.3s ease;
+    }
+
+    .side-menu.open {
+      right: 0;
+    }
+
+    .side-menu .close-button {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      cursor: pointer;
+    }
+
+    .side-menu .close-button img {
+      width: 30px;
+      height: 30px;
+      user-select: none;
+    }
+
+    .side-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .side-menu ul li {
+      border-bottom: 1px solid #eee;
+    }
+
+    .side-menu ul li a {
+      display: block;
+      padding: 15px 20px;
+      text-decoration: none;
+      color: #333;
+      font-size: 1.1rem;
+      transition: background-color 0.2s;
+    }
+
+    .side-menu ul li a:hover {
+      background-color: #f0f0f0;
+    }
+
+    /* メインコンテンツ */
+    main {
+      max-width: 800px;
+      margin: 120px auto 40px;
+      padding: 0 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 40px;
+    }
+
+    .qa-item {
+      border-bottom: 1px solid #ccc;
+      padding: 20px 0;
+    }
+
+    .question {
+      font-weight: bold;
+      cursor: pointer;
+      position: relative;
+      padding-right: 30px;
+    }
+
+    .question::after {
+      content: '＋';
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-size: 1.5rem;
+      color: #b7282e;
+      transition: transform 0.3s;
+    }
+
+    .qa-item.open .question::after {
+      content: '－';
+    }
+
+    .answer {
+      display: none;
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+
+    .qa-item.open .answer {
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header>
+    <div class="logo-container">
+      <a href="index.html">
+        <img src="ryokantatibanalogoimg.png" alt="旅館 橘 ロゴ">
+      </a>
+    </div>
+    <div class="hamburger-menu" id="hamburger">
+      <img src="ryokantatibanahanbagamenyu.png" alt="メニュー">
+    </div>
+  </header>
+
+  <!-- サイドメニュー -->
+  <nav class="side-menu" id="sideMenu">
+    <div class="close-button" id="closeMenu">
+      <img src="ryokantatibanahanbagamenyubatu.png" alt="閉じる">
+    </div>
+    <ul>
+      <li><a href="en.html">home</a></li>
+      <li><a href="https://www.airbnb.jp" target="_blank">make a reservation</a></li>
+      <li><a href="q&aen.html">Q&A</a></li>
+       <li><a href="daihyoaisatu.html">Message from the President</a></li>
+      <li><a href="uneien.html">Management list</a></li>
+    </ul>
+  </nav>
+
+  <!-- メインコンテンツ -->
+  <main>
+    <h1>Q&A</h1>
+
+    <div class="qa-item">
+      <div class="question">Supported browsers for this site</div>
+      <div class="answer">This site is compatible with various browsers, including Safari, but may not display correctly.</div>
+    </div>
+
+    <div class="qa-item">
+      <div class="question">Creating this site</div>
+      <div class="answer">This site was created by HARUOMILABO</div>
+    </div>
+
+  </main>
+
+  <!-- JavaScript -->
+  <script>
+    // ハンバーガーメニュー開閉
+    const hamburger = document.getElementById('hamburger');
+    const sideMenu = document.getElementById('sideMenu');
+    const closeMenu = document.getElementById('closeMenu');
+
+    hamburger.addEventListener('click', () => {
+      sideMenu.classList.add('open');
+    });
+
+    closeMenu.addEventListener('click', () => {
+      sideMenu.classList.remove('open');
+    });
+
+    // Q&Aアコーディオン動作
+    document.querySelectorAll('.question').forEach(q => {
+      q.addEventListener('click', () => {
+        q.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+
+</body>
+</html>
