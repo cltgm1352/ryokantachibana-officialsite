@@ -496,14 +496,10 @@
 <style>
   #news {
     margin: 40px auto;
-    padding: 30px 25px;
+    padding: 0 0 20px 0;
     max-width: 700px;
-    background: linear-gradient(135deg, #FAF7F2 0%, #F1E8D9 100%);
-    border: 2px solid #D9C9B3;
-    border-radius: 12px;
     font-family: 'Noto Serif JP', 'Kaisei Tokumin', serif;
     color: #4B3B27;
-    box-shadow: 0 6px 15px rgba(123, 63, 0, 0.15);
   }
 
   #news h2 {
@@ -526,38 +522,28 @@
   }
 
   #news li {
-    position: relative;
-    padding: 20px 25px 20px 20px;
+    padding: 15px 0 15px 10px;
     margin-bottom: 20px;
-    background-color: #FFF9F0;
-    border-left: 6px solid #7B3F00;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(123, 63, 0, 0.1);
-    transition: background-color 0.3s ease;
-  }
-  #news li:hover {
-    background-color: #FFF3E0;
+    border-left: 4px solid #7B3F00;
   }
 
   #news .date {
     display: block;
     font-size: 0.9rem;
     color: #9B8B75;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     font-style: italic;
   }
 
   #news .title a {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     color: #4B3B27;
     font-weight: 600;
     text-decoration: none;
-    line-height: 1.5;
     position: relative;
     padding-right: 18px;
   }
 
-  /* 和風の矢印風装飾（右側） */
   #news .title a::after {
     content: '';
     position: absolute;
