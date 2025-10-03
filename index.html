@@ -488,32 +488,69 @@
 </head>
 <body>
 
-  <!-- ニュースセクション -->
-  <section id="news">
-    <h2>NEWS</h2>
-    <ul>
-      <li>
-        <span class="date">2025年10月3日</span>
-        <a href="news1.html">サイトを作成中</a>
-      </li>
-    </ul>
-  </section>
+ <!-- ニュースのCSS（<style>タグ内に記述） -->
+<style>
+  #news {
+    margin: 40px 0;
+    padding: 0 20px;
+    background-color: #F8F6F2;
+    border: 1px solid #e0dcd5;
+    border-radius: 8px;
+  }
 
-  <!-- 旅館の実際の画像 -->
-  <div id="imageBox" class="fade-in">
-    <img src="ryokanimg1.png" alt="実際の画像" style="width:100%; height:auto;">
-    <div class="caption">実際の画像</div>
-  </div>
+  #news h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #c2a77f;
+    padding-bottom: 8px;
+    color: #5a4a3f;
+    text-align: center;
+  }
 
-  <script>
-    // ページ読み込み後にフェードイン表示
-    window.addEventListener('load', function() {
-      const imageBox = document.getElementById('imageBox');
-      setTimeout(() => {
-        imageBox.classList.add('visible');
-      }, 1000); // 1秒後にフェードイン
-    });
-  </script>
+  #news ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  #news li {
+    padding: 15px;
+    margin: 0 10px 15px 10px;
+    background-color: #fff;
+    border-left: 5px solid #c2a77f;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+  }
+
+  #news .date {
+    display: block;
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 6px;
+  }
+
+  #news .title {
+    font-size: 1.05rem;
+    color: #333;
+  }
+</style>
+
+<!-- HTML部分（任意の場所に埋め込み） -->
+<section id="news">
+  <h2>NEWS（最新のニュース）</h2>
+  <ul>
+    <li>
+      <span class="date">2025年10月3日</span>
+      <span class="title">サイト作成中</span>
+    </li>
+    <!-- 追加したいニュースがあれば以下に追加 -->
+    <!--
+    
+    </li>
+    -->
+  </ul>
+</section>
+
   
 
     <!-- Access Section -->
