@@ -490,29 +490,33 @@
 
   
 
- <!-- Google Fonts 読み込み -->
+<!-- Google Fonts 読み込み -->
 <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin&family=Noto+Serif+JP&display=swap" rel="stylesheet">
 
-<!-- CSS -->
 <style>
   #news {
-    margin: 40px 0;
-    padding: 20px;
-    background-color: #F8F6F2;
-    border: 1px solid #e0dcd5;
-    border-radius: 8px;
+    margin: 40px auto;
+    padding: 30px 25px;
+    max-width: 700px;
+    background: linear-gradient(135deg, #FAF7F2 0%, #F1E8D9 100%);
+    border: 2px solid #D9C9B3;
+    border-radius: 12px;
     font-family: 'Noto Serif JP', 'Kaisei Tokumin', serif;
-    color: #333;
+    color: #4B3B27;
+    box-shadow: 0 6px 15px rgba(123, 63, 0, 0.15);
   }
 
   #news h2 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    border-bottom: 3px solid #A24C3D;
-    padding-bottom: 8px;
-    color: #A24C3D;
+    font-size: 2rem;
+    margin-bottom: 25px;
+    border-bottom: 3px solid #7B3F00;
+    padding-bottom: 10px;
+    color: #7B3F00;
     text-align: center;
-    font-weight: 600;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-family: 'Kaisei Tokumin', serif;
   }
 
   #news ul {
@@ -522,38 +526,59 @@
   }
 
   #news li {
-    padding: 15px;
-    margin-bottom: 15px;
-    background-color: #fff;
-    border-left: 6px solid #A24C3D;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
-    border-radius: 4px;
+    position: relative;
+    padding: 20px 25px 20px 20px;
+    margin-bottom: 20px;
+    background-color: #FFF9F0;
+    border-left: 6px solid #7B3F00;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(123, 63, 0, 0.1);
+    transition: background-color 0.3s ease;
+  }
+  #news li:hover {
+    background-color: #FFF3E0;
   }
 
   #news .date {
     display: block;
-    font-size: 0.85rem;
-    color: #888;
-    margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: #9B8B75;
+    margin-bottom: 10px;
+    font-style: italic;
   }
 
   #news .title a {
-    font-size: 1.05rem;
-    color: #333;
-    font-weight: 500;
+    font-size: 1.2rem;
+    color: #4B3B27;
+    font-weight: 600;
     text-decoration: none;
+    line-height: 1.5;
+    position: relative;
+    padding-right: 18px;
+  }
+
+  /* 和風の矢印風装飾（右側） */
+  #news .title a::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%) rotate(45deg);
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid #7B3F00;
+    border-bottom: 2px solid #7B3F00;
   }
 
   #news .title a:hover {
+    color: #A4511B;
     text-decoration: underline;
-    color: #A24C3D;
     cursor: pointer;
   }
 </style>
 
-<!-- HTML -->
 <section id="news">
-  <h2>NEWS（最新のニュース）</h2>
+  <h2>NEWS（最新のお知らせ）</h2>
   <ul>
     <li>
       <span class="date">2025年10月3日</span>
@@ -561,6 +586,7 @@
     </li>
   </ul>
 </section>
+
 
   
 
