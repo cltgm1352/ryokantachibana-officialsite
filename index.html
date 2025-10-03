@@ -450,13 +450,71 @@
       <a href="daihyoaisatu.html" class="greeting-link">代表挨拶</a>
     </div>
 
-    <!-- Notice Section -->
-    <section class="notice-section">
-      <div class="notice-container">
-        <h2 class="notice-title">お知らせ</h2>
-        <p class="notice-text">特にお知らせはありません</p>
-      </div>
-    </section>
+    <style>
+    body {
+      margin: 0;
+      font-family: 'Hiragino Mincho ProN', '游明朝', serif;
+      background-color: #f5f0e6;
+      color: #333;
+    }
+
+    /* フェードイン用のスタイル */
+    .fade-in {
+      opacity: 0;
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 300px;
+      border: 5px solid #bfa07a;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: opacity 2s ease-in;
+      z-index: 10;
+      background-color: white;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+    }
+
+    .caption {
+      text-align: center;
+      padding: 5px;
+      font-size: 16px;
+      background-color: #fff5e1;
+      border-top: 1px solid #ccc;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ニュースセクション -->
+  <section id="news">
+    <h2>NEWS</h2>
+    <ul>
+      <li>
+        <span class="date">2025年10月3日</span>
+        <a href="news1.html">サイトを作成中</a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 旅館の実際の画像 -->
+  <div id="imageBox" class="fade-in">
+    <img src="ryokanimg1.png" alt="実際の画像" style="width:100%; height:auto;">
+    <div class="caption">実際の画像</div>
+  </div>
+
+  <script>
+    // ページ読み込み後にフェードイン表示
+    window.addEventListener('load', function() {
+      const imageBox = document.getElementById('imageBox');
+      setTimeout(() => {
+        imageBox.classList.add('visible');
+      }, 1000); // 1秒後にフェードイン
+    });
+  </script>
+  
 
     <!-- Access Section -->
     <h2 class="access-title">アクセス</h2>
