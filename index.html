@@ -488,23 +488,31 @@
 </head>
 <body>
 
- <!-- ニュースのCSS（<style>タグ内に記述） -->
+  
+
+ <!-- Google Fonts 読み込み -->
+<link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin&family=Noto+Serif+JP&display=swap" rel="stylesheet">
+
+<!-- CSS -->
 <style>
   #news {
     margin: 40px 0;
-    padding: 0 20px;
+    padding: 20px;
     background-color: #F8F6F2;
     border: 1px solid #e0dcd5;
     border-radius: 8px;
+    font-family: 'Noto Serif JP', 'Kaisei Tokumin', serif;
+    color: #333;
   }
 
   #news h2 {
     font-size: 1.8rem;
     margin-bottom: 20px;
-    border-bottom: 2px solid #c2a77f;
+    border-bottom: 3px solid #A24C3D;
     padding-bottom: 8px;
-    color: #5a4a3f;
+    color: #A24C3D;
     text-align: center;
+    font-weight: 600;
   }
 
   #news ul {
@@ -515,9 +523,9 @@
 
   #news li {
     padding: 15px;
-    margin: 0 10px 15px 10px;
+    margin-bottom: 15px;
     background-color: #fff;
-    border-left: 5px solid #c2a77f;
+    border-left: 6px solid #A24C3D;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
     border-radius: 4px;
   }
@@ -526,28 +534,31 @@
     display: block;
     font-size: 0.85rem;
     color: #888;
-    margin-bottom: 6px;
+    margin-bottom: 5px;
   }
 
-  #news .title {
+  #news .title a {
     font-size: 1.05rem;
     color: #333;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  #news .title a:hover {
+    text-decoration: underline;
+    color: #A24C3D;
+    cursor: pointer;
   }
 </style>
 
-<!-- HTML部分（任意の場所に埋め込み） -->
+<!-- HTML -->
 <section id="news">
   <h2>NEWS（最新のニュース）</h2>
   <ul>
     <li>
       <span class="date">2025年10月3日</span>
-      <span class="title">サイト作成中</span>
+      <span class="title"><a href="news1.html" target="_blank" rel="noopener noreferrer">サイト作成中</a></span>
     </li>
-    <!-- 追加したいニュースがあれば以下に追加 -->
-    <!--
-    
-    </li>
-    -->
   </ul>
 </section>
 
