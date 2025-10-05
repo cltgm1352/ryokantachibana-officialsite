@@ -384,6 +384,46 @@
   </style>
 </head>
 <body>
+
+<!-- 広告バナー -->
+<div id="ad-banner" style="
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  max-width: 90vw;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  background-color: #fff;
+  z-index: 9999;
+">
+  <!-- バツボタン -->
+  <button onclick="this.parentElement.style.display='none'" style="
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    z-index: 1000;
+  ">×</button>
+
+  <!-- 広告画像リンク -->
+  <a href="https://www.haruomilabo.com" target="_blank" rel="noopener noreferrer">
+    <img src="HARUOMILABOadvertisement.png" alt="HARUOMILABO広告" style="
+      width: 100%;
+      display: block;
+      cursor: pointer;
+    ">
+  </a>
+</div>
+
+  
   <!-- Loading Screen -->
   <div id="loading">
     <img src="ryokantachibananewlogo.png" alt="旅館 橘ロゴ ローディング" />
