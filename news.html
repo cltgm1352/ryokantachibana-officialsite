@@ -4,9 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NEWS - 旅館 橘 公式HP</title>
-  <meta name="description" content="旅館 橘の最新ニュース一覧ページです。">
+  <meta name="description" content="旅館 橘のお知らせ・最新情報一覧ページです。">
   <link rel="icon" href="ryokantachibananewsitelogo.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin&display=swap" rel="stylesheet" />
+
   <style>
     body {
       margin: 0;
@@ -14,6 +15,7 @@
       background-color: #F3F0EC;
       color: #333;
     }
+
     header {
       position: fixed;
       top: 0;
@@ -27,27 +29,32 @@
       z-index: 1000;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     }
+
     .logo-container {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       z-index: 1001;
     }
+
     .logo-container a img {
       height: 60px;
       user-select: none;
     }
+
     .hamburger-menu {
       position: absolute;
       right: 20px;
       cursor: pointer;
       z-index: 1100;
     }
+
     .hamburger-menu img {
       width: 40px;
       height: 40px;
       user-select: none;
     }
+
     .side-menu {
       position: fixed;
       top: 0;
@@ -60,28 +67,34 @@
       padding-top: 60px;
       transition: right 0.3s ease;
     }
+
     .side-menu.open {
       right: 0;
     }
+
     .side-menu .close-button {
       position: absolute;
       top: 15px;
       right: 15px;
       cursor: pointer;
     }
+
     .side-menu .close-button img {
       width: 30px;
       height: 30px;
       user-select: none;
     }
+
     .side-menu ul {
       list-style: none;
       padding: 0;
       margin: 0;
     }
+
     .side-menu ul li {
       border-bottom: 1px solid #eee;
     }
+
     .side-menu ul li a {
       display: block;
       padding: 15px 20px;
@@ -90,51 +103,59 @@
       font-size: 1.1rem;
       transition: background-color 0.2s;
     }
+
     .side-menu ul li a:hover {
       background-color: #f0f0f0;
     }
+
     main {
-      max-width: 700px;
+      max-width: 1000px;
       margin: 120px auto 40px;
       padding: 0 20px;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     }
+
     h1 {
       text-align: center;
       font-size: 2rem;
       margin-bottom: 40px;
-      color: #4B3B27;
-      font-weight: 700;
     }
-    #news ul {
-      list-style: none;
-      padding: 0;
+
+    .news-list {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .news-item {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      transition: background-color 0.2s;
+    }
+
+    .news-item:hover {
+      background-color: #fafafa;
+    }
+
+    .news-item h2 {
       margin: 0;
+      font-size: 1.2rem;
     }
-    #news li {
-      padding: 15px 10px;
-      margin-bottom: 20px;
-      border-left: 4px solid #7B3F00;
-      font-size: 1.1rem;
-      color: #4B3B27;
-      cursor: pointer;
-      transition: color 0.3s;
-    }
-    #news li:hover {
-      color: #A4511B;
-    }
-    #news .date {
-      font-size: 0.9rem;
-      color: #9B8B75;
-      margin-bottom: 5px;
-      font-style: italic;
-    }
-    #news a {
-      color: inherit;
+
+    .news-item h2 a {
       text-decoration: none;
-      display: block;
+      color: #222;
+    }
+
+    .news-item h2 a:hover {
+      text-decoration: underline;
+    }
+
+    .news-item p.date {
+      margin: 0 0 5px;
+      font-size: 0.9rem;
+      color: #888;
     }
   </style>
 </head>
@@ -161,29 +182,25 @@
     <li><a href="q&a.html">Q&A</a></li>
     <li><a href="daihyoaisatu.html">代表挨拶</a></li>
     <li><a href="unei.html">運営一覧</a></li>
+    <li><a href="news.html">ニュース</a></li>
   </ul>
 </nav>
 
-<div style="margin-top: 60px; text-align: center; font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif; color: #3B2B2A;">
-  <h2 style="font-weight: normal; font-size: 24px; margin-bottom: 20px; letter-spacing: 2px;">
-    お知らせ
-  </h2>
-  <ul style="list-style: none; padding: 0; margin: 0;">
-    <li style="margin-bottom: 12px;">
-      <a href="news2.html" style="color: #3B2B2A; text-decoration: none;">
-        サイト作成について（2025年10月6日）
-      </a>
-    </li>
-    <li>
-      <a href="news1.html" style="color: #3B2B2A; text-decoration: none;">
-        サイト作成中（2025年10月3日）
-      </a>
-    </li>
-  </ul>
-</div>
+<main>
+  <h1>お知らせ一覧</h1>
 
+  <div class="news-list">
+    <div class="news-item">
+      <p class="date">2025年10月6日</p>
+      <h2><a href="news2.html">サイト作成について</a></h2>
+    </div>
 
-
+    <div class="news-item">
+      <p class="date">2025年10月3日</p>
+      <h2><a href="news1.html">サイト作成中</a></h2>
+    </div>
+  </div>
+</main>
 
 <script>
   // ハンバーガーメニュー制御
