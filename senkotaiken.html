@@ -1,62 +1,57 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>先行体験！</title>
+  <meta charset="utf-8">
+  <title>）先行体験！</title>
+
+  <!-- favicon: ルートに haruomilabologo.png を置く -->
+  <link rel="icon" type="image/png" href="haruomilabologo.png">
+
   <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      font-family: sans-serif;
-      background-color: #f0f0f0;
-    }
-    .container {
-      text-align: center;
-      background: white;
-      padding: 40px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    input[type="text"] {
-      padding: 10px;
-      font-size: 16px;
-      width: 200px;
-    }
-    button {
-      margin-top: 10px;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    .error {
-      color: red;
-      margin-top: 10px;
-      display: none;
-    }
+    body{display:flex;justify-content:center;align-items:center;height:100vh;margin:0;font-family:sans-serif;background:#f6f8fa}
+    .box{background:#fff;padding:30px;border-radius:8px;box-shadow:0 4px 18px rgba(0,0,0,.08);text-align:center}
+    input{padding:10px 12px;font-size:16px;width:200px}
+    button{margin-top:12px;padding:10px 18px;font-size:16px;cursor:pointer}
+    .err{color:#c62828;margin-top:10px;display:none}
   </style>
 </head>
 <body>
-  <div class="container">
-    <input type="text" id="codeInput" placeholder="コードを入力">
+  <div class="box">
+    <input id="codeInput" placeholder="コードを入力">
     <br>
-    <button onclick="checkCode()">送信</button>
-    <div class="error" id="errorMessage">コードが違います！</div>
+    <button id="sendBtn">送信</button>
+    <div class="err" id="err">コードが違います！</div>
   </div>
 
   <script>
-    function checkCode() {
-      const input = document.getElementById('codeInput').value;
-      const errorMessage = document.getElementById('errorMessage');
-
-      if (input === "2119") {
-        window.location.href = "new.html";
-      } else {
-        errorMessage.style.display = "block";
+    (function(){
+      // 難読化された値（例）
+      const hidden = "Xy9mLW1yOjI=";
+      function deobf(s){
+        try {
+          const decoded = atob(s);
+          const rev = decoded.split('').reverse().join('');
+          let out = '';
+          for (let i=0;i<rev.length;i++){
+            out += String.fromCharCode(rev.charCodeAt(i)-1);
+          }
+          return out;
+        } catch(e){
+          return null;
+        }
       }
-    }
+      const trueCode = deobf(hidden);
+
+      document.getElementById('sendBtn').addEventListener('click', ()=>{
+        const v = document.getElementById('codeInput').value.trim();
+        const err = document.getElementById('err');
+        if (v === trueCode) {
+          window.location.href = 'new.html';
+        } else {
+          err.style.display = 'block';
+        }
+      });
+    })();
   </script>
 </body>
 </html>
