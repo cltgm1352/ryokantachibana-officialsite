@@ -152,44 +152,44 @@
 
     /* Main Content */
     main {
-      padding-top: 100px;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
+      padding-top: 80px; /* ヘッダーの高さ分 */
     }
 
     /* Video Section */
     .video-wrapper {
       position: relative;
-      width: 95vw;
-      max-width: 1400px;
-      aspect-ratio: 16 / 9;
+      width: 100vw;
+      height: calc(100vh - 80px); /* ヘッダーを除いた画面全体 */
       background-color: #000;
-      border-radius: 12px;
+      border-radius: 0;
       overflow: hidden;
+      z-index: 10;
     }
     video {
       width: 100%;
       height: 100%;
       display: none;
-      object-fit: cover;
+      object-fit: cover; /* 見切れを許容 */
     }
     video.active {
       display: block;
     }
     .circle-container {
       position: absolute;
-      top: 10px;
+      top: 20px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
       gap: 50px;
-      z-index: 10;
+      z-index: 12;
     }
     .circle {
       position: relative;
-      width: 66px; /* バー幅を細くするため70pxから66pxに */
+      width: 66px;
       height: 66px;
       cursor: pointer;
       display: flex;
@@ -375,8 +375,15 @@
 
     /* Media Queries */
     @media (max-width: 768px) {
+      main {
+        padding-top: 80px; /* モバイルでもヘッダー高さを考慮 */
+      }
+      .video-wrapper {
+        width: 100vw;
+        height: calc(100vh - 80px);
+      }
       .circle {
-        width: 56px; /* バー幅を細くするため60pxから56pxに */
+        width: 56px;
         height: 56px;
       }
       .inner-circle {
@@ -514,7 +521,7 @@
   </main>
 
   <script>
-    // Language Switcher
+    // Language SURVEY
     function changeLanguage() {
       const select = document.getElementById('language-select');
       if (select.value === 'en') {
@@ -549,7 +556,7 @@
       }
       const progress = (video.currentTime / video.duration) || 0;
       const degrees = progress * 360;
-      circle.style.background = `conic-gradient(#4682B4 ${degrees}deg, #555 ${degrees}deg 360deg)`; /* 色を青に変更 */
+      circle.style.background = `conic-gradient(#4682B4 ${degrees}deg, #555 ${degrees}deg 360deg)`;
       if (!video.paused && !video.ended) {
         animationFrameId = requestAnimationFrame(() => updateProgressBar(index));
       }
