@@ -546,20 +546,23 @@
     let currentIndex = 0;
     let animationFrameId = null;
 
+    // Initialize circles
+    circles.forEach(circle => {
+      circle.style.background = 'conic-gradient(#555 0deg, #555 360deg)';
+    });
+
     // Update progress bar for the current video
     function updateProgressBar(index) {
       const video = videos[index];
       const circle = circles[index];
-      if (!video.duration) {
-        animationFrameId = requestAnimationFrame(() => updateProgressBar(index));
+      if (!video.duration || video.paused || video.ended) {
+        circle.style.background = 'conic-gradient(#555 0deg, #555 360deg)';
         return;
       }
       const progress = (video.currentTime / video.duration) || 0;
       const degrees = progress * 360;
       circle.style.background = `conic-gradient(#4682B4 ${degrees}deg, #555 ${degrees}deg 360deg)`;
-      if (!video.paused &&umonted) {
-        animationFrameId = requestAnimationFrame(() => updateProgressBar(index));
-      }
+      animationFrameId = requestAnimationFrame(() => updateProgressBar(index));
     }
 
     // Play selected video
@@ -578,7 +581,12 @@
       circle.classList.add('active');
       video.play().catch(() => playButton.classList.add('visible'));
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
-      updateProgressBar(index);
+      video.addEventListener('loadedmetadata', () => {
+        updateProgressBar(index);
+      }, { once: true });
+      if (video.readyState >= 2) {
+        updateProgressBar(index);
+      }
       video.onended = () => playVideo((index + 1) % videos.length);
     }
 
