@@ -68,7 +68,7 @@
     /* Hamburger Menu */
     .hamburger-menu {
       position: absolute;
-      right: 5px; /* 右端に寄せるため5pxに変更（以前は20px） */
+      right: 5px;
       top: 10px;
       height: 60px;
       width: 60px;
@@ -85,7 +85,7 @@
     /* Language Switcher */
     .language-switcher {
       position: absolute;
-      right: 80px; /* ハンバーガー(60px + 5px) + 15pxの間隔 */
+      right: 80px;
       top: 50%;
       transform: translateY(-50%);
       z-index: 25;
@@ -189,8 +189,8 @@
     }
     .circle {
       position: relative;
-      width: 70px;
-      height: 70px;
+      width: 66px; /* バー幅を細くするため70pxから66pxに */
+      height: 66px;
       cursor: pointer;
       display: flex;
       justify-content: center;
@@ -373,36 +373,11 @@
       justify-content: center;
     }
 
-    /* Fade-in Image */
-    .fade-in {
-      opacity: 0;
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      width: 300px;
-      border: 5px solid #bfa07a;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      transition: opacity 2s ease-in;
-      z-index: 10;
-      background-color: white;
-    }
-    .fade-in.visible {
-      opacity: 1;
-    }
-    .caption {
-      text-align: center;
-      padding: 5px;
-      font-size: 16px;
-      background-color: #fff5e1;
-      border-top: 1px solid #ccc;
-      font-weight: bold;
-    }
-
     /* Media Queries */
     @media (max-width: 768px) {
       .circle {
-        width: 60px;
-        height: 60px;
+        width: 56px; /* バー幅を細くするため60pxから56pxに */
+        height: 56px;
       }
       .inner-circle {
         width: 50px;
@@ -428,19 +403,16 @@
       .hamburger-menu {
         width: 50px;
         height: 50px;
-        right: 5px; /* モバイルでも右端に寄せる（以前は10px） */
+        right: 5px;
       }
       .language-switcher {
-        right: 70px; /* ハンバーガー(50px + 5px) + 15pxの間隔 */
+        right: 70px;
         top: 50%;
         transform: translateY(-50%);
       }
       .language-switcher select {
         padding: 6px 10px;
         font-size: 14px;
-      }
-      .fade-in {
-        width: 200px;
       }
     }
   </style>
@@ -539,12 +511,6 @@
     <div class="map-container">
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3389.2416573317464!2d137.76678537575899!3d35.0587594639167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601b15672391fe09%3A0x12ec99034eb31553!2z44CSNDMxLTM5MDYg6Z2Z5bKh55yM5rWc5p2-5biC5aSp56uc5Yy65L2Q5LmF6ZaT55S65rWm5bed77yT77yU77yZ77yZ!5e1!3m2!1sja!2sjp!4v1759370062235!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
-
-    <!-- Fade-in Image -->
-    <div class="fade-in" id="fade-in">
-      <img src="ryokantachibana.png" alt="Ryokan Tachibana" />
-      <div class="caption">Welcome to Ryokan Tachibana</div>
-    </div>
   </main>
 
   <script>
@@ -583,7 +549,7 @@
       }
       const progress = (video.currentTime / video.duration) || 0;
       const degrees = progress * 360;
-      circle.style.background = `conic-gradient(red ${degrees}deg, #555 ${degrees}deg 360deg)`;
+      circle.style.background = `conic-gradient(#4682B4 ${degrees}deg, #555 ${degrees}deg 360deg)`; /* 色を青に変更 */
       if (!video.paused && !video.ended) {
         animationFrameId = requestAnimationFrame(() => updateProgressBar(index));
       }
@@ -629,13 +595,11 @@
     // Loading screen handler
     window.addEventListener('load', () => {
       const loading = document.getElementById('loading');
-      const fadeIn = document.getElementById('fade-in');
       setTimeout(() => {
         loading.classList.add('hidden');
         setTimeout(() => {
           loading.style.display = 'none';
           playVideo(currentIndex);
-          fadeIn.classList.add('visible');
         }, 500);
       }, 1500);
     });
