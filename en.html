@@ -51,7 +51,7 @@
       height: 80px;
       background-color: #F3F0EC;
       display: flex;
-      justify-content: center; /* 中央揃え */
+      justify-content: center;
       align-items: center;
       position: fixed;
       top: 0;
@@ -63,13 +63,13 @@
       height: 60px;
       object-fit: contain;
       user-select: none;
-      margin-left: -100px; /* 中央から左にずらす */
+      margin-left: -150px; /* -100pxから-150pxに変更してさらに左に */
     }
 
     /* Hamburger Menu */
     .hamburger-menu {
       position: absolute;
-      right: 20px;
+      right: 10px; /* 20pxから10pxに変更してさらに右に */
       top: 10px;
       height: 60px;
       width: 60px;
@@ -86,7 +86,7 @@
     /* Language Switcher */
     .language-switcher {
       position: absolute;
-      right: 90px;
+      right: 100px; /* 120pxから100pxに調整 */
       top: 50%;
       transform: translateY(-50%);
       z-index: 1001;
@@ -198,11 +198,11 @@
       justify-content: center;
       align-items: center;
       border-radius: 50%;
-      background: conic-gradient(#555 0deg, #555 360deg);
+      background: conic-gradient(#4682B4 0deg, #555 0deg 360deg);
     }
     .inner-circle {
-      width: 60px;
-      height: 60px;
+      width: 65px;
+      height: 65px;
       border-radius: 50%;
       background-color: #444;
       overflow: hidden;
@@ -382,8 +382,8 @@
         height: 60px;
       }
       .inner-circle {
-        width: 50px;
-        height: 50px;
+        width: 55px;
+        height: 55px;
       }
       .reserve-button {
         font-size: 1rem;
@@ -405,10 +405,10 @@
       .hamburger-menu {
         width: 50px;
         height: 50px;
-        right: 10px;
+        right: 5px; /* 10pxから5pxに変更してさらに右に */
       }
       .language-switcher {
-        right: 70px;
+        right: 80px; /* 90pxから80pxに調整 */
         top: 50%;
         transform: translateY(-50%);
       }
@@ -417,7 +417,7 @@
         font-size: 14px;
       }
       header img {
-        margin-left: -50px; /* モバイルで中央から左にずらす量を調整 */
+        margin-left: -75px; /* -50pxから-75pxに変更してさらに左に */
       }
     }
   </style>
@@ -554,7 +554,7 @@
       }
       const progress = (video.currentTime / video.duration) || 0;
       const degrees = progress * 360;
-      circle.style.background = `conic-gradient(red ${degrees}deg, #555 ${degrees}deg 360deg)`;
+      circle.style.background = `conic-gradient(#4682B4 ${degrees}deg, #555 ${degrees}deg 360deg)`;
       if (!video.paused && !video.ended) {
         animationFrameId = requestAnimationFrame(() => updateProgressBar(index));
       }
