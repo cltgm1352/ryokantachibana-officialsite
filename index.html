@@ -516,20 +516,26 @@
     <!-- Access Section -->
     <h2 class="access-title">アクセス</h2>
     
-    <!-- レスポンシブ対応のGoogleマップ埋め込み -->
-<!-- レスポンシブ対応のGoogleマップ埋め込み -->
-<div style="position: relative; width: 100%; padding-bottom: 56.25%;">
-  <iframe 
-    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3280.XXXXXXXXXXXX!2d137.XXX!3d34.XXX!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xXXXXXXXXXXXXXXX%3A0xXXXXXXXXXXXX!2z5p2x5Lqs44Gu44GZ44CC!5e0!3m2!1sja!2sjp!4vXXXXXXXXXXXX" 
-    width="600" 
-    height="450" 
-    style="border:0; position: absolute; top:0; left:0; width:100%; height:100%;" 
-    allowfullscreen="" 
-    loading="lazy" 
-    referrerpolicy="no-referrer-when-downgrade">
-  </iframe>
-</div>
+    <style>
+  .responsive-iframe {
+    position: relative;
+    width: 100%;        /* 横幅は画面いっぱいに */
+    max-width: 600px;   /* PC時は最大600pxまで */
+    height: 0;
+    padding-bottom: 75%; /* アスペクト比 4:3 に調整 */
+  }
 
+  .responsive-iframe iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+</style>
+
+<div class="responsive-iframe">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6778.483685259155!2d137.76936!3d35.058755!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601b15672391fe09%3A0x12ec99034eb31553!2z44CSNDMxLTM5MDYg6Z2Z5bKh55yM5rWc5p2-5biC5aSp56uc5Yy65L2Q5LmF6ZaT55S65rWm5bed77yT77yU77yZ77yZ!5e1!3m2!1sja!2sjp!4v1761656100478!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
 
   </main>
 
