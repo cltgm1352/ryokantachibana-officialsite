@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap" rel="stylesheet">
   <style>
-    /* 一般的なスタイル */
+    /* General Styles */
     html, body {
       margin: 0;
       padding: 0;
@@ -22,7 +22,7 @@
       overflow-x: hidden;
     }
 
-    /* ローディング画面 */
+    /* Loading Screen */
     #loading {
       position: fixed;
       top: 0;
@@ -46,7 +46,7 @@
       user-select: none;
     }
 
-    /* ヘッダー */
+    /* Header */
     header {
       height: 80px;
       background-color: #F3F0EC;
@@ -57,24 +57,23 @@
       top: 0;
       left: 0;
       right: 0;
-      z-index: 1000;
+      z-index: 20;
     }
     header img {
       height: 60px;
       object-fit: contain;
       user-select: none;
-      margin-left: -150px;
     }
 
-    /* ハンバーガーメニュー */
+    /* Hamburger Menu */
     .hamburger-menu {
       position: absolute;
-      right: 10px;
+      right: 5px; /* 右端に寄せるため5pxに変更（以前は20px） */
       top: 10px;
       height: 60px;
       width: 60px;
       cursor: pointer;
-      z-index: 1001;
+      z-index: 25;
     }
     .hamburger-menu img {
       width: 100%;
@@ -83,13 +82,13 @@
       pointer-events: none;
     }
 
-    /* 言語スイッチャー */
+    /* Language Switcher */
     .language-switcher {
       position: absolute;
-      right: 120px; /* 100pxから120pxに変更してさらに左に */
+      right: 80px; /* ハンバーガー(60px + 5px) + 15pxの間隔 */
       top: 50%;
       transform: translateY(-50%);
-      z-index: 1001;
+      z-index: 25;
     }
     .language-switcher select {
       padding: 8px 12px;
@@ -102,7 +101,7 @@
       cursor: pointer;
     }
 
-    /* サイドメニュー */
+    /* Side Menu */
     .side-menu {
       position: fixed;
       top: 0;
@@ -111,7 +110,7 @@
       height: 100%;
       background-color: #fff;
       box-shadow: -2px 0 5px rgba(0,0,0,0.3);
-      z-index: 1000;
+      z-index: 30;
       transition: right 0.3s ease;
       font-family: 'Kaisei Tokumin', serif;
       padding-top: 60px;
@@ -151,21 +150,23 @@
       color: #b7282e;
     }
 
-    /* メインコンテンツ */
+    /* Main Content */
     main {
-      padding-top: 80px;
+      padding-top: 100px;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
     }
 
-    /* ビデオセクション */
+    /* Video Section */
     .video-wrapper {
       position: relative;
-      width: 100vw;
-      height: calc(100vh - 80px);
+      width: 95vw;
+      max-width: 1400px;
+      aspect-ratio: 16 / 9;
       background-color: #000;
+      border-radius: 12px;
       overflow: hidden;
     }
     video {
@@ -173,9 +174,6 @@
       height: 100%;
       display: none;
       object-fit: cover;
-      position: absolute;
-      top: 0;
-      left: 0;
     }
     video.active {
       display: block;
@@ -198,11 +196,11 @@
       justify-content: center;
       align-items: center;
       border-radius: 50%;
-      background: conic-gradient(#4682B4 0deg, #555 0deg 360deg);
+      background: conic-gradient(#555 0deg, #555 360deg);
     }
     .inner-circle {
-      width: 65px;
-      height: 65px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
       background-color: #444;
       overflow: hidden;
@@ -264,7 +262,7 @@
       display: block;
     }
 
-    /* 画像セクション */
+    /* Image Section */
     .image-container {
       display: flex;
       flex-direction: column;
@@ -280,7 +278,7 @@
       height: auto;
     }
 
-    /* 代表挨拶ボタン */
+    /* Greeting Button */
     .greeting-button {
       text-align: center;
       margin: 40px 0;
@@ -302,35 +300,69 @@
       color: #f9f4e9;
     }
 
-    /* お知らせセクション */
-    .notice-section {
-      background-color: #fdf8f4;
-      border-top: 2px solid #b7282e;
-      border-bottom: 2px solid #b7282e;
-      padding: 40px 20px;
+    /* News Section */
+    #news {
       margin: 40px auto;
-      width: 100%;
-      display: flex;
-      justify-content: center;
+      padding: 0 0 20px 0;
+      max-width: 700px;
+      font-family: 'Noto Serif JP', 'Kaisei Tokumin', serif;
+      color: #4B3B27;
     }
-    .notice-container {
-      max-width: 800px;
+    #news h2 {
+      font-size: 2rem;
+      margin-bottom: 25px;
+      border-bottom: 3px solid #7B3F00;
+      padding-bottom: 10px;
+      color: #7B3F00;
       text-align: center;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       font-family: 'Kaisei Tokumin', serif;
-      color: #3b2f2f;
     }
-    .notice-title {
-      font-size: 28px;
-      color: #b7282e;
-      margin-bottom: 16px;
-      letter-spacing: 2px;
+    #news ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
-    .notice-text {
-      font-size: 18px;
-      line-height: 1.8;
+    #news li {
+      padding: 15px 0 15px 10px;
+      margin-bottom: 20px;
+      border-left: 4px solid #7B3F00;
+    }
+    #news .date {
+      display: block;
+      font-size: 0.9rem;
+      color: #9B8B75;
+      margin-bottom: 6px;
+      font-style: italic;
+    }
+    #news .title a {
+      font-size: 1.15rem;
+      color: #4B3B27;
+      font-weight: 600;
+      text-decoration: none;
+      position: relative;
+      padding-right: 18px;
+    }
+    #news .title a::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 5px;
+      transform: translateY(-50%) rotate(45deg);
+      width: 8px;
+      height: 8px;
+      border-right: 2px solid #7B3F00;
+      border-bottom: 2px solid #7B3F00;
+    }
+    #news .title a:hover {
+      color: #A4511B;
+      text-decoration: underline;
+      cursor: pointer;
     }
 
-    /* アクセスセクション */
+    /* Access Section */
     .access-title {
       text-align: center;
       font-size: 32px;
@@ -341,15 +373,40 @@
       justify-content: center;
     }
 
-    /* メディアクエリ */
+    /* Fade-in Image */
+    .fade-in {
+      opacity: 0;
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 300px;
+      border: 5px solid #bfa07a;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: opacity 2s ease-in;
+      z-index: 10;
+      background-color: white;
+    }
+    .fade-in.visible {
+      opacity: 1;
+    }
+    .caption {
+      text-align: center;
+      padding: 5px;
+      font-size: 16px;
+      background-color: #fff5e1;
+      border-top: 1px solid #ccc;
+      font-weight: bold;
+    }
+
+    /* Media Queries */
     @media (max-width: 768px) {
       .circle {
         width: 60px;
         height: 60px;
       }
       .inner-circle {
-        width: 55px;
-        height: 55px;
+        width: 50px;
+        height: 50px;
       }
       .reserve-button {
         font-size: 1rem;
@@ -371,10 +428,10 @@
       .hamburger-menu {
         width: 50px;
         height: 50px;
-        right: 5px;
+        right: 5px; /* モバイルでも右端に寄せる（以前は10px） */
       }
       .language-switcher {
-        right: 90px; /* 80pxから90pxに変更してさらに左に */
+        right: 70px; /* ハンバーガー(50px + 5px) + 15pxの間隔 */
         top: 50%;
         transform: translateY(-50%);
       }
@@ -382,19 +439,19 @@
         padding: 6px 10px;
         font-size: 14px;
       }
-      header img {
-        margin-left: -75px;
+      .fade-in {
+        width: 200px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- ローディング画面 -->
+  <!-- Loading Screen -->
   <div id="loading">
-    <img src="ryokantachibananewlogo.png" alt="旅館 橘ロゴ" />
+    <img src="ryokantachibananewlogo.png" alt="旅館 橘ロゴ ローディング" />
   </div>
 
-  <!-- ヘッダー -->
+  <!-- Header -->
   <header>
     <img src="ryokantachibananewlogo.png" alt="旅館 橘ロゴ" />
     <div class="language-switcher">
@@ -408,7 +465,7 @@
     </div>
   </header>
 
-  <!-- サイドメニュー -->
+  <!-- Side Menu -->
   <nav class="side-menu" id="sideMenu">
     <div class="close-button" id="closeMenu">
       <img src="ryokantatibanahanbagamenyubatu.png" alt="閉じる" />
@@ -423,7 +480,7 @@
     </ul>
   </nav>
 
-  <!-- メインコンテンツ -->
+  <!-- Main Content -->
   <main>
     <div class="video-wrapper">
       <div class="circle-container">
@@ -450,12 +507,12 @@
       <img id="concept-image" src="ryokantatibanakonsept.png" alt="旅館 橘コンセプト">
     </div>
 
-    <!-- 代表挨拶ボタン -->
+    <!-- Representative Greeting Button -->
     <div class="greeting-button">
       <a href="daihyoaisatu.html" class="greeting-link">代表挨拶</a>
     </div>
 
-    <!-- お知らせセクション -->
+    <!-- News Section -->
     <div style="border: 2px solid #8B5E3C; background-color: #FFF8F0; padding: 16px; max-width: 400px; font-family: 'Hiragino Mincho ProN', 'Serif', serif;">
       <h2 style="border-bottom: 1px solid #8B5E3C; color: #4B2E1E;">お知らせ</h2>
       <ul style="list-style-type: none; padding-left: 0; margin-top: 12px;">
@@ -477,15 +534,21 @@
       </div>
     </div>
 
-    <!-- アクセスセクション -->
+    <!-- Access Section -->
     <h2 class="access-title">アクセス</h2>
     <div class="map-container">
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3389.2416573317464!2d137.76678537575899!3d35.0587594639167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601b15672391fe09%3A0x12ec99034eb31553!2z44CSNDMxLTM5MDYg6Z2Z5bKh55yM5rWc5p2-5biC5aSp56uc5Yy65L2Q5LmF6ZaT55S65rWm5bed77yT77yU77yZ77yZ!5e1!3m2!1sja!2sjp!4v1759370062235!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
+
+    <!-- Fade-in Image -->
+    <div class="fade-in" id="fade-in">
+      <img src="ryokantachibana.png" alt="旅館 橘" />
+      <div class="caption">旅館 橘へようこそ</div>
+    </div>
   </main>
 
   <script>
-    // 言語スイッチャー
+    // Language Switcher
     function changeLanguage() {
       const select = document.getElementById('language-select');
       if (select.value === 'en') {
@@ -495,7 +558,7 @@
       }
     }
 
-    // ビデオ処理
+    // Video Handling
     const videos = [
       document.getElementById('video0'),
       document.getElementById('video1'),
@@ -510,7 +573,7 @@
     let currentIndex = 0;
     let animationFrameId = null;
 
-    // 現在のビデオのプログレスバーを更新
+    // Update progress bar for the current video
     function updateProgressBar(index) {
       const video = videos[index];
       const circle = circles[index];
@@ -520,13 +583,13 @@
       }
       const progress = (video.currentTime / video.duration) || 0;
       const degrees = progress * 360;
-      circle.style.background = `conic-gradient(#4682B4 ${degrees}deg, #555 ${degrees}deg 360deg)`;
+      circle.style.background = `conic-gradient(red ${degrees}deg, #555 ${degrees}deg 360deg)`;
       if (!video.paused && !video.ended) {
         animationFrameId = requestAnimationFrame(() => updateProgressBar(index));
       }
     }
 
-    // 選択したビデオを再生
+    // Play selected video
     function playVideo(index) {
       videos.forEach((v, i) => {
         v.pause();
@@ -546,7 +609,7 @@
       video.onended = () => playVideo((index + 1) % videos.length);
     }
 
-    // サークルクリックハンドラ
+    // Circle click handlers
     circles.forEach(circle => {
       circle.addEventListener('click', () => {
         const idx = parseInt(circle.dataset.index);
@@ -557,25 +620,27 @@
       });
     });
 
-    // 再生ボタンハンドラ
+    // Play button handler
     playButton.addEventListener('click', () => {
       playButton.classList.remove('visible');
       playVideo(currentIndex);
     });
 
-    // ローディング画面ハンドラ
+    // Loading screen handler
     window.addEventListener('load', () => {
       const loading = document.getElementById('loading');
+      const fadeIn = document.getElementById('fade-in');
       setTimeout(() => {
         loading.classList.add('hidden');
         setTimeout(() => {
           loading.style.display = 'none';
           playVideo(currentIndex);
+          fadeIn.classList.add('visible');
         }, 500);
       }, 1500);
     });
 
-    // ハンバーガーメニューハンドラ
+    // Hamburger menu handlers
     const hamburger = document.getElementById('hamburger');
     const sideMenu = document.getElementById('sideMenu');
     const closeMenu = document.getElementById('closeMenu');
