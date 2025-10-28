@@ -68,7 +68,7 @@
     /* Hamburger Menu */
     .hamburger-menu {
       position: absolute;
-      right: 20px;
+      right: 5px; /* 右端に寄せるため5pxに変更（以前は20px） */
       top: 10px;
       height: 60px;
       width: 60px;
@@ -85,7 +85,7 @@
     /* Language Switcher */
     .language-switcher {
       position: absolute;
-      right: 90px; /* 60px (hamburger width) + 30px gap */
+      right: 80px; /* ハンバーガー(60px + 5px) + 15pxの間隔 */
       top: 50%;
       transform: translateY(-50%);
       z-index: 25;
@@ -428,10 +428,10 @@
       .hamburger-menu {
         width: 50px;
         height: 50px;
-        right: 10px;
+        right: 5px; /* モバイルでも右端に寄せる（以前は10px） */
       }
       .language-switcher {
-        right: 70px; /* 50px (hamburger width) + 20px gap */
+        right: 70px; /* ハンバーガー(50px + 5px) + 15pxの間隔 */
         top: 50%;
         transform: translateY(-50%);
       }
