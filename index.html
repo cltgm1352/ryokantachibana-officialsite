@@ -183,6 +183,7 @@
       z-index: 10;
     }
 
+    /* デフォルト：枠だけ（未再生状態） */
     .circle {
       position: relative;
       width: 70px;
@@ -192,11 +193,18 @@
       justify-content: center;
       align-items: center;
       border-radius: 50%;
-      background: conic-gradient(#007bff 0deg, #007bff 360deg);
+      border: 2px solid #007bff;
+      background: none;
       transition: all 0.3s ease;
     }
 
-    /* 再生終了後：枠だけに見せる */
+    /* 再生中のみ青い進捗バーを表示 */
+    .circle.playing {
+      border: none;
+      background: conic-gradient(#007bff 0deg, #007bff 360deg);
+    }
+
+    /* 再生終了後も枠だけ */
     .circle.finished {
       background: none;
       border: 2px solid #007bff;
@@ -234,8 +242,6 @@
       cursor: pointer;
       text-decoration: none;
       z-index: 15;
-      transition: background-color 0.3s ease;
-      user-select: none;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -272,45 +278,6 @@
       display: block;
     }
 
-    .image-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 95vw;
-      max-width: 1400px;
-      margin: 20px 0;
-      position: relative;
-      background: #F3F0EC;
-    }
-
-    img#concept-image {
-      max-width: 90%;
-      height: auto;
-    }
-
-    .greeting-button {
-      text-align: center;
-      margin: 40px 0;
-    }
-
-    .greeting-link {
-      display: inline-block;
-      padding: 12px 24px;
-      font-size: 1.2em;
-      font-family: 'Yu Mincho', 'Hiragino Mincho Pro', serif;
-      color: #8B0000;
-      text-decoration: none;
-      border: 2px solid #8B0000;
-      border-radius: 8px;
-      background: #f9f4e9;
-      transition: background-color 0.3s, color 0.3s;
-    }
-
-    .greeting-link:hover {
-      background-color: #8B0000;
-      color: #f9f4e9;
-    }
-
     @media (max-width: 768px) {
       html, body {
         overflow-x: hidden;
@@ -330,12 +297,10 @@
 </head>
 <body>
 
-  <!-- Loading Screen -->
   <div id="loading">
     <img src="ryokantachibananewlogo.png" alt="旅館 橘ロゴ ローディング" />
   </div>
 
-  <!-- Header -->
   <header>
     <img src="ryokantachibananewlogo.png" alt="旅館 橘ロゴ" />
     <div class="language-switcher">
@@ -349,7 +314,6 @@
     </div>
   </header>
 
-  <!-- Side Menu -->
   <nav class="side-menu" id="sideMenu">
     <div class="close-button" id="closeMenu">
       <img src="ryokantatibanahanbagamenyubatu.png" alt="閉じる" />
@@ -364,7 +328,6 @@
     </ul>
   </nav>
 
-  <!-- Main -->
   <main>
     <div class="video-wrapper">
       <div class="circle-container">
@@ -383,18 +346,6 @@
       <video id="video1" src="ryokanvideo2-2.mp4" playsinline muted></video>
       <video id="video2" src="ryokanvideo3teisei.mp4" playsinline muted></video>
       <button class="play-button" id="play-button">再生</button>
-    </div>
-
-    <a href="https://www.airbnb.jp" target="_blank" class="reserve-button">
-      <img src="eablogo.png" alt="Airbnb Logo" /> 予約する
-    </a>
-
-    <div class="image-container">
-      <img id="concept-image" src="ryokantatibanakonsept.png" alt="Ryokan Tatibana Konsept">
-    </div>
-
-    <div class="greeting-button">
-      <a href="daihyoaisatu.html" class="greeting-link">代表挨拶</a>
     </div>
   </main>
 
@@ -438,21 +389,28 @@
         v.pause();
         v.currentTime = 0;
         v.classList.remove('active');
-        circles[i].classList.remove('active', 'finished');
-        circles[i].style.background = 'conic-gradient(#007bff 0deg, #007bff 360deg)';
+        circles[i].classList.remove('playing', 'finished');
+        circles[i].style.background = 'none';
+        circles[i].style.border = '2px solid #007bff'; // 非再生は枠だけ
       });
+
       currentIndex = index;
       const video = videos[index];
       const circle = circles[index];
+
       video.classList.add('active');
-      circle.classList.add('active');
+      circle.classList.add('playing');
+      circle.style.border = 'none';
+
       video.play().catch(() => playButton.classList.add('visible'));
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
       updateProgressBar(index);
 
       video.onended = () => {
-        circle.classList.add('finished'); // 再生終了 → 枠だけに
+        circle.classList.remove('playing');
+        circle.classList.add('finished');
         circle.style.background = 'none';
+        circle.style.border = '2px solid #007bff';
         playVideo((index + 1) % videos.length);
       };
     }
@@ -481,18 +439,6 @@
           playVideo(currentIndex);
         }, 500);
       }, 1500);
-    });
-
-    const hamburger = document.getElementById('hamburger');
-    const sideMenu = document.getElementById('sideMenu');
-    const closeMenu = document.getElementById('closeMenu');
-
-    hamburger.addEventListener('click', () => {
-      sideMenu.classList.add('open');
-    });
-
-    closeMenu.addEventListener('click', () => {
-      sideMenu.classList.remove('open');
     });
   </script>
 </body>
