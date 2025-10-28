@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ryokan Tachibana Official Website</title>
-  <meta name="description" content="This is the official website of Ryokan Tachibana" />
+  <title>旅館 橘 公式HP</title>
+  <meta name="description" content="旅館 橘の公式ホームページです">
   <!-- Favicon -->
   <link rel="icon" href="ryokantachibananewsitelogo.png" type="image/png" />
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap" rel="stylesheet">
   <style>
-    /* General Styles */
+    /* 一般的なスタイル */
     html, body {
       margin: 0;
       padding: 0;
@@ -22,7 +22,7 @@
       overflow-x: hidden;
     }
 
-    /* Loading Screen */
+    /* ローディング画面 */
     #loading {
       position: fixed;
       top: 0;
@@ -46,26 +46,27 @@
       user-select: none;
     }
 
-    /* Header */
+    /* ヘッダー */
     header {
       height: 80px;
       background-color: #F3F0EC;
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      z-index: 1000; /* Ensure header is above video */
+      z-index: 1000;
     }
     header img {
       height: 60px;
       object-fit: contain;
       user-select: none;
+      margin-left: 30px; /* 左マージンを20pxから30pxに増やして調整 */
     }
 
-    /* Hamburger Menu */
+    /* ハンバーガーメニュー */
     .hamburger-menu {
       position: absolute;
       right: 20px;
@@ -82,7 +83,7 @@
       pointer-events: none;
     }
 
-    /* Language Switcher */
+    /* 言語スイッチャー */
     .language-switcher {
       position: absolute;
       right: 90px;
@@ -101,7 +102,7 @@
       cursor: pointer;
     }
 
-    /* Side Menu */
+    /* サイドメニュー */
     .side-menu {
       position: fixed;
       top: 0;
@@ -150,20 +151,20 @@
       color: #b7282e;
     }
 
-    /* Main Content */
+    /* メインコンテンツ */
     main {
-      padding-top: 80px; /* Match header height */
+      padding-top: 80px;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
     }
 
-    /* Video Section */
+    /* ビデオセクション */
     .video-wrapper {
       position: relative;
       width: 100vw;
-      height: calc(100vh - 80px); /* Full height minus header */
+      height: calc(100vh - 80px);
       background-color: #000;
       overflow: hidden;
     }
@@ -171,7 +172,7 @@
       width: 100%;
       height: 100%;
       display: none;
-      object-fit: cover; /* Cover the area, may crop sides */
+      object-fit: cover;
       position: absolute;
       top: 0;
       left: 0;
@@ -263,7 +264,7 @@
       display: block;
     }
 
-    /* Image Section */
+    /* 画像セクション */
     .image-container {
       display: flex;
       flex-direction: column;
@@ -279,7 +280,7 @@
       height: auto;
     }
 
-    /* Greeting Button */
+    /* 代表挨拶ボタン */
     .greeting-button {
       text-align: center;
       margin: 40px 0;
@@ -301,69 +302,35 @@
       color: #f9f4e9;
     }
 
-    /* News Section */
-    #news {
+    /* お知らせセクション */
+    .notice-section {
+      background-color: #fdf8f4;
+      border-top: 2px solid #b7282e;
+      border-bottom: 2px solid #b7282e;
+      padding: 40px 20px;
       margin: 40px auto;
-      padding: 0 0 20px 0;
-      max-width: 700px;
-      font-family: 'Noto Serif JP', 'Kaisei Tokumin', serif;
-      color: #4B3B27;
+      width: 100%;
+      display: flex;
+      justify-content: center;
     }
-    #news h2 {
-      font-size: 2rem;
-      margin-bottom: 25px;
-      border-bottom: 3px solid #7B3F00;
-      padding-bottom: 10px;
-      color: #7B3F00;
+    .notice-container {
+      max-width: 800px;
       text-align: center;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
       font-family: 'Kaisei Tokumin', serif;
+      color: #3b2f2f;
     }
-    #news ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    .notice-title {
+      font-size: 28px;
+      color: #b7282e;
+      margin-bottom: 16px;
+      letter-spacing: 2px;
     }
-    #news li {
-      padding: 15px 0 15px 10px;
-      margin-bottom: 20px;
-      border-left: 4px solid #7B3F00;
-    }
-    #news .date {
-      display: block;
-      font-size: 0.9rem;
-      color: #9B8B75;
-      margin-bottom: 6px;
-      font-style: italic;
-    }
-    #news .title a {
-      font-size: 1.15rem;
-      color: #4B3B27;
-      font-weight: 600;
-      text-decoration: none;
-      position: relative;
-      padding-right: 18px;
-    }
-    #news .title a::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      right: 5px;
-      transform: translateY(-50%) rotate(45deg);
-      width: 8px;
-      height: 8px;
-      border-right: 2px solid #7B3F00;
-      border-bottom: 2px solid #7B3F00;
-    }
-    #news .title a:hover {
-      color: #A4511B;
-      text-decoration: underline;
-      cursor: pointer;
+    .notice-text {
+      font-size: 18px;
+      line-height: 1.8;
     }
 
-    /* Access Section */
+    /* アクセスセクション */
     .access-title {
       text-align: center;
       font-size: 32px;
@@ -374,7 +341,7 @@
       justify-content: center;
     }
 
-    /* Media Queries */
+    /* メディアクエリ */
     @media (max-width: 768px) {
       .circle {
         width: 60px;
@@ -415,107 +382,110 @@
         padding: 6px 10px;
         font-size: 14px;
       }
+      header img {
+        margin-left: 15px; /* モバイルでマージンを10pxから15pxに調整 */
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Loading Screen -->
+  <!-- ローディング画面 -->
   <div id="loading">
-    <img src="ryokantachibananewlogo.png" alt="Ryokan Tachibana Logo" />
+    <img src="ryokantachibananewlogo.png" alt="旅館 橘ロゴ" />
   </div>
 
-  <!-- Header -->
+  <!-- ヘッダー -->
   <header>
-    <img src="ryokantachibananewlogo.png" alt="Ryokan Tachibana Logo" />
+    <img src="ryokantachibananewlogo.png" alt="旅館 橘ロゴ" />
     <div class="language-switcher">
       <select id="language-select" onchange="changeLanguage()">
-        <option value="en" selected>English</option>
-        <option value="ja">Japanese</option>
+        <option value="ja" selected>Japanese</option>
+        <option value="en">English</option>
       </select>
     </div>
     <div class="hamburger-menu" id="hamburger">
-      <img src="ryokantatibanahanbagamenyu.png" alt="Menu" />
+      <img src="ryokantatibanahanbagamenyu.png" alt="メニュー" />
     </div>
   </header>
 
-  <!-- Side Menu -->
+  <!-- サイドメニュー -->
   <nav class="side-menu" id="sideMenu">
     <div class="close-button" id="closeMenu">
-      <img src="ryokantatibanahanbagamenyubatu.png" alt="Close" />
+      <img src="ryokantatibanahanbagamenyubatu.png" alt="閉じる" />
     </div>
     <ul>
-      <li><a href="en.html">Home</a></li>
-      <li><a href="https://www.airbnb.jp" target="_blank">Make a Reservation</a></li>
-      <li><a href="q&aen.html">Q&A</a></li>
-      <li><a href="newsen.html">News</a></li>
-      <li><a href="daihyouaisatuen.html">Message from the Owner</a></li>
-      <li><a href="uneien.html">Management List</a></li>
+      <li><a href="index.html">ホーム</a></li>
+      <li><a href="https://www.airbnb.jp" target="_blank">予約する</a></li>
+      <li><a href="q&a.html">Q&A</a></li>
+      <li><a href="news.html">NEWS</a></li>
+      <li><a href="daihyoaisatu.html">代表挨拶</a></li>
+      <li><a href="unei.html">運営一覧</a></li>
     </ul>
   </nav>
 
-  <!-- Main Content -->
+  <!-- メインコンテンツ -->
   <main>
     <div class="video-wrapper">
       <div class="circle-container">
         <div class="circle" data-index="0" id="circle0">
-          <div class="inner-circle"><img src="ryokanvideohidarigawa.png" alt="Video 1" /></div>
+          <div class="inner-circle"><img src="ryokanvideohidarigawa.png" alt="映像1" /></div>
         </div>
         <div class="circle" data-index="1" id="circle1">
-          <div class="inner-circle"><img src="ryokanvideologomannaka.png" alt="Video 2" /></div>
+          <div class="inner-circle"><img src="ryokanvideologomannaka.png" alt="映像2" /></div>
         </div>
         <div class="circle" data-index="2" id="circle2">
-          <div class="inner-circle"><img src="ryokantatibanavideo3.png" alt="Video 3" /></div>
+          <div class="inner-circle"><img src="ryokantatibanavideo3.png" alt="映像3" /></div>
         </div>
       </div>
       <video id="video0" src="ryokanvideo1-2.mp4" playsinline muted></video>
       <video id="video1" src="ryokanvideo2-2.mp4" playsinline muted></video>
       <video id="video2" src="ryokanvideo3teisei.mp4" playsinline muted></video>
-      <button class="play-button" id="play-button">Play</button>
+      <button class="play-button" id="play-button">再生</button>
       <a href="https://www.airbnb.jp" target="_blank" class="reserve-button">
-        <img src="eablogo.png" alt="Airbnb Logo" /> Make a Reservation
+        <img src="eablogo.png" alt="Airbnbロゴ" /> 予約する
       </a>
     </div>
 
     <div class="image-container">
-      <img id="concept-image" src="ryokantatibanakonsept English.png" alt="Ryokan Tachibana Concept">
+      <img id="concept-image" src="ryokantatibanakonsept.png" alt="旅館 橘コンセプト">
     </div>
 
-    <!-- Representative Greeting Button -->
+    <!-- 代表挨拶ボタン -->
     <div class="greeting-button">
-      <a href="daihyouaisatuen.html" class="greeting-link">Message from the President</a>
+      <a href="daihyoaisatu.html" class="greeting-link">代表挨拶</a>
     </div>
 
-    <!-- News Section -->
-    <div style="border: 2px solid #8B5E3C; background-color: #FFF8F0; padding: 16px; max-width: 400px; font-family: 'Georgia', 'Serif', serif;">
-      <h2 style="border-bottom: 1px solid #8B5E3C; color: #4B2E1E;">News</h2>
+    <!-- お知らせセクション -->
+    <div style="border: 2px solid #8B5E3C; background-color: #FFF8F0; padding: 16px; max-width: 400px; font-family: 'Hiragino Mincho ProN', 'Serif', serif;">
+      <h2 style="border-bottom: 1px solid #8B5E3C; color: #4B2E1E;">お知らせ</h2>
       <ul style="list-style-type: none; padding-left: 0; margin-top: 12px;">
         <li style="margin-bottom: 10px;">
           <a href="news2.html" style="text-decoration: none; color: #3B2B2A;">
-            About Site Creation (October 6, 2025)
+            サイト作成について（2025年10月6日）
           </a>
         </li>
         <li>
           <a href="news1.html" style="text-decoration: none; color: #3B2B2A;">
-            Site Under Construction (October 3, 2025)
+            サイト作成中（2025年10月3日）
           </a>
         </li>
       </ul>
       <div style="text-align: right; margin-top: 10px;">
-        <a href="newsen.html" style="text-decoration: none; color: #8B5E3C; font-weight: bold;">
-          ▶ More News
+        <a href="news.html" style="text-decoration: none; color: #8B5E3C; font-weight: bold;">
+          ▶ もっと見る
         </a>
       </div>
     </div>
 
-    <!-- Access Section -->
-    <h2 class="access-title">Access</h2>
+    <!-- アクセスセクション -->
+    <h2 class="access-title">アクセス</h2>
     <div class="map-container">
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3389.2416573317464!2d137.76678537575899!3d35.0587594639167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601b15672391fe09%3A0x12ec99034eb31553!2z44CSNDMxLTM5MDYg6Z2Z5bKh55yM5rWc5p2-5biC5aSp56uc5Yy65L2Q5LmF6ZaT55S65rWm5bed77yT77yU77yZ77yZ!5e1!3m2!1sja!2sjp!4v1759370062235!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </main>
 
   <script>
-    // Language Switcher
+    // 言語スイッチャー
     function changeLanguage() {
       const select = document.getElementById('language-select');
       if (select.value === 'en') {
@@ -525,7 +495,7 @@
       }
     }
 
-    // Video Handling
+    // ビデオ処理
     const videos = [
       document.getElementById('video0'),
       document.getElementById('video1'),
@@ -540,7 +510,7 @@
     let currentIndex = 0;
     let animationFrameId = null;
 
-    // Update progress bar for the current video
+    // 現在のビデオのプログレスバーを更新
     function updateProgressBar(index) {
       const video = videos[index];
       const circle = circles[index];
@@ -556,7 +526,7 @@
       }
     }
 
-    // Play selected video
+    // 選択したビデオを再生
     function playVideo(index) {
       videos.forEach((v, i) => {
         v.pause();
@@ -576,7 +546,7 @@
       video.onended = () => playVideo((index + 1) % videos.length);
     }
 
-    // Circle click handlers
+    // サークルクリックハンドラ
     circles.forEach(circle => {
       circle.addEventListener('click', () => {
         const idx = parseInt(circle.dataset.index);
@@ -587,13 +557,13 @@
       });
     });
 
-    // Play button handler
+    // 再生ボタンハンドラ
     playButton.addEventListener('click', () => {
       playButton.classList.remove('visible');
       playVideo(currentIndex);
     });
 
-    // Loading screen handler
+    // ローディング画面ハンドラ
     window.addEventListener('load', () => {
       const loading = document.getElementById('loading');
       setTimeout(() => {
@@ -605,7 +575,7 @@
       }, 1500);
     });
 
-    // Hamburger menu handlers
+    // ハンバーガーメニューハンドラ
     const hamburger = document.getElementById('hamburger');
     const sideMenu = document.getElementById('sideMenu');
     const closeMenu = document.getElementById('closeMenu');
