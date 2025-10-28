@@ -57,24 +57,23 @@
       top: 0;
       left: 0;
       right: 0;
-      z-index: 1000;
+      z-index: 20;
     }
     header img {
       height: 60px;
       object-fit: contain;
       user-select: none;
-      margin-left: -150px;
     }
 
     /* Hamburger Menu */
     .hamburger-menu {
       position: absolute;
-      right: 10px;
+      right: 20px;
       top: 10px;
       height: 60px;
       width: 60px;
       cursor: pointer;
-      z-index: 1001;
+      z-index: 25;
     }
     .hamburger-menu img {
       width: 100%;
@@ -86,10 +85,10 @@
     /* Language Switcher */
     .language-switcher {
       position: absolute;
-      right: 120px; /* 100pxから120pxに変更してさらに左に */
+      right: 90px; /* 60px (hamburger width) + 30px gap */
       top: 50%;
       transform: translateY(-50%);
-      z-index: 1001;
+      z-index: 25;
     }
     .language-switcher select {
       padding: 8px 12px;
@@ -111,7 +110,7 @@
       height: 100%;
       background-color: #fff;
       box-shadow: -2px 0 5px rgba(0,0,0,0.3);
-      z-index: 1000;
+      z-index: 30;
       transition: right 0.3s ease;
       font-family: 'Kaisei Tokumin', serif;
       padding-top: 60px;
@@ -153,7 +152,7 @@
 
     /* Main Content */
     main {
-      padding-top: 80px;
+      padding-top: 100px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -163,9 +162,11 @@
     /* Video Section */
     .video-wrapper {
       position: relative;
-      width: 100vw;
-      height: calc(100vh - 80px);
+      width: 95vw;
+      max-width: 1400px;
+      aspect-ratio: 16 / 9;
       background-color: #000;
+      border-radius: 12px;
       overflow: hidden;
     }
     video {
@@ -173,9 +174,6 @@
       height: 100%;
       display: none;
       object-fit: cover;
-      position: absolute;
-      top: 0;
-      left: 0;
     }
     video.active {
       display: block;
@@ -198,11 +196,11 @@
       justify-content: center;
       align-items: center;
       border-radius: 50%;
-      background: conic-gradient(#4682B4 0deg, #555 0deg 360deg);
+      background: conic-gradient(#555 0deg, #555 360deg);
     }
     .inner-circle {
-      width: 65px;
-      height: 65px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
       background-color: #444;
       overflow: hidden;
@@ -375,6 +373,31 @@
       justify-content: center;
     }
 
+    /* Fade-in Image */
+    .fade-in {
+      opacity: 0;
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 300px;
+      border: 5px solid #bfa07a;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: opacity 2s ease-in;
+      z-index: 10;
+      background-color: white;
+    }
+    .fade-in.visible {
+      opacity: 1;
+    }
+    .caption {
+      text-align: center;
+      padding: 5px;
+      font-size: 16px;
+      background-color: #fff5e1;
+      border-top: 1px solid #ccc;
+      font-weight: bold;
+    }
+
     /* Media Queries */
     @media (max-width: 768px) {
       .circle {
@@ -382,8 +405,8 @@
         height: 60px;
       }
       .inner-circle {
-        width: 55px;
-        height: 55px;
+        width: 50px;
+        height: 50px;
       }
       .reserve-button {
         font-size: 1rem;
@@ -405,10 +428,10 @@
       .hamburger-menu {
         width: 50px;
         height: 50px;
-        right: 5px;
+        right: 10px;
       }
       .language-switcher {
-        right: 90px; /* 80pxから90pxに変更してさらに左に */
+        right: 70px; /* 50px (hamburger width) + 20px gap */
         top: 50%;
         transform: translateY(-50%);
       }
@@ -416,8 +439,8 @@
         padding: 6px 10px;
         font-size: 14px;
       }
-      header img {
-        margin-left: -75px;
+      .fade-in {
+        width: 200px;
       }
     }
   </style>
@@ -516,6 +539,12 @@
     <div class="map-container">
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3389.2416573317464!2d137.76678537575899!3d35.0587594639167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601b15672391fe09%3A0x12ec99034eb31553!2z44CSNDMxLTM5MDYg6Z2Z5bKh55yM5rWc5p2-5biC5aSp56uc5Yy65L2Q5LmF6ZaT55S65rWm5bed77yT77yU77yZ77yZ!5e1!3m2!1sja!2sjp!4v1759370062235!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
+
+    <!-- Fade-in Image -->
+    <div class="fade-in" id="fade-in">
+      <img src="ryokantachibana.png" alt="Ryokan Tachibana" />
+      <div class="caption">Welcome to Ryokan Tachibana</div>
+    </div>
   </main>
 
   <script>
@@ -554,7 +583,7 @@
       }
       const progress = (video.currentTime / video.duration) || 0;
       const degrees = progress * 360;
-      circle.style.background = `conic-gradient(#4682B4 ${degrees}deg, #555 ${degrees}deg 360deg)`;
+      circle.style.background = `conic-gradient(red ${degrees}deg, #555 ${degrees}deg 360deg)`;
       if (!video.paused && !video.ended) {
         animationFrameId = requestAnimationFrame(() => updateProgressBar(index));
       }
@@ -600,11 +629,13 @@
     // Loading screen handler
     window.addEventListener('load', () => {
       const loading = document.getElementById('loading');
+      const fadeIn = document.getElementById('fade-in');
       setTimeout(() => {
         loading.classList.add('hidden');
         setTimeout(() => {
           loading.style.display = 'none';
           playVideo(currentIndex);
+          fadeIn.classList.add('visible');
         }, 500);
       }, 1500);
     });
