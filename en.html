@@ -95,7 +95,6 @@
     }
     .language-switcher select {
       padding: 8px 12px;
-      file:///C:/Users/user/AppData/Local/Temp/Rar$EXb0.071/en.html
       font-size: 16px;
       font-family: 'Noto Serif JP', serif;
       background-color: #3b2f2f;
@@ -199,15 +198,16 @@
       justify-content: center;
       align-items: center;
       border-radius: 50%;
-      border: 3px solid #555; /* 非再生時の再生バーは灰色の枠 */
-      background: transparent; /* 非再生時は背景なし */
+      border: 3px solid #555; /* 非再生時は灰色の枠 */
+      background: transparent;
+      box-sizing: border-box;
     }
     .circle.active {
-      border: 3px solid #4682B4; /* 再生中の再生バーは青い枠（3px） */
-      background: conic-gradient(#4682B4 0deg, #555 360deg); /* 再生中はプログレスバー */
+      border: 3px solid #4682B4;
+      background: conic-gradient(#4682B4 0deg, #555 360deg);
     }
     .inner-circle {
-      width: 54px; /* 画像と再生バーの間に空白（約6px） */
+      width: 54px;
       height: 54px;
       border-radius: 50%;
       background-color: #444;
@@ -255,7 +255,6 @@
       transform: translate(-50%, -50%);
       padding: 12px 24px;
       background-color: rgba(0, 0, 0, 0.7);
-      figcaption: Play button for video
       color: #fff;
       font-size: 1.2rem;
       border: none;
@@ -293,15 +292,15 @@
       display: inline-block;
       animation: glowAndScale 1s ease-out forwards;
     }
-    .tachibana-text span:nth-child(1) { animation-delay: 0.1s; } /* T */
-    .tachibana-text span:nth-child(2) { animation-delay: 0.2s; } /* A */
-    .tachibana-text span:nth-child(3) { animation-delay: 0.3s; } /* C */
-    .tachibana-text span:nth-child(4) { animation-delay: 0.4s; } /* H */
-    .tachibana-text span:nth-child(5) { animation-delay: 0.5s; } /* I */
-    .tachibana-text span:nth-child(6) { animation-delay: 0.6s; } /* B */
-    .tachibana-text span:nth-child(7) { animation-delay: 0.7s; } /* A */
-    .tachibana-text span:nth-child(8) { animation-delay: 0.8s; } /* N */
-    .tachibana-text span:nth-child(9) { animation-delay: 0.9s; } /* A */
+    .tachibana-text span:nth-child(1) { animation-delay: 0.1s; }
+    .tachibana-text span:nth-child(2) { animation-delay: 0.2s; }
+    .tachibana-text span:nth-child(3) { animation-delay: 0.3s; }
+    .tachibana-text span:nth-child(4) { animation-delay: 0.4s; }
+    .tachibana-text span:nth-child(5) { animation-delay: 0.5s; }
+    .tachibana-text span:nth-child(6) { animation-delay: 0.6s; }
+    .tachibana-text span:nth-child(7) { animation-delay: 0.7s; }
+    .tachibana-text span:nth-child(8) { animation-delay: 0.8s; }
+    .tachibana-text span:nth-child(9) { animation-delay: 0.9s; }
     @keyframes glowAndScale {
       0% {
         opacity: 0;
@@ -318,132 +317,6 @@
       }
     }
 
-    /* Image Section */
-    .image-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 95vw;
-      max-width: 1400px;
-      margin: 20px 0;
-      position: relative;
-      background: #F3F0EC;
-    }
-    img#concept-image {
-      max-width: 90%;
-      height: auto;
-    }
-
-    /* Greeting Button */
-    .greeting-button {
-      text-align: center;
-      margin: 40px 0;
-    }
-    .greeting-link {
-      display: inline-block;
-      padding: 12px 24px;
-      font-size: 1.2em;
-      font-family: 'Yu Mincho', 'Hiragino Mincho Pro', serif;
-      color: #8B0000;
-      text-decoration: none;
-      border: 2px solid #8B0000;
-      border-radius: 8px;
-      background: #f9f4e9;
-      transition: background-color 0.3s, color 0.3s;
-    }
-    .greeting-link:hover {
-      background-color: #8B0000;
-      color: #f9f4e9;
-    }
-
-    /* News Section */
-    #news {
-      margin: 40px auto;
-      padding: 0 0 20px 0;
-      max-width: 700px;
-      font-family: 'Noto Serif JP', 'Kaisei Tokumin', serif;
-      color: #4B3B27;
-    }
-    #news h2 {
-      font-size: 2rem;
-      margin-bottom: 25px;
-      border-bottom: 3px solid #7B3F00;
-      padding-bottom: 10px;
-      color: #7B3F00;
-      text-align: center;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      font-family: 'Kaisei Tokumin', serif;
-    }
-    #news ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    #news li {
-      padding: 15px 0 15px 10px;
-      margin-bottom: 20px;
-      border-left: 4px solid #7B3F00;
-    }
-    #news .date {
-      display: block;
-      font-size: 0.9rem;
-      color: #9B8B75;
-      margin-bottom: 6px;
-      font-style: italic;
-    }
-    #news .title a {
-      font-size: 1.15rem;
-      color: #4B3B27;
-      font-weight: 600;
-      text-decoration: none;
-      position: relative;
-      padding-right: 18px;
-    }
-    #news .title a::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      right: 5px;
-      transform: translateY(-50%) rotate(45deg);
-      width: 8px;
-      height: 8px;
-      border-right: 2px solid #7B3F00;
-      border-bottom: 2px solid #7B3F00;
-    }
-    #news .title a:hover {
-      color: #A4511B;
-      text-decoration: underline;
-      cursor: pointer;
-    }
-
-    /* Access Section */
-    .access-title {
-      text-align: center;
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
-    .map-container {
-      display: flex;
-      justify-content: center;
-    }
-
-    /* Responsive Iframe */
-    .responsive-iframe {
-      position: relative;
-      width: 100%;
-      max-width: 600px;
-      height: 0;
-      padding-bottom: 75%;
-    }
-    .responsive-iframe iframe {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
     /* Media Queries */
     @media (max-width: 768px) {
       main {
@@ -458,7 +331,7 @@
         height: 56px;
       }
       .inner-circle {
-        width: 46px; /* モバイルでも空白を維持（約5px） */
+        width: 46px;
         height: 46px;
       }
       .reserve-button {
@@ -475,26 +348,6 @@
       .tachibana-text {
         bottom: 80px;
         font-size: 2.5rem;
-      }
-      .image-container {
-        width: 90vw;
-      }
-      img#concept-image {
-        max-width: 85%;
-      }
-      .hamburger-menu {
-        width: 50px;
-        height: 50px;
-        right: 5px;
-      }
-      .language-switcher {
-        right: 70px;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-      .language-switcher select {
-        padding: 6px 10px;
-        font-size: 14px;
       }
     }
   </style>
@@ -560,19 +413,18 @@
       </a>
     </div>
 
+    <!-- 以下省略（変更なし） -->
     <div class="image-container">
       <img id="concept-image" src="ryokantatibanakonsept English.png" alt="Ryokan Tachibana Concept" draggable="false" oncontextmenu="return false;" />
     </div>
 
-    <!-- Representative Greeting Button -->
     <div class="greeting-button">
       <a href="daihyouaisatuen.html" class="greeting-link">Message from the President</a>
     </div>
 
-    <!-- News Section -->
     <div style="border: 2px solid #8B5E3C; background-color: #FFF8F0; padding: 16px; max-width: 400px; font-family: 'Georgia', 'Serif', serif;">
       <h2 style="border-bottom: 1px solid #8B5E3C; color: #4B2E1E;">News</h2>
-      <ul style="list-style-type: none; padding-left: 0; margin-top: 12px;">
+      <ul style="list-style-type: none; padding-left: 0; margin-top: 12px()">
         <li style="margin-bottom: 10px;">
           <a href="news2.html" style="text-decoration: none; color: #3B2B2A;">
             About Site Creation (October 6, 2025)
@@ -591,7 +443,6 @@
       </div>
     </div>
 
-    <!-- Access Section -->
     <h2 class="access-title">Access</h2>
     <div class="responsive-iframe">
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3389.2416573317464!2d137.76678537575899!3d35.0587594639167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601b15672391fe09%3A0x12ec99034eb31553!2z44CSNDMxLTM5MDYg6Z2Z5bKh55yM5rWc5p2-5biC5aSp56uc5Yy65L2Q5LmF6ZaT55S65rWm5bed77yT77yU77yZ77yZ!5e1!3m2!1sja!2sjp!4v1759370062235!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
