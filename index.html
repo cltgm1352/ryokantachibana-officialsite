@@ -23,10 +23,10 @@
       overflow-x: hidden;
     }
 
-    /* Disable Image Selection and Interaction */
-    img {
-      user-select: none; /* 画像の選択を防止 */
-      pointer-events: none; /* 画像のクリックやドラッグを無効化 */
+    /* Disable Image and Video Selection and Interaction */
+    img, video {
+      user-select: none; /* 選択を防止 */
+      pointer-events: none; /* クリックやドラッグを無効化 */
     }
 
     /* Loading Screen */
@@ -531,9 +531,9 @@
           <div class="inner-circle"><img src="ryokantatibanavideo3.png" alt="映像3" draggable="false" oncontextmenu="return false;" /></div>
         </div>
       </div>
-      <video id="video0" src="ryokanvideo1-2.mp4" playsinline muted></video>
-      <video id="video1" src="ryokanvideo2-2.mp4" playsinline muted></video>
-      <video id="video2" src="ryokanvideo3teisei.mp4" playsinline muted></video>
+      <video id="video0" src="ryokanvideo1-2.mp4" playsinline muted oncontextmenu="return false;"></video>
+      <video id="video1" src="ryokanvideo2-2.mp4" playsinline muted oncontextmenu="return false;"></video>
+      <video id="video2" src="ryokanvideo3teisei.mp4" playsinline muted oncontextmenu="return false;"></video>
       <button class="play-button" id="play-button">再生</button>
       <div class="tatibana-text">
         <span>T</span><span>A</span><span>T</span><span>I</span><span>B</span><span>A</span><span>N</span><span>A</span>
@@ -582,9 +582,9 @@
   </main>
 
   <script>
-    // Disable right-click on images
+    // Disable right-click on images and videos
     document.addEventListener('contextmenu', (e) => {
-      if (e.target.tagName === 'IMG') {
+      if (e.target.tagName === 'IMG' || e.target.tagName === 'VIDEO') {
         e.preventDefault();
       }
     });
