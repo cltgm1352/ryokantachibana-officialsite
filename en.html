@@ -198,11 +198,15 @@
       justify-content: center;
       align-items: center;
       border-radius: 50%;
-      background: conic-gradient(#003087 0deg, #555 360deg); /* 濃い青に変更 */
+      border: 3px solid #4682B4; /* 枠のみ表示 */
+      background: transparent; /* 非再生時は背景なし */
+    }
+    .circle.active {
+      background: conic-gradient(#4682B4 0deg, #555 360deg); /* 再生中はプログレスバー表示 */
     }
     .inner-circle {
-      width: 60px;
-      height: 60px;
+      width: 54px; /* 画像と枠の間に空白を作るため縮小 */
+      height: 54px;
       border-radius: 50%;
       background-color: #444;
       overflow: hidden;
@@ -451,8 +455,8 @@
         height: 56px;
       }
       .inner-circle {
-        width: 50px;
-        height: 50px;
+        width: 46px; /* モバイルでも空白を維持 */
+        height: 46px;
       }
       .reserve-button {
         font-size: 1rem;
@@ -626,7 +630,8 @@
 
     // Initialize circles
     circles.forEach(circle => {
-      circle.style.background = 'conic-gradient(#003087 0deg, #555 360deg)';
+      circle.style.background = 'transparent';
+      circle.style.border = '3px solid #4682B4';
     });
 
     // Update progress bar for the current video
@@ -634,12 +639,14 @@
       const video = videos[index];
       const circle = circles[index];
       if (!video.duration || video.paused || video.ended) {
-        circle.style.background = 'conic-gradient(#003087 0deg, #555 360deg)';
+        circle.style.background = 'transparent';
+        circle.style.border = '3px solid #4682B4';
         return;
       }
       const progress = (video.currentTime / video.duration) || 0;
       const degrees = progress * 360;
-      circle.style.background = `conic-gradient(#003087 ${degrees}deg, #555 ${degrees}deg 360deg)`; /* 濃い青に変更 */
+      circle.style.background = `conic-gradient(#4682B4 ${degrees}deg, #555 ${degrees}deg 360deg)`;
+      circle.style.border = 'none'; /* 再生中は枠を非表示 */
       animationFrameId = requestAnimationFrame(() => updateProgressBar(index));
     }
 
@@ -650,7 +657,8 @@
         v.currentTime = 0;
         v.classList.remove('active');
         circles[i].classList.remove('active');
-        circles[i].style.background = 'conic-gradient(#003087 0deg, #555 360deg)';
+        circles[i].style.background = 'transparent';
+        circles[i].style.border = '3px solid #4682B4';
       });
       currentIndex = index;
       const video = videos[index];
