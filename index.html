@@ -198,7 +198,7 @@
       justify-content: center;
       align-items: center;
       border-radius: 50%;
-      background: con viven-gradient(#555 0deg, #555 360deg);
+      background: conic-gradient(#003087 0deg, #555 360deg); /* 濃い青に変更 */
     }
     .inner-circle {
       width: 60px;
@@ -275,7 +275,11 @@
       font-size: 3rem;
       color: #fff;
       user-select: none;
-      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .tachibana-text.active {
+      opacity: 1;
     }
     .tachibana-text span {
       opacity: 0;
@@ -622,7 +626,7 @@
 
     // Initialize circles
     circles.forEach(circle => {
-      circle.style.background = 'conic-gradient(#555 0deg, #555 360deg)';
+      circle.style.background = 'conic-gradient(#003087 0deg, #555 360deg)';
     });
 
     // Update progress bar for the current video
@@ -630,12 +634,12 @@
       const video = videos[index];
       const circle = circles[index];
       if (!video.duration || video.paused || video.ended) {
-        circle.style.background = 'conic-gradient(#555 0deg, #555 360deg)';
+        circle.style.background = 'conic-gradient(#003087 0deg, #555 360deg)';
         return;
       }
       const progress = (video.currentTime / video.duration) || 0;
       const degrees = progress * 360;
-      circle.style.background = `conic-gradient(#4682B4 ${degrees}deg, #555 ${degrees}deg 360deg)`;
+      circle.style.background = `conic-gradient(#003087 ${degrees}deg, #555 ${degrees}deg 360deg)`; /* 濃い青に変更 */
       animationFrameId = requestAnimationFrame(() => updateProgressBar(index));
     }
 
@@ -646,7 +650,7 @@
         v.currentTime = 0;
         v.classList.remove('active');
         circles[i].classList.remove('active');
-        circles[i].style.background = 'conic-gradient(#555 0deg, #555 360deg)';
+        circles[i].style.background = 'conic-gradient(#003087 0deg, #555 360deg)';
       });
       currentIndex = index;
       const video = videos[index];
@@ -691,7 +695,8 @@
           loading.style.display = 'none';
           playVideo(currentIndex);
           setTimeout(() => {
-            tachibanaText.style.visibility = 'visible';
+            console.log('TACHIBANA animation triggered');
+            tachibanaText.classList.add('active');
           }, 2000);
         }, 500);
       }, 1500);
