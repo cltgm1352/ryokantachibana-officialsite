@@ -10,6 +10,7 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
   <style>
     /* General Styles */
     html, body {
@@ -20,6 +21,12 @@
       color: #333;
       height: 100%;
       overflow-x: hidden;
+    }
+
+    /* Disable Image and Video Selection and Interaction */
+    img, video {
+      user-select: none; /* 選択を防止 */
+      pointer-events: none; /* クリックやドラッグを無効化 */
     }
 
     /* Loading Screen */
@@ -43,7 +50,6 @@
     #loading img {
       width: 150px;
       height: auto;
-      user-select: none;
     }
 
     /* Header */
@@ -62,7 +68,6 @@
     header img {
       height: 60px;
       object-fit: contain;
-      user-select: none;
     }
 
     /* Hamburger Menu */
@@ -78,8 +83,6 @@
     .hamburger-menu img {
       width: 100%;
       height: auto;
-      user-select: none;
-      pointer-events: none;
     }
 
     /* Language Switcher */
@@ -129,7 +132,6 @@
     .side-menu .close-button img {
       width: 100%;
       height: auto;
-      pointer-events: none;
     }
     .side-menu ul {
       list-style: none;
@@ -211,7 +213,6 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      pointer-events: none;
     }
     .reserve-button {
       position: absolute;
@@ -240,7 +241,6 @@
     .reserve-button img {
       width: 24px;
       height: auto;
-      pointer-events: none;
     }
     .play-button {
       position: absolute;
@@ -260,6 +260,45 @@
     }
     .play-button.visible {
       display: block;
+    }
+
+    /* TATIBANA Text */
+    .tatibana-text {
+      position: absolute;
+      bottom: 90px; /* 予約ボタンの上にスペースを設ける */
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      z-index: 15;
+      font-family: 'Archivo Black', sans-serif;
+      font-weight: 900; /* 太字 */
+      font-size: 3rem; /* さらに大きな文字 */
+      color: #fff;
+      user-select: none;
+      visibility: hidden; /* 初期状態で非表示 */
+    }
+    .tatibana-text span {
+      opacity: 0;
+      display: inline-block;
+      animation: fadeInUp 0.5s ease forwards;
+    }
+    .tatibana-text span:nth-child(1) { animation-delay: 0.1s; } /* T */
+    .tatibana-text span:nth-child(2) { animation-delay: 0.2s; } /* A */
+    .tatibana-text span:nth-child(3) { animation-delay: 0.3s; } /* T */
+    .tatibana-text span:nth-child(4) { animation-delay: 0.4s; } /* I */
+    .tatibana-text span:nth-child(5) { animation-delay: 0.5s; } /* B */
+    .tatibana-text span:nth-child(6) { animation-delay: 0.6s; } /* A */
+    .tatibana-text span:nth-child(7) { animation-delay: 0.7s; } /* N */
+    .tatibana-text span:nth-child(8) { animation-delay: 0.8s; } /* A */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px); /* 下からスタート */
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0); /* 元の位置へ */
+      }
     }
 
     /* Image Section */
@@ -373,10 +412,25 @@
       justify-content: center;
     }
 
+    /* Responsive Iframe */
+    .responsive-iframe {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      height: 0;
+      padding-bottom: 75%;
+    }
+    .responsive-iframe iframe {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
     /* Media Queries */
     @media (max-width: 768px) {
       main {
-        padding-top: 80px; /* モバイルでもヘッダー高さを考慮 */
+        padding-top: 80px;
       }
       .video-wrapper {
         width: 100vw;
@@ -400,6 +454,10 @@
       .play-button {
         font-size: 1rem;
         padding: 8px 16px;
+      }
+      .tatibana-text {
+        bottom: 80px; /* モバイルでもスペースを確保 */
+        font-size: 2.5rem; /* モバイルでさらに大きく */
       }
       .image-container {
         width: 90vw;
@@ -427,12 +485,12 @@
 <body>
   <!-- Loading Screen -->
   <div id="loading">
-    <img src="ryokantachibananewlogo.png" alt="Ryokan Tachibana Logo" />
+    <img src="ryokantachibananewlogo.png" alt="Ryokan Tachibana Logo" draggable="false" oncontextmenu="return false;" />
   </div>
 
   <!-- Header -->
   <header>
-    <img src="ryokantachibananewlogo.png" alt="Ryokan Tachibana Logo" />
+    <img src="ryokantachibananewlogo.png" alt="Ryokan Tachibana Logo" draggable="false" oncontextmenu="return false;" />
     <div class="language-switcher">
       <select id="language-select" onchange="changeLanguage()">
         <option value="en" selected>English</option>
@@ -440,14 +498,14 @@
       </select>
     </div>
     <div class="hamburger-menu" id="hamburger">
-      <img src="ryokantatibanahanbagamenyu.png" alt="Menu" />
+      <img src="ryokantatibanahanbagamenyu.png" alt="Menu" draggable="false" oncontextmenu="return false;" />
     </div>
   </header>
 
   <!-- Side Menu -->
   <nav class="side-menu" id="sideMenu">
     <div class="close-button" id="closeMenu">
-      <img src="ryokantatibanahanbagamenyubatu.png" alt="Close" />
+      <img src="ryokantatibanahanbagamenyubatu.png" alt="Close" draggable="false" oncontextmenu="return false;" />
     </div>
     <ul>
       <li><a href="en.html">Home</a></li>
@@ -464,26 +522,29 @@
     <div class="video-wrapper">
       <div class="circle-container">
         <div class="circle" data-index="0" id="circle0">
-          <div class="inner-circle"><img src="ryokanvideohidarigawa.png" alt="Video 1" /></div>
+          <div class="inner-circle"><img src="ryokanvideohidarigawa.png" alt="Video 1" draggable="false" oncontextmenu="return false;" /></div>
         </div>
         <div class="circle" data-index="1" id="circle1">
-          <div class="inner-circle"><img src="ryokanvideologomannaka.png" alt="Video 2" /></div>
+          <div class="inner-circle"><img src="ryokanvideologomannaka.png" alt="Video 2" draggable="false" oncontextmenu="return false;" /></div>
         </div>
         <div class="circle" data-index="2" id="circle2">
-          <div class="inner-circle"><img src="ryokantatibanavideo3.png" alt="Video 3" /></div>
+          <div class="inner-circle"><img src="ryokantatibanavideo3.png" alt="Video 3" draggable="false" oncontextmenu="return false;" /></div>
         </div>
       </div>
-      <video id="video0" src="ryokanvideo1-2.mp4" playsinline muted></video>
-      <video id="video1" src="ryokanvideo2-2.mp4" playsinline muted></video>
-      <video id="video2" src="ryokanvideo3teisei.mp4" playsinline muted></video>
+      <video id="video0" src="ryokanvideo1-2.mp4" playsinline muted oncontextmenu="return false;"></video>
+      <video id="video1" src="ryokanvideo2-2.mp4" playsinline muted oncontextmenu="return false;"></video>
+      <video id="video2" src="ryokanvideo3teisei.mp4" playsinline muted oncontextmenu="return false;"></video>
       <button class="play-button" id="play-button">Play</button>
+      <div class="tatibana-text">
+        <span>T</span><span>A</span><span>T</span><span>I</span><span>B</span><span>A</span><span>N</span><span>A</span>
+      </div>
       <a href="https://www.airbnb.jp" target="_blank" class="reserve-button">
-        <img src="eablogo.png" alt="Airbnb Logo" /> Make a Reservation
+        <img src="eablogo.png" alt="Airbnb Logo" draggable="false" oncontextmenu="return false;" /> Make a Reservation
       </a>
     </div>
 
     <div class="image-container">
-      <img id="concept-image" src="ryokantatibanakonsept English.png" alt="Ryokan Tachibana Concept">
+      <img id="concept-image" src="ryokantatibanakonsept English.png" alt="Ryokan Tachibana Concept" draggable="false" oncontextmenu="return false;" />
     </div>
 
     <!-- Representative Greeting Button -->
@@ -515,12 +576,19 @@
 
     <!-- Access Section -->
     <h2 class="access-title">Access</h2>
-    <div class="map-container">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3389.2416573317464!2d137.76678537575899!3d35.0587594639167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601b15672391fe09%3A0x12ec99034eb31553!2z44CSNDMxLTM5MDYg6Z2Z5bKh55yM5rWc5p2-5biC5aSp56uc5Yy65L2Q5LmF6ZaT55S65rWm5bed77yT77yU77yZ77yZ!5e1!3m2!1sja!2sjp!4v1759370062235!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="responsive-iframe">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3389.2416573317464!2d137.76678537575899!3d35.0587594639167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601b15672391fe09%3A0x12ec99034eb31553!2z44CSNDMxLTM5MDYg6Z2Z5bKh55yM5rWc5p2-5biC5aSp56uc5Yy65L2Q5LmF6ZaT55S65rWm5bed77yT77yU77yZ77yZ!5e1!3m2!1sja!2sjp!4v1759370062235!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </main>
 
   <script>
+    // Disable right-click on images and videos
+    document.addEventListener('contextmenu', (e) => {
+      if (e.target.tagName === 'IMG' || e.target.tagName === 'VIDEO') {
+        e.preventDefault();
+      }
+    });
+
     // Language Switcher
     function changeLanguage() {
       const select = document.getElementById('language-select');
@@ -607,14 +675,19 @@
       playVideo(currentIndex);
     });
 
-    // Loading screen handler
+    // Loading screen and TATIBANA text handler
     window.addEventListener('load', () => {
       const loading = document.getElementById('loading');
+      const tatibanaText = document.querySelector('.tatibana-text');
       setTimeout(() => {
         loading.classList.add('hidden');
         setTimeout(() => {
           loading.style.display = 'none';
           playVideo(currentIndex);
+          // 2秒後にTATIBANAテキストを表示
+          setTimeout(() => {
+            tatibanaText.style.visibility = 'visible';
+          }, 2000);
         }, 500);
       }, 1500);
     });
