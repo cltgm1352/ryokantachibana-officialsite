@@ -262,6 +262,45 @@
       display: block;
     }
 
+    /* TATIBANA Text */
+    .tatibana-text {
+      position: absolute;
+      bottom: 70px; /* 予約ボタンの上に配置 */
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      z-index: 15;
+      font-family: 'Kaisei Tokumin', serif;
+      font-weight: 500; /* やや太め */
+      font-size: 1.5rem;
+      color: #fff;
+      user-select: none;
+      visibility: hidden; /* 初期状態で非表示 */
+    }
+    .tatibana-text span {
+      opacity: 0;
+      display: inline-block;
+      animation: fadeInUp 0.5s ease forwards;
+    }
+    .tatibana-text span:nth-child(1) { animation-delay: 0.1s; }
+    .tatibana-text span:nth-child(2) { animation-delay: 0.2s; }
+    .tatibana-text span:nth-child(3) { animation-delay: 0.3s; }
+    .tatibana-text span:nth-child(4) { animation-delay: 0.4s; }
+    .tatibana-text span:nth-child(5) { animation-delay: 0.5s; }
+    .tatibana-text span:nth-child(6) { animation-delay: 0.6s; }
+    .tatibana-text span:nth-child(7) { animation-delay: 0.7s; }
+    .tatibana-text span:nth-child(8) { animation-delay: 0.8s; }
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     /* Image Section */
     .image-container {
       display: flex;
@@ -373,10 +412,25 @@
       justify-content: center;
     }
 
+    /* Responsive Iframe */
+    .responsive-iframe {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      height: 0;
+      padding-bottom: 75%;
+    }
+    .responsive-iframe iframe {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
     /* Media Queries */
     @media (max-width: 768px) {
       main {
-        padding-top: 80px; /* モバイルでもヘッダー高さを考慮 */
+        padding-top: 80px;
       }
       .video-wrapper {
         width: 100vw;
@@ -400,6 +454,10 @@
       .play-button {
         font-size: 1rem;
         padding: 8px 16px;
+      }
+      .tatibana-text {
+        bottom: 60px;
+        font-size: 1.2rem;
       }
       .image-container {
         width: 90vw;
@@ -477,6 +535,9 @@
       <video id="video1" src="ryokanvideo2-2.mp4" playsinline muted></video>
       <video id="video2" src="ryokanvideo3teisei.mp4" playsinline muted></video>
       <button class="play-button" id="play-button">再生</button>
+      <div class="tatibana-text">
+        <span>T</span><span>A</span><span>T</span><span>I</span><span>B</span><span>A</span><span>N</span><span>A</span>
+      </div>
       <a href="https://www.airbnb.jp" target="_blank" class="reserve-button">
         <img src="eablogo.png" alt="Airbnbロゴ" /> 予約する
       </a>
@@ -515,28 +576,9 @@
 
     <!-- Access Section -->
     <h2 class="access-title">アクセス</h2>
-    
-    <style>
-  .responsive-iframe {
-    position: relative;
-    width: 100%;        /* 横幅は画面いっぱいに */
-    max-width: 600px;   /* PC時は最大600pxまで */
-    height: 0;
-    padding-bottom: 75%; /* アスペクト比 4:3 に調整 */
-  }
-
-  .responsive-iframe iframe {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border: 0;
-  }
-</style>
-
-<div class="responsive-iframe">
-  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6778.483685259155!2d137.76936!3d35.058755!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601b15672391fe09%3A0x12ec99034eb31553!2z44CSNDMxLTM5MDYg6Z2Z5bKh55yM5rWc5p2-5biC5aSp56uc5Yy65L2Q5LmF6ZaT55S65rWm5bed77yT77yU77yZ77yZ!5e1!3m2!1sja!2sjp!4v1761656100478!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-</div>
-
+    <div class="responsive-iframe">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6778.483685259155!2d137.76936!3d35.058755!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601b15672391fe09%3A0x12ec99034eb31553!2z44CSNDMxLTM5MDYg6Z2Z5bKh55yM5rWc5p2-5biC5aSp56uc5Yy65L2Q5LmF6ZaT55S65rWm5bed77yT77yU77yZ77yZ!5e1!3m2!1sja!2sjp!4v1761656100478!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
   </main>
 
   <script>
@@ -629,11 +671,13 @@
     // Loading screen handler
     window.addEventListener('load', () => {
       const loading = document.getElementById('loading');
+      const tatibanaText = document.querySelector('.tatibana-text');
       setTimeout(() => {
         loading.classList.add('hidden');
         setTimeout(() => {
           loading.style.display = 'none';
           playVideo(currentIndex);
+          tatibanaText.style.visibility = 'visible'; // アニメーション開始
         }, 500);
       }, 1500);
     });
