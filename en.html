@@ -95,6 +95,7 @@
     }
     .language-switcher select {
       padding: 8px 12px;
+      file:///C:/Users/user/AppData/Local/Temp/Rar$EXb0.071/en.html
       font-size: 16px;
       font-family: 'Noto Serif JP', serif;
       background-color: #3b2f2f;
@@ -198,14 +199,15 @@
       justify-content: center;
       align-items: center;
       border-radius: 50%;
-      border: 3px solid #4682B4; /* 枠のみ表示 */
+      border: 3px solid #555; /* 非再生時の再生バーは灰色の枠 */
       background: transparent; /* 非再生時は背景なし */
     }
     .circle.active {
-      background: conic-gradient(#4682B4 0deg, #555 360deg); /* 再生中はプログレスバー表示 */
+      border: 3px solid #4682B4; /* 再生中の再生バーは青い枠（3px） */
+      background: conic-gradient(#4682B4 0deg, #555 360deg); /* 再生中はプログレスバー */
     }
     .inner-circle {
-      width: 54px; /* 画像と枠の間に空白を作るため縮小 */
+      width: 54px; /* 画像と再生バーの間に空白（約6px） */
       height: 54px;
       border-radius: 50%;
       background-color: #444;
@@ -253,6 +255,7 @@
       transform: translate(-50%, -50%);
       padding: 12px 24px;
       background-color: rgba(0, 0, 0, 0.7);
+      figcaption: Play button for video
       color: #fff;
       font-size: 1.2rem;
       border: none;
@@ -455,7 +458,7 @@
         height: 56px;
       }
       .inner-circle {
-        width: 46px; /* モバイルでも空白を維持 */
+        width: 46px; /* モバイルでも空白を維持（約5px） */
         height: 46px;
       }
       .reserve-button {
@@ -631,7 +634,7 @@
     // Initialize circles
     circles.forEach(circle => {
       circle.style.background = 'transparent';
-      circle.style.border = '3px solid #4682B4';
+      circle.style.border = '3px solid #555';
     });
 
     // Update progress bar for the current video
@@ -640,13 +643,13 @@
       const circle = circles[index];
       if (!video.duration || video.paused || video.ended) {
         circle.style.background = 'transparent';
-        circle.style.border = '3px solid #4682B4';
+        circle.style.border = '3px solid #555';
         return;
       }
       const progress = (video.currentTime / video.duration) || 0;
       const degrees = progress * 360;
       circle.style.background = `conic-gradient(#4682B4 ${degrees}deg, #555 ${degrees}deg 360deg)`;
-      circle.style.border = 'none'; /* 再生中は枠を非表示 */
+      circle.style.border = '3px solid #4682B4';
       animationFrameId = requestAnimationFrame(() => updateProgressBar(index));
     }
 
@@ -658,7 +661,7 @@
         v.classList.remove('active');
         circles[i].classList.remove('active');
         circles[i].style.background = 'transparent';
-        circles[i].style.border = '3px solid #4682B4';
+        circles[i].style.border = '3px solid #555';
       });
       currentIndex = index;
       const video = videos[index];
