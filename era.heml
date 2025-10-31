@@ -3,7 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>提供終了</title>
+<title>提供終了｜旅館 橘 公式HP</title>
+
+<!-- ▼ ファビコン設定 ▼ -->
+<link rel="icon" type="image/png" href="haruomilabologo.png">
+
 <style>
   body {
     background-color: #ffffff;
@@ -37,9 +41,9 @@
 <body>
   <div class="container">
     <h1>提供終了</h1>
-    <div class="line">=====</div>
-    <p>諸事情により提供を終了させていただきます。<br>HARUOMILABO代表 内藤春臣</p>
-    <div class="line">====</div>
+    <div class="line">==========</div>
+    <p>2025年10月30日をもって提供を終了させていただきます。<br>そんなに「自分でやって」というなら、<br>サイトも自分で作ってください。<br> <br>HARUOMILABO代表 内藤春臣</p>
+    <div class="line">==========</div>
   </div>
 </body>
 </html>
