@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>先行体験！</title>
+  <link rel="icon" href="haruomilabologo.png" type="image/png">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap');
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background-image: url('https://www.publicdomainpictures.net/pictures/280000/velka/japanese-paper-background.jpg');
+      background-size: cover;
+      background-position: center;
+      font-family: 'Noto Serif JP', serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 240, 0.95);
+      padding: 40px;
+      border: 3px solid #a67c52;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      width: 300px;
+    }
+
+    .container h2 {
+      margin-bottom: 20px;
+      color: #5c3d1c;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      width: 80%;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 25px;
+      font-size: 16px;
+      background-color: #a67c52;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #8b623e;
+    }
+
+    #message {
+      margin-top: 20px;
+      font-weight: bold;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>先行体験コードを入力</h2>
+    <input type="text" id="codeInput" placeholder="コードを入力してください">
+    <br>
+    <button onclick="checkCode()">送信</button>
+    <div id="message"></div>
+  </div>
+
+  <script>
+    function checkCode() {
+      const code = document.getElementById('codeInput').value.trim();
+      const messageDiv = document.getElementById('message');
+
+      if (code === "2111" || code === "2911") {
+        messageDiv.style.color = 'green';
+        messageDiv.textContent = "成功！ようこそ。";
+        setTimeout(() => {
+          window.location.href = "new.html";
+        }, 2000);
+      } else {
+        messageDiv.style.color = 'red';
+        messageDiv.textContent = "コードが違います";
+      }
+    }
+  </script>
+
+</body>
+</html>
