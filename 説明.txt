@@ -1,0 +1,9 @@
+｜ターミナル起動
+
+cd ~/Desktop/tachibana-site
+
+｜保存・更新は、
+
+git add .
+git commit -m "更新"
+git push
