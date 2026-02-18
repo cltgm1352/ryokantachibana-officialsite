@@ -141,35 +141,32 @@
 
 <form action="https://formsubmit.co/info@tachibana-urakawa.jp" method="POST">
   <h2>民泊橘 お問い合わせ</h2>
-  
-  <label>お名前<span class="required">＊必須</span></label>
-  <input type="text" name="name" required>
-  
-  <label>メールアドレス<span class="required">＊必須</span></label>
-  <input type="email" name="email" required>
-  
-  <label>お問い合わせ内容<span class="required">＊必須</span></label>
-  <textarea name="message" rows="5" required></textarea>
-  
+
+  <!-- カスタマイズ設定 -->
   <input type="hidden" name="_subject" value="[!]お問い合わせ">
   <input type="hidden" name="_next" value="https://tachibana-urakawa.com/inquiry/thank-you">
   <input type="hidden" name="_captcha" value="false">
   <input type="hidden" name="_template" value="plain">
+  <input type="hidden" name="_autoresponse" value="お問い合わせありがとうございます。ご記入いただいたメールアドレスに info@tachibana-urakawa.jp から返信が送信されます。お問い合わせの返信には少しお時間がかかる場合がございますが、ご了承ください。">
+  <input type="text" name="_honey" style="display:none">
 
   <!-- カスタムメール本文 -->
   <input type="hidden" name="_email.template" value="">
   <textarea name="_email.body" style="display:none;">
-お問い合わせ内容
-
-お名前：{{name}}様
-メールアドレス：{{email}}
-
 お問い合わせ内容：{{message}}
-
-──────────────────
-お問い合わせページ
-https://tachibana-urakawa.com/Inquiry.html
+メールアドレス：{{email}}
+名前：{{name}}
   </textarea>
+
+  <!-- フォーム本体 -->
+  <label>お名前<span class="required">＊必須</span></label>
+  <input type="text" name="name" required>
+
+  <label>メールアドレス<span class="required">＊必須</span></label>
+  <input type="email" name="email" required>
+
+  <label>お問い合わせ内容<span class="required">＊必須</span></label>
+  <textarea name="message" rows="5" required></textarea>
 
   <button type="submit">送信する</button>
 
