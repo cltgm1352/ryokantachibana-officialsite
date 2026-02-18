@@ -149,24 +149,16 @@
   <input type="hidden" name="_template" value="plain">
   <input type="hidden" name="_autoresponse" value="お問い合わせありがとうございます。ご記入いただいたメールアドレスに info@tachibana-urakawa.jp から返信が送信されます。お問い合わせの返信には少しお時間がかかる場合がございますが、ご了承ください。">
   <input type="text" name="_honey" style="display:none">
-
-  <!-- カスタムメール本文 -->
-  <input type="hidden" name="_email.template" value="">
-  <textarea name="_email.body" style="display:none;">
-お問い合わせ内容：{{message}}
-メールアドレス：{{email}}
-名前：{{name}}
-  </textarea>
-
+  
   <!-- フォーム本体 -->
   <label>お名前<span class="required">＊必須</span></label>
-  <input type="text" name="name" required>
+  <input type="text" name="名前" required>
 
   <label>メールアドレス<span class="required">＊必須</span></label>
-  <input type="email" name="email" required>
+  <input type="email" name="メールアドレス" required>
 
   <label>お問い合わせ内容<span class="required">＊必須</span></label>
-  <textarea name="message" rows="5" required></textarea>
+  <textarea name="お問い合わせ内容" rows="5" required></textarea>
 
   <button type="submit">送信する</button>
 
