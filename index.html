@@ -1,31 +1,49 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>民泊橘 公式ホームページ</title>
-  <meta name="description" content="橘の公式ホームページです">
+  <title>TachibanaOfficialWebsite</title>
   
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="favicon.ico" />
-  <link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="favicon.ico">
-  <link rel="apple-touch-icon" sizes="152x152" href="favicon/favicon-152-precomposed.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="favicon/favicon-144-precomposed.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="favicon/favicon-120-precomposed.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="favicon/favicon-114-precomposed.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="favicon/favicon-180-precomposed.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="favicon/favicon-72-precomposed.png">
-  <link rel="apple-touch-icon" sizes="57x57" href="favicon/favicon-57.png">
-  <link rel="icon" sizes="32x32" href="favicon/favicon-32.png">
-  
-  <!-- For IE10 Metro -->
-  <meta name="msapplication-TileColor" content="#FFFFFF">
-  <meta name="msapplication-TileImage" content="favicon/favicon-144.png">
-  <meta name="theme-color" content="#ffffff">
-  
-  <!-- Chrome for Android -->
-  <link rel="manifest" href="manifest.json">
-  <link rel="icon" sizes="192x192" href="favicon/favicon-192.png">
+         <!-- For old IEs -->
+                <link rel="shortcut icon" href="img/favicon/favicon.ico" />
+                
+                <!-- For new browsers - multisize ico  -->
+                <link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="img/favicon/favicon.ico">
+                
+                <!-- For iPad with high-resolution Retina display running iOS ≥ 7: -->
+                <link rel="apple-touch-icon" sizes="152x152" href="fimg/favicon/avicon-152-precomposed.png">
+                
+                <!-- For iPad with high-resolution Retina display running iOS ≤ 6: -->
+                <link rel="apple-touch-icon" sizes="144x144" href="img/favicon/favicon-144-precomposed.png">
+                
+                <!-- For iPhone with high-resolution Retina display running iOS ≥ 7: -->
+                <link rel="apple-touch-icon" sizes="120x120" href="img/favicon/favicon-120-precomposed.png">
+                
+                <!-- For iPhone with high-resolution Retina display running iOS ≤ 6: -->
+                <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/favicon-114-precomposed.png">
+                
+                <!-- For iPhone 6+ -->
+                <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/favicon-180-precomposed.png">
+                
+                <!-- For first- and second-generation iPad: -->
+                <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/favicon-72-precomposed.png">
+                
+                <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+                <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/favicon-57.png">
+                
+                <!-- For Old Chrome -->
+                <link rel="icon" sizes="32x32" href="img/favicon/favicon-32.png" >
+                
+                <!-- For IE10 Metro -->
+                <meta name="msapplication-TileColor" content="#FFFFFF">
+                <meta name="msapplication-TileImage" content="img/favicon/favicon-144.png">
+                <meta name="theme-color" content="#ffffff">
+                
+                <!-- Chrome for Android -->
+                <link rel="manifest" href="manifest.json">
+                <link rel="icon" sizes="192x192" href="img/favicon/favicon-192.png">
+
 
   <style>
     * {
@@ -37,83 +55,531 @@
     html, body {
       margin: 0;
       padding: 0;
-      width: 100%;
       height: 100%;
       min-height: 100vh;
+      overflow-y: auto !important;
       overflow-x: hidden;
       background: #262626;
       color: #ffffff;
-      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      -webkit-user-select: none;
+      user-select: none;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-y pinch-zoom none;
     }
 
-    body {
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar {
+      display: none;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: transparent;
+      z-index: 100;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 40px 20px;
+      transition: background 0.4s ease, opacity 0.6s ease;
+      opacity: 1;
+    }
+
+    header.scrolled {
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(8px);
+    }
+
+    header.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .logo-center {
+      max-height: 48px;
+      width: auto;
+      object-fit: contain;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .logo-center:hover {
+      transform: scale(1.1);
+    }
+
+    .site-title {
+      position: fixed;
+      top: 90px;
+      left: 40px;
+      z-index: 5;
+      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif !important;
+      font-size: 6rem;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      color: #ffffff;
+      pointer-events: none;
+      text-transform: uppercase;
+    }
+
+    .tagline {
+      position: fixed;
+      bottom: 60px;
+      left: 40px;
+      z-index: 5;
+      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif !important;
+      font-size: 2.8rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      color: #ffffff;
+      pointer-events: none;
+      text-transform: uppercase;
+    }
+
+    .video-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .video-bg video {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .content {
+      position: relative;
+      z-index: 10;
+      padding-top: 100vh;
+      min-height: 100vh;
+    }
+
+    .section-common {
+      background: #262626;
+      padding: 100px 6% 120px;
+      text-align: center;
+      line-height: 1.5;
+      font-size: 2.2rem;
+      font-weight: 900;
+      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif !important;
+    }
+
+    .section-common p {
+      max-width: 1000px;
+      margin: 0 auto 1.5em;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 900;
+      margin-bottom: 2rem;
+      letter-spacing: 0.2em;
+      opacity: 0.8;
+      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif !important;
+    }
+
+    .portfolio {
+      background: #262626;
+      padding: 80px 5%;
       text-align: center;
     }
 
-    h3 {
-      font-size: 2.8rem;
+    .portfolio img {
+      width: 100%;
+      max-width: 1280px;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .experiences {
+      background: #262626;
+      padding: 100px 6% 120px;
+      text-align: center;
+      line-height: 1.5;
+      font-size: 2.2rem;
       font-weight: 900;
-      letter-spacing: 0.15em;
+      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif !important;
+    }
+
+    .experiences h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
       margin-bottom: 2rem;
-      color: #ffffff;
+      letter-spacing: 0.2em;
+      opacity: 0.8;
     }
 
-    p {
-      font-size: 1.6rem;
-      font-weight: 500;
-      line-height: 2;
-      letter-spacing: 0.08em;
+    .sustainability {
+      background-image: url('img/background_Sustainability.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 80vh;
+      padding: 120px 8% 120px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;
+    }
+
+    .sustainability .section-title {
+      font-size: 1.4rem;
+      text-align: left;
       margin-bottom: 1.5rem;
-      color: rgba(255, 255, 255, 0.85);
     }
 
-    a {
+    .sustainability p {
+      max-width: 800px;
+      text-align: left;
+      margin: 0.5em 0;
+      font-size: 2.2rem;
+      font-weight: 900;
+      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif !important;
+      line-height: 1.5;
+    }
+
+    .giving-back {
+      background-image: url('img/background_Tachibana.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 80vh;
+      padding: 120px 8% 120px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .giving-back .section-title {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .giving-back p {
+      max-width: 800px;
+      margin: 0.5em auto;
+      font-size: 2.2rem;
+      font-weight: 900;
+      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif !important;
+      line-height: 1.5;
+    }
+
+    .access {
+      background: #262626;
+      padding: 100px 6% 120px;
+      text-align: center;
+    }
+
+    .access .section-title {
+      font-size: 1.4rem;
+      font-weight: 900;
+      margin-bottom: 2rem;
+      letter-spacing: 0.2em;
+      opacity: 0.8;
+    }
+
+    .access .map-container {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      max-width: 1000px;
+      margin: 0 auto;
+      border: 1px solid #444;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .access iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .operation {
+      background: #262626;
+      padding: 100px 6% 120px;
+      text-align: center;
+    }
+
+    .operation img {
+      width: 100%;
+      max-width: 1280px;
+      height: auto;
+      display: block;
+      margin: 0 auto 3rem;
+      object-fit: contain;
+    }
+
+    .operation .btn {
+      display: inline-block;
+      padding: 1rem 3rem;
+      background: #007bff;
       color: #ffffff;
-      text-decoration: underline;
-      transition: opacity 0.3s ease;
+      font-size: 1.6rem;
+      font-weight: 900;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: background 0.3s ease, transform 0.3s ease;
+      margin-bottom: 2rem;
     }
 
-    a:hover {
-      opacity: 0.7;
+    .operation .btn:hover {
+      background: #0056b3;
+      transform: scale(1.05);
+    }
+
+    .operation .creator-message {
+      font-size: 1.8rem;
+      font-weight: 900;
+      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif !important;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* ─── Contact Section ─── */
+    .contact {
+      background: #262626;
+      padding: 80px 6% 100px;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .contact .section-title {
+      font-size: 1.4rem;
+      font-weight: 900;
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.2em;
+      opacity: 0.8;
+    }
+
+    .contact-btn {
+      display: inline-block;
+      padding: 1.1rem 3.5rem;
+      background: transparent;
+      color: #ffffff;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-decoration: none;
+      border: 1.5px solid rgba(255, 255, 255, 0.7);
+      border-radius: 50px;
+      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+      transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .contact-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: #ffffff;
+      transform: scale(1.04);
+    }
+
+    footer {
+      background: #262626;
+      padding: 28px 6%;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      z-index: 20;
+    }
+
+    footer p {
+      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      color: rgba(255, 255, 255, 0.35);
     }
 
     @media (max-width: 768px) {
-      h3 {
-        font-size: 2.2rem;
+      header { height: 60px; }
+      .logo-center { max-height: 36px; }
+      .site-title { font-size: 3.2rem; top: 70px; left: 20px; }
+      .tagline { font-size: 1.6rem; bottom: 40px; left: 20px; }
+      .section-common {
+        padding: 70px 6% 90px;
+        font-size: 1.8rem;
       }
-
-      p {
-        font-size: 1.4rem;
-      }
+      .section-title { font-size: 1.2rem; }
+      .operation img { max-width: 100%; }
+      .operation .btn { font-size: 1.4rem; padding: 0.8rem 2.5rem; }
+      .operation .creator-message { font-size: 1.6rem; }
+      .contact-btn { font-size: 1rem; padding: 0.9rem 2.5rem; }
     }
 
     @media (max-width: 480px) {
-      h3 {
-        font-size: 1.8rem;
-      }
-
-      p {
-        font-size: 1.2rem;
-      }
+      .site-title { font-size: 2.6rem; top: 60px; left: 15px; }
+      .tagline { font-size: 1.3rem; bottom: 35px; left: 15px; }
+      .section-common { padding: 60px 5% 80px; font-size: 1.6rem; }
+      .section-title { font-size: 1.1rem; }
+      .operation { padding: 60px 5% 80px; }
     }
   </style>
 </head>
 <body>
 
-  <h3>リニューアル中</h3>
-  <p>
-    現在サイトをリニューアル中です<br>
-    また、現在開業しておりません<br>
-    （開業は、5月ごろを予定しています）
-  </p>
-  <p>お問い合わせは<a href="/inquiry">こちら</a>から</p>
+  <header id="main-header">
+    <img 
+      src="img/Logo_Site.png" 
+      alt="TachibanaOfficialWebsite" 
+      class="logo-center"
+      id="logo-top"
+    >
+  </header>
+
+  <div class="site-title">TACHIBANA</div>
+  <div class="tagline">A Stay That Gives Back.</div>
+
+  <div class="video-bg">
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="video/video_home.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <div class="content" id="main-content">
+    <section class="introduction section-common">
+      <p>Nestled in a quiet mountain village, TACHIBANA is a lovingly restored traditional house.</p>
+      <p>We welcome only one group per day, offering a private retreat where you can truly rest your heart.</p>
+      <p>Surrounded by the changing seasons, warmed by the hearth, and nourished by local seasonal delicacies,</p>
+      <p>you will experience moments where time seems to stand still.</p>
+      <p>With your family or someone special, please enjoy a unique stay found nowhere else.</p>
+    </section>
+
+    <section class="portfolio">
+      <img src="img/portfolio/img_1.png" alt="Portfolio Image 1">
+    </section>
+
+    <section class="experiences section-common">
+      <h2 class="section-title">Experiences</h2>
+      <p>Surrounded by mountains, forests, and clear rivers,</p>
+      <p>TACHIBANA rests in a place where nature still sets the rhythm of life.</p>
+      <p>Here, mornings begin with birdsong,</p>
+      <p>afternoons pass in quiet light,</p>
+      <p>and nights are wrapped in deep, gentle silence.</p>
+      <p>Each season brings its own colors, scents, and memories—</p>
+      <p>inviting you to slow down and simply be.</p>
+    </section>
+
+    <section class="sustainability">
+      <h2 class="section-title">Sustainability</h2>
+      <p>In Japan, single-parent families face significantly greater economic and emotional challenges than the national average. Public data shows that nearly half of children in single-parent households live in relative poverty,</p>
+      <p>and moments of rest or time away are often out of reach.</p>
+    </section>
+
+    <section class="giving-back">
+      <h2 class="section-title">Giving Back</h2>
+      <p>Yet rest is not a luxury.</p>
+      <p>It is essential to a healthy and dignified life.</p>
+      <p>Staying at TACHIBANA is more than a personal retreat.</p>
+      <p>It is a quiet act of giving—</p>
+      <p>supporting the land, the people, and the future of this place.</p>
+      <p>No ceremonies. No recognition.</p>
+      <p>Just a stay that gives back.</p>
+      <p>In time, we hope to share this experience</p>
+      <p>with single-parent families in Japan.</p>
+    </section>
+
+    <section class="access section-common">
+      <h2 class="section-title">Access</h2>
+      <div class="map-container">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4395.201655203754!2d137.76282627604763!3d35.06062862686402!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601b15672391fe09%3A0x12ec99034eb31553!2z44CSNDMxLTM5MDYg6Z2Z5bKh55yM5rWc5p2-5biC5aSp56uc5Yy65L2Q5LmF6ZaT55S65rWm5bed77yT77yU77yZ77yZ!5e1!3m2!1sja!2sjp!4v1767708895561!5m2!1sja!2sjp" 
+          width="100%" 
+          height="500" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </section>
+
+    <section class="operation section-common">
+      <img 
+        src="img/operation_img/img_1.png" 
+        alt="Operation Image" 
+        style="max-width: 50%; height: auto; display: block; margin: 0 auto 3rem;"
+      >
+      <a href="MessagefromtheOwner/" class="btn">Message from the Owner</a>
+
+      <p class="creator-message" style="margin-top: 3rem; font-size: 2.2rem; line-height: 1.5;">
+        Meet the CREATORS<br>
+        We didn't create a place to stay.<br>
+        We shaped a moment to remember.
+      </p>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact">
+      <h2 class="section-title">Contact</h2>
+      <a href="mailto:info@tachibana-urakawa.jp" class="contact-btn">CONTACT US</a>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>2026 TACHIBANA</p>
+  </footer>
+
+  <script>
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('dragstart', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+      if (e.ctrlKey && ['s','S','u','U'].includes(e.key)) e.preventDefault();
+    });
+
+    // ヘッダー表示制御
+    const header = document.getElementById('main-header');
+    const contentSection = document.getElementById('main-content');
+    const viewportHeight = window.innerHeight;
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const threshold = viewportHeight * 0.85;
+
+      // scrolledクラス（背景ブラー）はtopセクション内のみ適用
+      if (scrollY > 50 && scrollY < threshold) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+
+      // contentに入ったらフェードアウト、topに戻ったらフェードイン
+      if (scrollY >= threshold) {
+        header.classList.add('hidden');
+      } else {
+        header.classList.remove('hidden');
+      }
+    });
+
+    // ロゴタップで再読み込み
+    const logo = document.getElementById('logo-top');
+    if (logo) {
+      logo.addEventListener('click', () => {
+        window.location.reload();
+      });
+
+      logo.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        window.location.reload();
+      });
+    }
+  </script>
 
 </body>
 </html>
