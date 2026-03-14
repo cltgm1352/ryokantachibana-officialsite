@@ -325,6 +325,21 @@
       object-fit: contain;
     }
 
+    /* ─── operation-img: PC/スマホ切り替え ─── */
+    .operation-img {
+      height: auto;
+      display: block;
+      margin: 0 auto 3rem;
+      max-width: 35%; /* PC */
+    }
+
+    @media (max-width: 768px) {
+      .operation-img {
+        max-width: 85%; /* スマホ */
+      }
+    }
+    /* ─────────────────────────────────────── */
+
     .operation .btn {
       display: inline-block;
       padding: 1rem 3rem;
@@ -512,8 +527,8 @@
     <section class="operation section-common">
       <img 
         src="img/operation_img/img_1.png" 
-        alt="Operation Image" 
-        style="max-width: 50%; height: auto; display: block; margin: 0 auto 3rem;"
+        alt="Operation Image"
+        class="operation-img"
       >
       <a href="MessagefromtheOwner/" class="btn">Message from the Owner</a>
 
