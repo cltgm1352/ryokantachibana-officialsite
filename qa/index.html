@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Q&A-TachibanaOfficialWebsite</title>
+
+  <link rel="shortcut icon" href="../img/favicon/favicon.ico" />
+  <link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="../img/favicon/favicon.ico">
+  <link rel="apple-touch-icon" sizes="152x152" href="../img/favicon/favicon-152-precomposed.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="../img/favicon/favicon-144-precomposed.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="../img/favicon/favicon-120-precomposed.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="../img/favicon/favicon-114-precomposed.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon/favicon-180-precomposed.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="../img/favicon/favicon-72-precomposed.png">
+  <link rel="apple-touch-icon" sizes="57x57" href="../img/favicon/favicon-57.png">
+  <link rel="icon" sizes="32x32" href="../img/favicon/favicon-32.png">
+  <meta name="msapplication-TileColor" content="#FFFFFF">
+  <meta name="msapplication-TileImage" content="../img/favicon/favicon-144.png">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="manifest" href="../manifest.json">
+  <link rel="icon" sizes="192x192" href="../img/favicon/favicon-192.png">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background: #262626;
+      color: #ffffff;
+      -webkit-user-select: none;
+      user-select: none;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar { display: none; }
+
+    /* ─── Header ─── */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: transparent;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.4s ease, opacity 0.6s ease;
+      opacity: 1;
+    }
+
+    header.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .logo-center {
+      max-height: 48px;
+      width: auto;
+      object-fit: contain;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .logo-center:hover { transform: scale(1.1); }
+
+    /* ─── Hero ─── */
+    .hero {
+      padding-top: 80px;
+      height: 38vh;
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-label {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-title {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: clamp(3.2rem, 9vw, 7rem);
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #ffffff;
+      line-height: 1;
+    }
+
+    .hero-divider {
+      width: 36px;
+      height: 1px;
+      background: rgba(255,255,255,0.2);
+      margin-top: 1.8rem;
+    }
+
+    /* ─── Main ─── */
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 40px 6% 100px;
+    }
+
+    /* ─── Q&A item ─── */
+    .qa-item {
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      transition: background 0.2s ease;
+    }
+
+    .qa-item:hover { background: rgba(255,255,255,0.02); }
+
+    .question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding: 1.6rem 0;
+      cursor: pointer;
+      font-family: 'Segoe UI', sans-serif;
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      font-weight: 700;
+      color: rgba(255,255,255,0.82);
+      letter-spacing: 0.02em;
+      line-height: 1.5;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    .question-num {
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.2);
+      flex-shrink: 0;
+      margin-right: 0.8rem;
+    }
+
+    .question-text { flex: 1; }
+
+    .question-icon {
+      flex-shrink: 0;
+      width: 26px; height: 26px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 50%;
+      position: relative;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .question-icon::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 10px; height: 1px;
+      background: rgba(255,255,255,0.55);
+    }
+
+    .question-icon::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 1px; height: 10px;
+      background: rgba(255,255,255,0.55);
+      transition: opacity 0.35s ease;
+    }
+
+    .qa-item.open .question-icon {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.35);
+    }
+
+    .qa-item.open .question-icon::before { opacity: 0; }
+
+    /* ─── Answer ─── */
+    .answer {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.48s cubic-bezier(0.4,0,0.2,1), opacity 0.38s ease;
+    }
+
+    .qa-item.open .answer {
+      max-height: 300px;
+      opacity: 1;
+    }
+
+    .answer-inner {
+      padding: 0 0 1.8rem;
+      padding-left: calc(0.72rem + 0.8rem + 14px);
+      font-family: 'Segoe UI', sans-serif;
+      font-size: clamp(0.88rem, 1.7vw, 0.98rem);
+      font-weight: 400;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.9;
+    }
+
+    .btn-wrapper { margin-top: 1rem; }
+
+    .reserve-btn {
+      display: inline-block;
+      padding: 0.6rem 1.6rem;
+      background: transparent;
+      color: rgba(255,255,255,0.7);
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.28);
+      border-radius: 50px;
+      transition: background 0.3s, border-color 0.3s, color 0.3s, transform 0.2s;
+    }
+
+    .reserve-btn:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.65);
+      color: #fff;
+      transform: scale(1.03);
+    }
+
+    /* ─── Contact ─── */
+    .contact-section {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 80px 6%;
+      text-align: center;
+    }
+
+    .contact-label {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      color: rgba(255,255,255,0.28);
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .contact-btn {
+      display: inline-block;
+      padding: 1rem 3rem;
+      background: transparent;
+      color: #ffffff;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.45);
+      border-radius: 50px;
+      font-family: 'Segoe UI', sans-serif;
+      transition: background 0.3s, border-color 0.3s, transform 0.2s;
+    }
+
+    .contact-btn:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: #fff;
+      transform: scale(1.04);
+    }
+
+    /* ─── Footer ─── */
+    footer {
+      background: #262626;
+      padding: 28px 6%;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+      z-index: 20;
+    }
+
+    footer p {
+      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ─── Fade-in ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .qa-item { animation: fadeUp 0.5s ease both; }
+    .qa-item:nth-child(1)  { animation-delay: 0.04s; }
+    .qa-item:nth-child(2)  { animation-delay: 0.08s; }
+    .qa-item:nth-child(3)  { animation-delay: 0.12s; }
+    .qa-item:nth-child(4)  { animation-delay: 0.16s; }
+    .qa-item:nth-child(5)  { animation-delay: 0.20s; }
+    .qa-item:nth-child(6)  { animation-delay: 0.24s; }
+    .qa-item:nth-child(7)  { animation-delay: 0.28s; }
+    .qa-item:nth-child(8)  { animation-delay: 0.32s; }
+    .qa-item:nth-child(9)  { animation-delay: 0.36s; }
+    .qa-item:nth-child(10) { animation-delay: 0.40s; }
+    .qa-item:nth-child(11) { animation-delay: 0.44s; }
+    .qa-item:nth-child(12) { animation-delay: 0.48s; }
+    .qa-item:nth-child(13) { animation-delay: 0.52s; }
+    .qa-item:nth-child(14) { animation-delay: 0.56s; }
+    .qa-item:nth-child(15) { animation-delay: 0.60s; }
+    .qa-item:nth-child(16) { animation-delay: 0.64s; }
+
+    @media (max-width: 768px) {
+      header { height: 60px; }
+      .logo-center { max-height: 36px; }
+      .hero { height: 28vh; min-height: 180px; }
+      .answer-inner { padding-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header id="main-header">
+    <img
+      src="../img/Logo_Site.png"
+      alt="TachibanaOfficialWebsite"
+      class="logo-center"
+      id="logo-top"
+    >
+  </header>
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1 class="hero-title">Q&A</h1>
+    <div class="hero-divider"></div>
+  </div>
+
+  <!-- Q&A -->
+  <main>
+
+    <div class="qa-item">
+      <div class="question">
+        <span class="question-num">01</span>
+        <span class="question-text">Are pets allowed?</span>
+        <span class="question-icon"></span>
+      </div>
+      <div class="answer">
+        <div class="answer-inner">We are sorry, but pets are not permitted at our inn.</div>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="question">
+        <span class="question-num">02</span>
+        <span class="question-text">Can I stay alone?</span>
+        <span class="question-icon"></span>
+      </div>
+      <div class="answer">
+        <div class="answer-inner">We primarily welcome families with children and are generally unable to accommodate solo guests.</div>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="question">
+        <span class="question-num">03</span>
+        <span class="question-text">Is it family-friendly?</span>
+        <span class="question-icon"></span>
+      </div>
+      <div class="answer">
+        <div class="answer-inner">Absolutely. TACHIBANA warmly welcomes families with children. We have prepared an environment where you and your little ones can relax and feel at home.</div>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="question">
+        <span class="question-num">04</span>
+        <span class="question-text">What is the maximum number of guests?</span>
+        <span class="question-icon"></span>
+      </div>
+      <div class="answer">
+        <div class="answer-inner">Up to 4 guests. If your party includes infants, please contact us in advance.</div>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="question">
+        <span class="question-num">05</span>
+        <span class="question-text">Is there parking available?</span>
+        <span class="question-icon"></span>
+      </div>
+      <div class="answer">
+        <div class="answer-inner">Yes, free parking is available on site.</div>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="question">
+        <span class="question-num">06</span>
+        <span class="question-text">Do you offer a shuttle service?</span>
+        <span class="question-icon"></span>
+      </div>
+      <div class="answer">
+        <div class="answer-inner">Yes, transfers to and from the nearest Urakawa Station can be arranged upon request. Please let us know at the time of booking.</div>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="question">
+        <span class="question-num">07</span>
+        <span class="question-text">Can I use the kitchen?</span>
+        <span class="question-icon"></span>
+      </div>
+      <div class="answer">
+        <div class="answer-inner">Yes. A mini kitchen equipped with a rice cooker, microwave, and basic cookware is available for your use.</div>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="question">
+        <span class="question-num">08</span>
+        <span class="question-text">Are meals provided?</span>
+        <span class="question-icon"></span>
+      </div>
+      <div class="answer">
+        <div class="answer-inner">Meals are not provided. You are welcome to use the kitchen, or we can recommend nearby restaurants.</div>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="question">
+        <span class="question-num">09</span>
+        <span class="question-text">Is Wi-Fi available?</span>
+        <span class="question-icon"></span>
+      </div>
+      <div class="answer">
+        <div class="answer-inner">Yes, free Wi-Fi is available throughout the property.</div>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="question">
+        <span class="question-num">10</span>
+        <span class="question-text">What are the check-in and check-out times?</span>
+        <span class="question-icon"></span>
+      </div>
+      <div class="answer">
+        <div class="answer-inner">Check-in is from 3:00 PM. Check-out is by 11:00 AM.</div>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="question">
+        <span class="question-num">11</span>
+        <span class="question-text">How do I make a reservation?</span>
+        <span class="question-icon"></span>
+      </div>
+      <div class="answer">
+        <div class="answer-inner">
+          Reservations are accepted exclusively through Airbnb. Please book via the link below.
+          <div class="btn-wrapper">
+            <a href="https://www.airbnb.jp" target="_blank" class="reserve-btn">Book Now →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="question">
+        <span class="question-num">12</span>
+        <span class="question-text">What is the cancellation policy?</span>
+        <span class="question-icon"></span>
+      </div>
+      <div class="answer">
+        <div class="answer-inner">Our cancellation policy follows Airbnb's terms. Please refer to your booking page for full details.</div>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="question">
+        <span class="question-num">13</span>
+        <span class="question-text">Are there tourist attractions nearby?</span>
+        <span class="question-icon"></span>
+      </div>
+      <div class="answer">
+        <div class="answer-inner">Urakawa offers walks along the Tenryu River, tea field visits, and firefly watching. Seasonal experiences can also be arranged.</div>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="question">
+        <span class="question-num">14</span>
+        <span class="question-text">Can I experience local culture?</span>
+        <span class="question-icon"></span>
+      </div>
+      <div class="answer">
+        <div class="answer-inner">On request, we can introduce you to local tea-making workshops and traditional preserved food experiences.</div>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="question">
+        <span class="question-num">15</span>
+        <span class="question-text">Is there a place for children to play?</span>
+        <span class="question-icon"></span>
+      </div>
+      <div class="answer">
+        <div class="answer-inner">The inn is surrounded by nature. Children can enjoy playing in the river, catching insects, and exploring the outdoors.</div>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="question">
+        <span class="question-num">16</span>
+        <span class="question-text">How would you describe TACHIBANA in one sentence?</span>
+        <span class="question-icon"></span>
+      </div>
+      <div class="answer">
+        <div class="answer-inner">"Time spent together, hearts set free." A quiet mountain village where Japan's original landscape meets the warmth of family.</div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Contact -->
+  <div class="contact-section">
+    <p class="contact-label">Contact</p>
+    <a href="mailto:info@tachibana-urakawa.jp?subject=CONTACT%20US" class="contact-btn">CONTACT US</a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>2026 TACHIBANA</p>
+  </footer>
+
+  <script>
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('dragstart', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+      if (e.ctrlKey && ['s','S','u','U'].includes(e.key)) e.preventDefault();
+    });
+
+    // Header scroll behavior
+    const header = document.getElementById('main-header');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (scrollY > 50) {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Logo tap reloads
+    const logo = document.getElementById('logo-top');
+    if (logo) {
+      logo.addEventListener('click', () => { window.location.href = '../index.html'; });
+      logo.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        window.location.href = '../index.html';
+      });
+    }
+
+    // Q&A accordion
+    document.querySelectorAll('.question').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.closest('.qa-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.qa-item.open').forEach(el => el.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+
+</body>
+</html>
