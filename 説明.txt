@@ -7,3 +7,5 @@ cd ~/Desktop/tachibana-site
 git add .
 git commit -m "更新"
 git push
+
+//画像を更新したら、v=3...と更新
