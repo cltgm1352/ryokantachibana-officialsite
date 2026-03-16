@@ -485,6 +485,17 @@
     <img src="img/logo_2.png" alt="TACHIBANA">
   </div>
 
+  <script>
+    // クッキーで初回判定（Cloudflareに影響されない）
+    var isFirst = document.cookie.indexOf('tachibana_visited=1') === -1;
+    if (isFirst) {
+      document.cookie = 'tachibana_visited=1; path=/; max-age=86400';
+    } else {
+      var el = document.getElementById('loading-screen');
+      if (el) el.style.display = 'none';
+    }
+  </script>
+
   <header id="main-header">
     <img 
       src="img/Logo_Site.png" 
