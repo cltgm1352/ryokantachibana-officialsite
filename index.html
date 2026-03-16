@@ -609,10 +609,9 @@
       var loadingEl = document.getElementById('loading-screen');
 
       function dismiss() {
-        loadingEl.style.transition = 'opacity 0.8s ease';
-        loadingEl.style.opacity = '0';
+        loadingEl.classList.add('fade-out');
         setTimeout(function () {
-          loadingEl.style.display = 'none';
+          loadingEl.classList.add('hidden');
         }, 850);
       }
 

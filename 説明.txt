@@ -9,3 +9,7 @@ git commit -m "更新"
 git push
 
 //画像を更新したら、v=3...と更新
+
+git add .
+git commit -m "ローディング画面を追加"
+git push
