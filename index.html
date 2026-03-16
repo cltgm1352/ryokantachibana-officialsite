@@ -607,15 +607,14 @@
     // ─── Loading Screen ───
     (function () {
       var loadingEl = document.getElementById('loading-screen');
+      if (!loadingEl) return;
 
-      function dismiss() {
-        loadingEl.classList.add('fade-out');
+      setTimeout(function () {
+        loadingEl.style.opacity = '0';
         setTimeout(function () {
-          loadingEl.classList.add('hidden');
+          loadingEl.style.display = 'none';
         }, 850);
-      }
-
-      setTimeout(dismiss, 2200);
+      }, 2200);
     })();
     // ─────────────────────
 
