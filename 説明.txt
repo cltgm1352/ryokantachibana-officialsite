@@ -11,5 +11,5 @@ git push
 //画像を更新したら、v=3...と更新
 
 git add .
-git commit -m "ローディング画面を追加-更新2"
+git commit -m "ローディング画面を追加-更新3"
 git push

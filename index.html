@@ -84,16 +84,13 @@
       align-items: center;
       justify-content: center;
       pointer-events: none;
-      opacity: 1;
-      transition: opacity 0.8s ease;
+      animation: loadingFade 0.8s ease 2.2s forwards;
     }
 
-    #loading-screen.fade-out {
-      opacity: 0;
-    }
-
-    #loading-screen.hidden {
-      display: none;
+    @keyframes loadingFade {
+      0%   { opacity: 1; visibility: visible; }
+      99%  { opacity: 0; visibility: visible; }
+      100% { opacity: 0; visibility: hidden; pointer-events: none; }
     }
 
     #loading-screen img {
@@ -102,18 +99,13 @@
       max-width: min(320px, 60vw);
       max-height: 40vh;
       object-fit: contain;
-      opacity: 0;
-      transform: scale(0.96);
-      animation: logoReveal 1s ease 0.3s forwards;
+      animation: logoReveal 1s ease 0.3s both;
     }
 
     @keyframes logoReveal {
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
+      from { opacity: 0; transform: scale(0.96); }
+      to   { opacity: 1; transform: scale(1); }
     }
-    /* ──────────────────────── */
 
     header {
       position: fixed;
@@ -603,20 +595,6 @@
     document.addEventListener('keydown', e => {
       if (e.ctrlKey && ['s','S','u','U'].includes(e.key)) e.preventDefault();
     });
-
-    // ─── Loading Screen ───
-    (function () {
-      var loadingEl = document.getElementById('loading-screen');
-      if (!loadingEl) return;
-
-      setTimeout(function () {
-        loadingEl.style.opacity = '0';
-        setTimeout(function () {
-          loadingEl.style.display = 'none';
-        }, 850);
-      }, 2200);
-    })();
-    // ─────────────────────
 
     // ヘッダー表示制御
     const header = document.getElementById('main-header');
