@@ -623,4 +623,16 @@
     // ロゴタップで再読み込み
     const logo = document.getElementById('logo-top');
     if (logo) {
-      logo.a
+      logo.addEventListener('click', () => {
+        window.location.reload();
+      });
+
+      logo.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        window.location.reload();
+      });
+    }
+  </script>
+
+</body>
+</html>
