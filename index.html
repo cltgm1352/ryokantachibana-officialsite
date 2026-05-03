@@ -3,47 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>TachibanaOfficialWebsite</title>
-  
-         <!-- For old IEs -->
-                <link rel="shortcut icon" href="img/favicon/favicon.ico" />
-                
-                <!-- For new browsers - multisize ico  -->
-                <link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="img/favicon/favicon.ico">
-                
-                <!-- For iPad with high-resolution Retina display running iOS ≥ 7: -->
-                <link rel="apple-touch-icon" sizes="152x152" href="fimg/favicon/avicon-152-precomposed.png">
-                
-                <!-- For iPad with high-resolution Retina display running iOS ≤ 6: -->
-                <link rel="apple-touch-icon" sizes="144x144" href="img/favicon/favicon-144-precomposed.png">
-                
-                <!-- For iPhone with high-resolution Retina display running iOS ≥ 7: -->
-                <link rel="apple-touch-icon" sizes="120x120" href="img/favicon/favicon-120-precomposed.png">
-                
-                <!-- For iPhone with high-resolution Retina display running iOS ≤ 6: -->
-                <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/favicon-114-precomposed.png">
-                
-                <!-- For iPhone 6+ -->
-                <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/favicon-180-precomposed.png">
-                
-                <!-- For first- and second-generation iPad: -->
-                <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/favicon-72-precomposed.png">
-                
-                <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
-                <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/favicon-57.png">
-                
-                <!-- For Old Chrome -->
-                <link rel="icon" sizes="32x32" href="img/favicon/favicon-32.png" >
-                
-                <!-- For IE10 Metro -->
-                <meta name="msapplication-TileColor" content="#FFFFFF">
-                <meta name="msapplication-TileImage" content="img/favicon/favicon-144.png">
-                <meta name="theme-color" content="#ffffff">
-                
-                <!-- Chrome for Android -->
-                <link rel="manifest" href="manifest.json">
-                <link rel="icon" sizes="192x192" href="img/favicon/favicon-192.png">
+  <title>News – TachibanaOfficialWebsite</title>
 
+  <!-- For old IEs -->
+  <link rel="shortcut icon" href="../img/favicon/favicon.ico" />
+
+  <!-- For new browsers - multisize ico -->
+  <link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="../img/favicon/favicon.ico">
+
+  <!-- For iPad with high-resolution Retina display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon" sizes="152x152" href="../img/favicon/favicon-152-precomposed.png">
+
+  <!-- For iPad with high-resolution Retina display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon" sizes="144x144" href="../img/favicon/favicon-144-precomposed.png">
+
+  <!-- For iPhone with high-resolution Retina display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon" sizes="120x120" href="../img/favicon/favicon-120-precomposed.png">
+
+  <!-- For iPhone with high-resolution Retina display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon" sizes="114x114" href="../img/favicon/favicon-114-precomposed.png">
+
+  <!-- For iPhone 6+ -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon/favicon-180-precomposed.png">
+
+  <!-- For first- and second-generation iPad: -->
+  <link rel="apple-touch-icon" sizes="72x72" href="../img/favicon/favicon-72-precomposed.png">
+
+  <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon" sizes="57x57" href="../img/favicon/favicon-57.png">
+
+  <!-- For Old Chrome -->
+  <link rel="icon" sizes="32x32" href="../img/favicon/favicon-32.png">
+
+  <!-- For IE10 Metro -->
+  <meta name="msapplication-TileColor" content="#FFFFFF">
+  <meta name="msapplication-TileImage" content="../img/favicon/favicon-144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- Chrome for Android -->
+  <link rel="manifest" href="../manifest.json">
+  <link rel="icon" sizes="192x192" href="../img/favicon/favicon-192.png">
 
   <style>
     * {
@@ -55,9 +54,8 @@
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
       min-height: 100vh;
-      overflow-y: auto !important;
+      overflow-y: auto;
       overflow-x: hidden;
       background: #262626;
       color: #ffffff;
@@ -66,7 +64,6 @@
       scrollbar-width: none;
       -ms-overflow-style: none;
       -webkit-overflow-scrolling: touch;
-      touch-action: pan-y pinch-zoom none;
     }
 
     html::-webkit-scrollbar,
@@ -74,39 +71,8 @@
       display: none;
     }
 
-    /* ─── Loading Screen ─── */
-    #loading-screen {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: #262626;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      pointer-events: none;
-      animation: loadingFade 0.8s ease 2.2s forwards;
-    }
 
-    @keyframes loadingFade {
-      0%   { opacity: 1; visibility: visible; }
-      99%  { opacity: 0; visibility: visible; }
-      100% { opacity: 0; visibility: hidden; pointer-events: none; }
-    }
-
-    #loading-screen img {
-      width: auto;
-      height: auto;
-      max-width: min(200px, 20vw);
-      max-height: 20vh;
-      object-fit: contain;
-      animation: logoReveal 1s ease 0.3s both;
-    }
-
-    @keyframes logoReveal {
-      from { opacity: 0; transform: scale(0.96); }
-      to   { opacity: 1; transform: scale(1); }
-    }
-
+    /* ─── Header ─── */
     header {
       position: fixed;
       top: 0;
@@ -118,18 +84,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background 0.4s ease, opacity 0.6s ease;
-      opacity: 1;
-    }
-
-    header.scrolled {
-      background: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(8px);
-    }
-
-    header.hidden {
-      opacity: 0;
-      pointer-events: none;
     }
 
     .logo-center {
@@ -146,296 +100,365 @@
       transform: scale(1.1);
     }
 
-    .site-title {
-      position: fixed;
-      top: 90px;
-      left: 40px;
-      z-index: 5;
-      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif !important;
-      font-size: 6rem;
-      font-weight: 900;
-      letter-spacing: 0.15em;
-      color: #ffffff;
-      pointer-events: none;
-      text-transform: uppercase;
-    }
 
-    .tagline {
-      position: fixed;
-      bottom: 60px;
-      left: 40px;
-      z-index: 5;
-      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif !important;
-      font-size: 2.8rem;
-      font-weight: 900;
-      letter-spacing: 0.12em;
-      color: #ffffff;
-      pointer-events: none;
-      text-transform: uppercase;
-    }
-
-    .video-bg {
-      position: fixed;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .video-bg video {
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    .content {
-      position: relative;
-      z-index: 10;
-      padding-top: 100vh;
+    /* ─── Page Content ─── */
+    .page-wrapper {
+      padding-top: 80px;
       min-height: 100vh;
     }
 
-    .section-common {
-      background: #262626;
-      padding: 100px 6% 120px;
-      text-align: center;
-      line-height: 1.5;
-      font-size: 2.2rem;
-      font-weight: 900;
-      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif !important;
-    }
-
-    .section-common p {
-      max-width: 1000px;
-      margin: 0 auto 1.5em;
-    }
-
-    .section-title {
-      font-size: 1.4rem;
-      font-weight: 900;
-      margin-bottom: 2rem;
-      letter-spacing: 0.2em;
-      opacity: 0.8;
-      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif !important;
-    }
-
-    .portfolio {
-      background: #262626;
-      padding: 80px 5%;
-      text-align: center;
-    }
-
-    .portfolio img {
-      width: 100%;
+    /* ─── Hero / Page Title Area ─── */
+    .news-hero {
+      padding: 80px 6% 60px;
       max-width: 1280px;
-      height: auto;
-      aspect-ratio: 16 / 9;
-      object-fit: contain;
-      display: block;
       margin: 0 auto;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.1s forwards;
     }
 
-    .experiences {
-      background: #262626;
-      padding: 100px 6% 120px;
-      text-align: center;
-      line-height: 1.5;
-      font-size: 2.2rem;
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+
+    .news-page-title {
+      font-size: clamp(3.5rem, 7vw, 6rem);
       font-weight: 900;
-      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif !important;
-    }
-
-    .experiences h2 {
-      font-size: 1.4rem;
-      font-weight: 900;
-      margin-bottom: 2rem;
-      letter-spacing: 0.2em;
-      opacity: 0.8;
-    }
-
-    .sustainability {
-      background-image: url('img/background_Sustainability.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      min-height: 80vh;
-      padding: 120px 8% 120px;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: flex-start;
-    }
-
-    .sustainability .section-title {
-      font-size: 1.4rem;
-      text-align: left;
-      margin-bottom: 1.5rem;
-    }
-
-    .sustainability p {
-      max-width: 800px;
-      text-align: left;
-      margin: 0.5em 0;
-      font-size: 2.2rem;
-      font-weight: 900;
-      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif !important;
-      line-height: 1.5;
-    }
-
-    .giving-back {
-      background-image: url('img/background_Tachibana.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      min-height: 80vh;
-      padding: 120px 8% 120px;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-
-    .giving-back .section-title {
-      font-size: 1.4rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .giving-back p {
-      max-width: 800px;
-      margin: 0.5em auto;
-      font-size: 2.2rem;
-      font-weight: 900;
-      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif !important;
-      line-height: 1.5;
-    }
-
-    .access {
-      background: #262626;
-      padding: 100px 6% 120px;
-      text-align: center;
-    }
-
-    .access .section-title {
-      font-size: 1.4rem;
-      font-weight: 900;
-      margin-bottom: 2rem;
-      letter-spacing: 0.2em;
-      opacity: 0.8;
-    }
-
-    .access .map-container {
-      position: relative;
-      width: 100%;
-      height: 500px;
-      max-width: 1000px;
-      margin: 0 auto;
-      border: 1px solid #444;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-
-    .access iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    .operation {
-      background: #262626;
-      padding: 100px 6% 120px;
-      text-align: center;
-    }
-
-    .operation img {
-      width: 100%;
-      max-width: 1280px;
-      height: auto;
-      display: block;
-      margin: 0 auto 3rem;
-      object-fit: contain;
-    }
-
-    /* ─── operation-img: PC/スマホ切り替え ─── */
-    .operation-img {
-      height: auto;
-      display: block;
-      margin: 0 auto 3rem;
-      max-width: 35%; /* PC */
-    }
-
-    @media (max-width: 768px) {
-      .operation-img {
-        max-width: 85%; /* スマホ */
-      }
-    }
-    /* ─────────────────────────────────────── */
-
-    .operation .btn {
-      display: inline-block;
-      padding: 1rem 3rem;
-      background: #007bff;
+      letter-spacing: 0.12em;
       color: #ffffff;
-      font-size: 1.6rem;
-      font-weight: 900;
-      text-decoration: none;
-      border-radius: 50px;
-      transition: background 0.3s ease, transform 0.3s ease;
-      margin-bottom: 2rem;
+      text-transform: uppercase;
+      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+      line-height: 1;
     }
 
-    .operation .btn:hover {
-      background: #0056b3;
-      transform: scale(1.05);
+    .news-hero-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.1);
+      margin-top: 48px;
     }
 
-    .operation .creator-message {
-      font-size: 1.8rem;
-      font-weight: 900;
-      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif !important;
-      max-width: 800px;
+    /* ─── Filter Bar ─── */
+    .filter-bar {
+      max-width: 1280px;
       margin: 0 auto;
+      padding: 32px 6% 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.2s forwards;
     }
 
-    /* ─── Contact Section ─── */
-    .contact {
-      background: #262626;
-      padding: 80px 6% 100px;
-      text-align: center;
+    .filter-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      color: rgba(255, 255, 255, 0.3);
+      text-transform: uppercase;
+      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+      margin-right: 8px;
+    }
+
+    .filter-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 20px;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50px;
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.6);
+      color: #ffffff;
+    }
+
+    /* ─── News List ─── */
+    .news-main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 48px 6% 120px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.3s forwards;
+    }
+
+    .news-count {
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      color: rgba(255, 255, 255, 0.25);
+      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+      margin-bottom: 32px;
+    }
+
+    .news-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 48px;
+      padding: 32px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      cursor: pointer;
+      transition: background 0.25s ease;
+      position: relative;
+    }
+
+    .news-item:first-child {
       border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    .contact .section-title {
-      font-size: 1.4rem;
-      font-weight: 900;
-      margin-bottom: 2.5rem;
-      letter-spacing: 0.2em;
-      opacity: 0.8;
+    .news-item:hover {
+      background: rgba(255, 255, 255, 0.025);
     }
 
-    .contact-btn {
-      display: inline-block;
-      padding: 1.1rem 3.5rem;
-      background: transparent;
-      color: #ffffff;
-      font-size: 1.1rem;
+    /* Left meta column */
+    .news-meta {
+      flex-shrink: 0;
+      width: 220px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .news-date-box {
+      width: 100%;
+      height: 56px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.04);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      color: rgba(255, 255, 255, 0.65);
+      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+
+    .news-item:hover .news-date-box {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.6);
+    }
+
+    .news-category-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 50px;
+      font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.2em;
-      text-decoration: none;
-      border: 1.5px solid rgba(255, 255, 255, 0.7);
-      border-radius: 50px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
       font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
-      transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+      transition: all 0.25s ease;
     }
 
-    .contact-btn:hover {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: #ffffff;
-      transform: scale(1.04);
+    .news-item:hover .news-category-tag {
+      border-color: rgba(255, 255, 255, 0.4);
+      color: rgba(255, 255, 255, 0.7);
     }
 
+    /* Right content column */
+    .news-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .news-title-text {
+      font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+      font-weight: 900;
+      line-height: 1.3;
+      letter-spacing: 0.04em;
+      color: #ffffff;
+      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+      transition: opacity 0.3s ease;
+      margin-bottom: 14px;
+    }
+
+    .news-item:hover .news-title-text {
+      opacity: 0.75;
+    }
+
+    .news-body-text {
+      font-size: 0.95rem;
+      font-weight: 400;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.45);
+      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+      max-width: 720px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* Arrow indicator */
+    .news-arrow {
+      flex-shrink: 0;
+      align-self: center;
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.2);
+      transition: color 0.3s ease, transform 0.3s ease;
+      padding-left: 8px;
+    }
+
+    .news-item:hover .news-arrow {
+      color: rgba(255, 255, 255, 0.6);
+      transform: translateX(6px);
+    }
+
+    /* ─── Modal Overlay ─── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal-box {
+      background: #1e1e1e;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      width: 100%;
+      max-width: 720px;
+      max-height: 85vh;
+      overflow-y: auto;
+      scrollbar-width: none;
+      padding: 48px 52px;
+      transform: translateY(24px);
+      transition: transform 0.35s ease;
+      position: relative;
+    }
+
+    .modal-box::-webkit-scrollbar { display: none; }
+
+    .modal-overlay.open .modal-box {
+      transform: translateY(0);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.35);
+      font-size: 1.5rem;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.25s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .modal-close:hover { color: #ffffff; }
+
+    .modal-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      color: rgba(255, 255, 255, 0.3);
+      text-transform: uppercase;
+      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+      margin-bottom: 8px;
+    }
+
+    .modal-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .modal-date {
+      font-size: 0.88rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      color: rgba(255, 255, 255, 0.5);
+      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+    }
+
+    .modal-category {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+    }
+
+    .modal-title {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 900;
+      line-height: 1.3;
+      letter-spacing: 0.04em;
+      color: #ffffff;
+      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+      margin-bottom: 28px;
+    }
+
+    .modal-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.08);
+      margin-bottom: 28px;
+    }
+
+    .modal-body {
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.85;
+      color: rgba(255, 255, 255, 0.65);
+      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+    }
+
+    /* ─── Empty / Error State ─── */
+    .news-empty {
+      text-align: center;
+      padding: 80px 0;
+      font-size: 1rem;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.25);
+      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+      letter-spacing: 0.12em;
+    }
+
+    /* ─── Footer ─── */
     footer {
       background: #262626;
       padding: 28px 6%;
@@ -453,137 +476,87 @@
       color: rgba(255, 255, 255, 0.35);
     }
 
+    /* ─── Responsive ─── */
     @media (max-width: 768px) {
       header { height: 60px; }
       .logo-center { max-height: 36px; }
-      .site-title { font-size: 3.2rem; top: 70px; left: 20px; }
-      .tagline { font-size: 1.6rem; bottom: 40px; left: 20px; }
-      .section-common {
-        padding: 70px 6% 90px;
-        font-size: 1.8rem;
-      }
-      .section-title { font-size: 1.2rem; }
-      .operation img { max-width: 100%; }
-      .operation .btn { font-size: 1.4rem; padding: 0.8rem 2.5rem; }
-      .operation .creator-message { font-size: 1.6rem; }
-      .contact-btn { font-size: 1rem; padding: 0.9rem 2.5rem; }
+      .back-link { height: 60px; font-size: 0.78rem; padding: 0 18px; }
+      .news-hero { padding: 60px 5% 48px; }
+      .news-page-title { font-size: 3rem; }
+      .filter-bar { padding: 24px 5% 0; }
+      .news-main { padding: 36px 5% 90px; }
+      .news-item { gap: 24px; }
+      .news-meta { width: 160px; }
+      .news-date-box { height: 48px; font-size: 0.82rem; }
+      .news-title-text { font-size: 1.6rem; }
+      .modal-box { padding: 36px 28px; }
     }
 
     @media (max-width: 480px) {
-      .site-title { font-size: 2.6rem; top: 60px; left: 15px; }
-      .tagline { font-size: 1.3rem; bottom: 35px; left: 15px; }
-      .section-common { padding: 60px 5% 80px; font-size: 1.6rem; }
-      .section-title { font-size: 1.1rem; }
-      .operation { padding: 60px 5% 80px; }
+      .news-page-title { font-size: 2.4rem; }
+      .news-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 24px 0;
+      }
+      .news-meta { width: 100%; flex-direction: row; align-items: center; }
+      .news-date-box { flex: 1; }
+      .news-arrow { display: none; }
+      .news-title-text { font-size: 1.4rem; }
+      .modal-box { padding: 32px 20px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Loading Screen -->
-  <div id="loading-screen">
-    <img src="img/logo_2.png" alt="TACHIBANA">
-  </div>
-
+  <!-- Header -->
   <header id="main-header">
     <img 
-      src="img/Logo_Site.png" 
+      src="../img/Logo_Site.png" 
       alt="TachibanaOfficialWebsite" 
       class="logo-center"
       id="logo-top"
     >
   </header>
 
-  <div class="site-title">TACHIBANA</div>
-  <div class="tagline">A Stay That Gives Back.</div>
+  <!-- Main page -->
+  <div class="page-wrapper">
 
-  <div class="video-bg">
-    <video autoplay muted loop playsinline preload="auto">
-      <source src="video/home_video.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+    <!-- Hero -->
+    <div class="news-hero" id="news-hero">
+      <h1 class="news-page-title">News</h1>
+      <div class="news-hero-divider"></div>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar" id="filter-bar">
+      <span class="filter-label">Filter</span>
+      <button class="filter-btn active" data-category="All">All</button>
+      <!-- Additional category buttons injected by JS -->
+    </div>
+
+    <!-- News List -->
+    <main class="news-main" id="news-main">
+      <div class="news-count" id="news-count"></div>
+      <div id="news-list"></div>
+    </main>
+
   </div>
 
-  <div class="content" id="main-content">
-    <section class="introduction section-common">
-      <p>Nestled in a quiet mountain village, TACHIBANA is a lovingly restored traditional house.</p>
-      <p>We welcome only one group per day, offering a private retreat where you can truly rest your heart.</p>
-      <p>Surrounded by the changing seasons, warmed by the hearth, and nourished by local seasonal delicacies,</p>
-      <p>you will experience moments where time seems to stand still.</p>
-      <p>With your family or someone special, please enjoy a unique stay found nowhere else.</p>
-    </section>
-
-    <section class="portfolio">
-      <img src="img/portfolio/img_1.png" alt="Portfolio Image 1">
-    </section>
-
-    <section class="experiences section-common">
-      <h2 class="section-title">Experiences</h2>
-      <p>Surrounded by mountains, forests, and clear rivers,</p>
-      <p>TACHIBANA rests in a place where nature still sets the rhythm of life.</p>
-      <p>Here, mornings begin with birdsong,</p>
-      <p>afternoons pass in quiet light,</p>
-      <p>and nights are wrapped in deep, gentle silence.</p>
-      <p>Each season brings its own colors, scents, and memories—</p>
-      <p>inviting you to slow down and simply be.</p>
-    </section>
-
-    <section class="sustainability">
-      <h2 class="section-title">Sustainability</h2>
-      <p>In Japan, single-parent families face significantly greater economic and emotional challenges than the national average. Public data shows that nearly half of children in single-parent households live in relative poverty,</p>
-      <p>and moments of rest or time away are often out of reach.</p>
-    </section>
-
-    <section class="giving-back">
-      <h2 class="section-title">Giving Back</h2>
-      <p>Yet rest is not a luxury.</p>
-      <p>It is essential to a healthy and dignified life.</p>
-      <p>Staying at TACHIBANA is more than a personal retreat.</p>
-      <p>It is a quiet act of giving—</p>
-      <p>supporting the land, the people, and the future of this place.</p>
-      <p>No ceremonies. No recognition.</p>
-      <p>Just a stay that gives back.</p>
-      <p>In time, we hope to share this experience</p>
-      <p>with single-parent families in Japan.</p>
-    </section>
-
-    <section class="access section-common">
-      <h2 class="section-title">Access</h2>
-      <div class="map-container">
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4395.201655203754!2d137.76282627604763!3d35.06062862686402!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601b15672391fe09%3A0x12ec99034eb31553!2z44CSNDMxLTM5MDYg6Z2Z5bKh55yM5rWc5p2-5biC5aSp56uc5Yy65L2Q5LmF6ZaT55S65rWm5bed77yT77yU77yZ77yZ!5e1!3m2!1sja!2sjp!4v1767708895561!5m2!1sja!2sjp" 
-          width="100%" 
-          height="500" 
-          style="border:0;" 
-          allowfullscreen="" 
-          loading="lazy" 
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+  <!-- Modal -->
+  <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal-box" id="modal-box">
+      <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
+      <div class="modal-label">News</div>
+      <div class="modal-meta">
+        <span class="modal-date" id="modal-date"></span>
+        <span class="modal-category" id="modal-category"></span>
       </div>
-    </section>
-
-    <section class="operation section-common">
-      <img 
-        src="img/operation_img/img_1.png" 
-        alt="Operation Image"
-        class="operation-img"
-      >
-      <a href="MessagefromtheOwner/" class="btn">Message from the Owner</a>
-
-      <p class="creator-message" style="margin-top: 3rem; font-size: 2.2rem; line-height: 1.5;">
-        Meet the CREATORS<br>
-        We didn't create a place to stay.<br>
-        We shaped a moment to remember.
-      </p>
-    </section>
-
-    <!-- Contact -->
-<!-- Contact -->
-<section class="contact">
-  <h2 class="section-title">Contact</h2>
-  <a href="mailto:info@tachibana-urakawa.jp?subject=お問い合わせ/Contactus" class="contact-btn">CONTACT</a>
-</section>
-
+      <h2 class="modal-title" id="modal-title"></h2>
+      <div class="modal-divider"></div>
+      <p class="modal-body" id="modal-body"></p>
+    </div>
   </div>
 
   <footer>
@@ -597,42 +570,122 @@
       if (e.ctrlKey && ['s','S','u','U'].includes(e.key)) e.preventDefault();
     });
 
-    // ヘッダー表示制御
-    const header = document.getElementById('main-header');
-    const contentSection = document.getElementById('main-content');
-    const viewportHeight = window.innerHeight;
-
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      const threshold = viewportHeight * 0.85;
-
-      // scrolledクラス（背景ブラー）はtopセクション内のみ適用
-      if (scrollY > 50 && scrollY < threshold) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-
-      // contentに入ったらフェードアウト、topに戻ったらフェードイン
-      if (scrollY >= threshold) {
-        header.classList.add('hidden');
-      } else {
-        header.classList.remove('hidden');
-      }
-    });
-
-    // ロゴタップで再読み込み
+    // Logo click → home
     const logo = document.getElementById('logo-top');
     if (logo) {
-      logo.addEventListener('click', () => {
-        window.location.reload();
-      });
+      logo.addEventListener('click', () => { window.location.href = '../'; });
+      logo.addEventListener('touchend', e => { e.preventDefault(); window.location.href = '../'; });
+    }
 
-      logo.addEventListener('touchend', (e) => {
-        e.preventDefault();
-        window.location.reload();
+    // ─── Load news.json ───
+    let allNews = [];
+    let activeCategory = 'All';
+
+    async function loadNews() {
+      try {
+        const res = await fetch('./news.json');
+        if (!res.ok) throw new Error('Failed to load news.json');
+        allNews = await res.json();
+        buildFilters();
+        renderNews(allNews);
+      } catch (err) {
+        document.getElementById('news-list').innerHTML =
+          '<div class="news-empty">News could not be loaded.<br>Please ensure news.json is placed in the same folder.</div>';
+        console.error(err);
+      }
+    }
+
+    // ─── Build filter buttons from categories ───
+    function buildFilters() {
+      const categories = ['All', ...new Set(allNews.map(n => n.category).filter(Boolean))];
+      const bar = document.getElementById('filter-bar');
+      // Clear existing buttons (keep label)
+      bar.querySelectorAll('.filter-btn').forEach(b => b.remove());
+
+      categories.forEach(cat => {
+        const btn = document.createElement('button');
+        btn.className = 'filter-btn' + (cat === 'All' ? ' active' : '');
+        btn.dataset.category = cat;
+        btn.textContent = cat;
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          activeCategory = cat;
+          const filtered = cat === 'All' ? allNews : allNews.filter(n => n.category === cat);
+          renderNews(filtered);
+        });
+        bar.appendChild(btn);
       });
     }
+
+    // ─── Render news items ───
+    function renderNews(items) {
+      const list = document.getElementById('news-list');
+      const count = document.getElementById('news-count');
+      list.innerHTML = '';
+      count.textContent = items.length + ' article' + (items.length !== 1 ? 's' : '');
+
+      if (items.length === 0) {
+        list.innerHTML = '<div class="news-empty">No articles found.</div>';
+        return;
+      }
+
+      items.forEach(item => {
+        const el = document.createElement('div');
+        el.className = 'news-item';
+        el.innerHTML =
+          '<div class="news-meta">' +
+            '<div class="news-date-box">' + escHtml(item.date) + '</div>' +
+            (item.category ? '<span class="news-category-tag">' + escHtml(item.category) + '</span>' : '') +
+          '</div>' +
+          '<div class="news-content">' +
+            '<div class="news-title-text">' + escHtml(item.title) + '</div>' +
+            (item.body ? '<div class="news-body-text">' + escHtml(item.body) + '</div>' : '') +
+          '</div>' +
+          '<div class="news-arrow">→</div>';
+
+        el.addEventListener('click', () => openModal(item));
+        list.appendChild(el);
+      });
+    }
+
+    // ─── Modal ───
+    const overlay = document.getElementById('modal-overlay');
+    const modalClose = document.getElementById('modal-close');
+
+    function openModal(item) {
+      document.getElementById('modal-date').textContent = item.date || '';
+      document.getElementById('modal-category').textContent = item.category || '';
+      document.getElementById('modal-title').textContent = item.title || '';
+      document.getElementById('modal-body').textContent = item.body || '';
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    overlay.addEventListener('click', e => {
+      if (e.target === overlay) closeModal();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // ─── Utility ───
+    function escHtml(str) {
+      return String(str)
+        .replace(/&/g,'&amp;')
+        .replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;')
+        .replace(/"/g,'&quot;');
+    }
+
+    // ─── Init ───
+    loadNews();
   </script>
 
 </body>
