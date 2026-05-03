@@ -1,9 +1,8 @@
 [
-  {
-    "id": "001",
+  {  "id": "001",
     "date": "2026.05.01",
-    "category": "Info",
-    "title": "テスト",
-    "body": "テスト"
+    "category": "Web",
+    "title": "I created a news website.",
+    "body": "I created a news website."
   }
 ]
