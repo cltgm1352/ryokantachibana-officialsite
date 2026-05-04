@@ -284,7 +284,7 @@
     }
 
     footer p {
-      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       font-size: 0.8rem;
       font-weight: 400;
       letter-spacing: 0.12em;
@@ -315,8 +315,138 @@
     .qa-item:nth-child(15) { animation-delay: 0.60s; }
     .qa-item:nth-child(16) { animation-delay: 0.64s; }
 
+    /* ─── Hamburger Button ─── */
+    .hamburger {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 60px;
+      height: 60px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      background: none;
+      border: none;
+      outline: none;
+      padding: 0;
+    }
+
+    .hamburger-inner {
+      position: relative;
+      width: 24px;
+      height: 16px;
+    }
+
+    .hamburger-line {
+      position: absolute;
+      left: 0;
+      width: 24px;
+      height: 1.5px;
+      background: rgba(255, 255, 255, 0.85);
+      transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+                  opacity 0.3s ease,
+                  top 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+                  bottom 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .hamburger-line:nth-child(1) { top: 0; }
+    .hamburger-line:nth-child(2) { top: 50%; transform: translateY(-50%); }
+    .hamburger-line:nth-child(3) { bottom: 0; }
+
+    .hamburger.is-open .hamburger-line:nth-child(1) {
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+    }
+    .hamburger.is-open .hamburger-line:nth-child(2) {
+      opacity: 0;
+      transform: translateY(-50%) scaleX(0);
+    }
+    .hamburger.is-open .hamburger-line:nth-child(3) {
+      bottom: auto;
+      top: 50%;
+      transform: translateY(-50%) rotate(-45deg);
+    }
+
+    /* ─── Nav Overlay ─── */
+    .nav-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 150;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      clip-path: inset(0 0 100% 0);
+      transition: clip-path 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      background: #1a1a1a;
+    }
+
+    .nav-overlay.is-open {
+      pointer-events: auto;
+      clip-path: inset(0 0 0% 0);
+    }
+
+    .nav-overlay::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-size: 150px;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .nav-links li { overflow: hidden; }
+
+    .nav-links a {
+      display: block;
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      color: rgba(255, 255, 255, 0.15);
+      text-decoration: none;
+      text-transform: uppercase;
+      line-height: 1.15;
+      padding: 4px 0;
+      transform: translateY(60px);
+      opacity: 0;
+      transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+                  opacity 0.5s ease,
+                  color 0.3s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .nav-overlay.is-open .nav-links a {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .nav-overlay.is-open .nav-links li:nth-child(1) a { transition-delay: 0.18s; }
+    .nav-overlay.is-open .nav-links li:nth-child(2) a { transition-delay: 0.26s; }
+    .nav-overlay.is-open .nav-links li:nth-child(3) a { transition-delay: 0.34s; }
+
+    .nav-links a:hover,
+    .nav-links a:focus { color: rgba(255, 255, 255, 0.92); }
+
+    .nav-links a.active { color: rgba(255, 255, 255, 0.5); }
+
     @media (max-width: 768px) {
       header { height: 60px; }
+      .hamburger { width: 50px; height: 50px; }
       .logo-center { max-height: 36px; }
       .hero { height: 28vh; min-height: 180px; }
       .answer-inner { padding-left: 0; }
@@ -334,6 +464,24 @@
       id="logo-top"
     >
   </header>
+
+  <!-- Hamburger Button -->
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <div class="hamburger-inner">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </div>
+  </button>
+
+  <!-- Nav Overlay -->
+  <nav class="nav-overlay" id="nav-overlay">
+    <ul class="nav-links">
+      <li><a href="../index.html">Top</a></li>
+      <li><a href="../news/index.html">News</a></li>
+      <li><a href="../qa/index.html" class="active">Q&amp;A</a></li>
+    </ul>
+  </nav>
 
   <!-- Hero -->
   <div class="hero">
@@ -555,7 +703,7 @@
       }
     });
 
-    // Logo tap reloads
+    // Logo tap → home
     const logo = document.getElementById('logo-top');
     if (logo) {
       logo.addEventListener('click', () => { window.location.href = '../index.html'; });
@@ -564,6 +712,24 @@
         window.location.href = '../index.html';
       });
     }
+
+    // ─── Hamburger toggle ───
+    const hamburger = document.getElementById('hamburger');
+    const navOverlay = document.getElementById('nav-overlay');
+
+    hamburger.addEventListener('click', function() {
+      const isOpen = hamburger.classList.toggle('is-open');
+      navOverlay.classList.toggle('is-open', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    navOverlay.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        hamburger.classList.remove('is-open');
+        navOverlay.classList.remove('is-open');
+        document.body.style.overflow = '';
+      });
+    });
 
     // Q&A accordion
     document.querySelectorAll('.question').forEach(q => {
