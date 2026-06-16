@@ -275,76 +275,6 @@
       margin: 0 auto 1.5em;
     }
 
-    /* ─── News Section ─── */
-    .news {
-      background: #262626;
-      padding: 100px 6% 120px;
-    }
-
-    .news-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 40px;
-    }
-
-    .news-all-link {
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      color: rgba(255, 255, 255, 0.5);
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: color 0.3s ease;
-    }
-
-    .news-all-link:hover { color: rgba(255, 255, 255, 0.9); }
-
-    .news-list { display: flex; flex-direction: column; gap: 0; }
-
-    .news-item {
-      display: flex;
-      align-items: center;
-      gap: 48px;
-      padding: 28px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .news-item:first-child { border-top: 1px solid rgba(255, 255, 255, 0.1); }
-
-    .news-date-box {
-      flex-shrink: 0;
-      width: 220px;
-      height: 56px;
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      background: rgba(255, 255, 255, 0.05);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.95rem;
-      font-weight: 400;
-      letter-spacing: 0.12em;
-      color: rgba(255, 255, 255, 0.7);
-      transition: background 0.3s ease, border-color 0.3s ease;
-    }
-
-    .news-item:hover .news-date-box {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.7);
-    }
-
-    .news-title-text {
-      font-size: 2.2rem;
-      font-weight: 900;
-      line-height: 1.3;
-      letter-spacing: 0.04em;
-      color: #ffffff;
-      transition: opacity 0.3s ease;
-      font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif !important;
-    }
-
-    .news-item:hover .news-title-text { opacity: 0.75; }
-
     /* ─── Access ─── */
     .map-container {
       width: 100%;
@@ -583,11 +513,6 @@
       .operation .btn { font-size: 1.4rem; padding: 0.8rem 2.5rem; }
       .operation .creator-message { font-size: 1.6rem; }
       .contact-btn { font-size: 1rem; padding: 0.9rem 2.5rem; }
-      /* News responsive */
-      .news { padding: 70px 5% 90px; }
-      .news-item { gap: 24px; }
-      .news-date-box { width: 160px; height: 48px; font-size: 0.85rem; }
-      .news-title-text { font-size: 1.6rem; }
     }
 
     @media (max-width: 480px) {
@@ -596,10 +521,6 @@
       .section-common { padding: 60px 5% 80px; font-size: 1.6rem; }
       .section-title { font-size: 1.1rem; }
       .operation { padding: 60px 5% 80px; }
-      /* News responsive small */
-      .news-item { flex-direction: column; align-items: flex-start; gap: 12px; padding: 20px 0; }
-      .news-date-box { width: 180px; }
-      .news-title-text { font-size: 1.4rem; }
     }
   </style>
 </head>
@@ -688,17 +609,6 @@
       <p>Just a stay that gives back.</p>
       <p>In time, we hope to share this experience</p>
       <p>with single-parent families in Japan.</p>
-    </section>
-
-    <!-- ─── News Section ─── -->
-    <section class="news">
-      <div class="news-header">
-        <h2 class="section-title">News</h2>
-        <a href="News/" class="news-all-link">View All</a>
-      </div>
-      <div class="news-list" id="news-list">
-        <!-- Populated by JS (latest 3) -->
-      </div>
     </section>
 
     <section class="access section-common">
@@ -802,22 +712,6 @@
         document.body.style.overflow = '';
       });
     });
-  </script>
-
-  <!-- ─── News: news.jsを読み込んで最新3件を表示 ─── -->
-  <script src="news/news.json"></script>
-  <script>
-    (function() {
-      const list = document.getElementById('news-list');
-      NEWS_DATA.slice(0, 3).forEach(function(item) {
-        const el = document.createElement('div');
-        el.className = 'news-item';
-        el.innerHTML =
-          '<div class="news-date-box">' + item.date + '</div>' +
-          '<div class="news-title-text">' + item.title + '</div>';
-        list.appendChild(el);
-      });
-    })();
   </script>
 
 </body>
