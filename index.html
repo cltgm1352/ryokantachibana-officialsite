@@ -134,6 +134,7 @@
       color: #ffffff;
       pointer-events: none;
       text-transform: uppercase;
+      transition: transform 0.3s ease;
     }
 
     .tagline {
@@ -148,6 +149,7 @@
       color: #ffffff;
       pointer-events: none;
       text-transform: uppercase;
+      transition: transform 0.3s ease;
     }
 
     .video-bg {
@@ -228,8 +230,8 @@
       bottom: 0;
       left: 0;
       right: 0;
-      height: 80px;
-      background: linear-gradient(to bottom, transparent, rgba(38, 38, 38, 1));
+      height: 60px;
+      background: linear-gradient(to bottom, rgba(38, 38, 38, 0), rgba(38, 38, 38, 1));
       pointer-events: none;
     }
 
@@ -250,8 +252,8 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 80px;
-      background: linear-gradient(to top, transparent, rgba(38, 38, 38, 1));
+      height: 60px;
+      background: linear-gradient(to bottom, rgba(38, 38, 38, 0.6), rgba(38, 38, 38, 0));
       pointer-events: none;
     }
 
@@ -558,8 +560,8 @@
     </ul>
   </nav>
 
-  <div class="site-title">TACHIBANA</div>
-  <div class="tagline">A Stay That Gives Back.</div>
+  <div class="site-title" id="site-title">TACHIBANA</div>
+  <div class="tagline" id="tagline">A Stay That Gives Back.</div>
 
   <div class="video-bg">
     <video autoplay muted loop playsinline preload="auto">
@@ -664,6 +666,8 @@
     const header = document.getElementById('main-header');
     const contentSection = document.getElementById('main-content');
     const viewportHeight = window.innerHeight;
+    const siteTitle = document.getElementById('site-title');
+    const tagline = document.getElementById('tagline');
 
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
@@ -680,6 +684,11 @@
       } else {
         header.classList.remove('hidden');
       }
+
+      // スクロール時にサイトタイトルとタグラインを上に移動
+      const titleOffset = Math.min(scrollY * 0.3, 100);
+      siteTitle.style.transform = `translateY(-${titleOffset}px)`;
+      tagline.style.transform = `translateY(${titleOffset}px)`;
     });
 
     // ロゴタップで再読み込み
